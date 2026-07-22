@@ -1,0 +1,924 @@
+{
+  "contract": "cadenza.authority-security",
+  "version": "0.1.0",
+  "conformance": {
+    "manifest_version": "0.1.0",
+    "required_case_names": ["object version tag and policy baseline"],
+    "coverage": [
+      {
+        "case_name": "object version tag and policy baseline",
+        "proves": [
+          "logical-object.identity",
+          "object-version.immutable-payload",
+          "version-pointer.current",
+          "version-mark.candidate",
+          "tag.direct-assignment",
+          "tag.direct-removal",
+          "tag.effective-provenance",
+          "policy.resource-allow",
+          "policy.resource-deny",
+          "flow.version-create-initial.created",
+          "flow.version-create-initial.rejected",
+          "flow.tag-assign.assigned",
+          "flow.tag-assign.rejected",
+          "flow.policy-evaluate-resource.allow",
+          "flow.policy-evaluate-resource.deny",
+          "flow.version-create-next.created",
+          "flow.version-create-next.reused-existing",
+          "flow.version-create-next.no-change-current",
+          "flow.version-create-next.rejected-stale-base",
+          "flow.version-set-current.updated",
+          "flow.version-set-current.no-change",
+          "flow.version-set-current.rejected-stale-pointer",
+          "flow.tag-remove.removed",
+          "flow.tag-remove.rejected",
+          "flow.tag-recompute-effective.recomputed",
+          "flow.tag-recompute-effective.no-change",
+          "flow.policy-evaluate-tag.allow",
+          "flow.policy-evaluate-tag.deny"
+        ]
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "object version tag and policy baseline",
+      "logical_objects": [
+        {
+          "object_key": "task.orders.validate",
+          "object_type": "task",
+          "display_name": "Validate order",
+          "lifecycle_state": "active",
+          "taggable": true,
+          "policy_subject": false,
+          "policy_resource": true
+        },
+        {
+          "object_key": "actor.team.payments",
+          "object_type": "actor",
+          "display_name": "Payments team",
+          "lifecycle_state": "active",
+          "taggable": true,
+          "policy_subject": true,
+          "policy_resource": false
+        },
+        {
+          "object_key": "task.orders.archive",
+          "object_type": "task",
+          "display_name": "Archive order",
+          "lifecycle_state": "active",
+          "taggable": true,
+          "policy_subject": false,
+          "policy_resource": true
+        }
+      ],
+      "versions": [
+        {
+          "version_key": "version.task.orders.validate.0001",
+          "object_key": "task.orders.validate",
+          "content_hash": "sha256:orders-validate-v1",
+          "semantic_payload": {
+            "task_key": "orders.validate",
+            "intent": "orders-validate"
+          },
+          "created_at": "2026-07-12T00:00:00.000Z"
+        },
+        {
+          "version_key": "version.task.orders.validate.0002",
+          "object_key": "task.orders.validate",
+          "content_hash": "sha256:orders-validate-v2",
+          "semantic_payload": {
+            "task_key": "orders.validate",
+            "intent": "orders-validate",
+            "validation_mode": "strict"
+          },
+          "created_at": "2026-07-12T00:01:00.000Z"
+        },
+        {
+          "version_key": "version.task.orders.validate.0003",
+          "object_key": "task.orders.validate",
+          "content_hash": "sha256:orders-validate-v3",
+          "semantic_payload": {
+            "task_key": "orders.validate",
+            "intent": "orders-validate",
+            "validation_mode": "audited"
+          },
+          "created_at": "2026-07-12T00:02:00.000Z"
+        }
+      ],
+      "version_pointers": [
+        {
+          "object_key": "task.orders.validate",
+          "pointer_kind": "current",
+          "version_key": "version.task.orders.validate.0001"
+        }
+      ],
+      "version_marks": [
+        {
+          "mark_key": "mark.version.task.orders.validate.0001.candidate",
+          "version_key": "version.task.orders.validate.0001",
+          "mark": "candidate",
+          "primary": true
+        },
+        {
+          "mark_key": "mark.version.task.orders.validate.0002.candidate",
+          "version_key": "version.task.orders.validate.0002",
+          "mark": "candidate",
+          "primary": true
+        },
+        {
+          "mark_key": "mark.version.task.orders.validate.0003.candidate",
+          "version_key": "version.task.orders.validate.0003",
+          "mark": "candidate",
+          "primary": true
+        }
+      ],
+      "tag_categories": [
+        {
+          "category_key": "module",
+          "display_name": "Module",
+          "cardinality": "multi",
+          "managed_by": "policy"
+        },
+        {
+          "category_key": "ownership",
+          "display_name": "Ownership",
+          "cardinality": "multi",
+          "managed_by": "policy"
+        }
+      ],
+      "tags": [
+        {
+          "tag_key": "module.payments",
+          "category_key": "module",
+          "display_name": "Payments module"
+        },
+        {
+          "tag_key": "team.payments",
+          "category_key": "ownership",
+          "display_name": "Payments team"
+        },
+        {
+          "tag_key": "module.archive",
+          "category_key": "module",
+          "display_name": "Archive module"
+        }
+      ],
+      "direct_tag_assignments": [
+        {
+          "assignment_key": "assign.task.orders.validate.module.payments",
+          "object_key": "task.orders.validate",
+          "tag_key": "module.payments",
+          "category_key": "module",
+          "reason": "initial-authority-seed",
+          "assigned_by": "actor.team.payments"
+        },
+        {
+          "assignment_key": "assign.actor.team.payments.team.payments",
+          "object_key": "actor.team.payments",
+          "tag_key": "team.payments",
+          "category_key": "ownership",
+          "reason": "initial-authority-seed",
+          "assigned_by": "actor.team.payments"
+        },
+        {
+          "assignment_key": "assign.task.orders.archive.module.archive",
+          "object_key": "task.orders.archive",
+          "tag_key": "module.archive",
+          "category_key": "module",
+          "reason": "initial-authority-seed",
+          "assigned_by": "actor.team.payments"
+        }
+      ],
+      "direct_tag_removals": [
+        {
+          "removal_key": "remove.task.orders.archive.module.archive",
+          "assignment_key": "assign.task.orders.archive.module.archive",
+          "object_key": "task.orders.archive",
+          "tag_key": "module.archive",
+          "category_key": "module",
+          "reason": "module-retired",
+          "removed_by": "actor.team.payments"
+        }
+      ],
+      "effective_tags": [
+        {
+          "object_key": "task.orders.validate",
+          "tag_key": "module.payments",
+          "sources": [
+            {
+              "source_type": "direct_assignment",
+              "source_key": "assign.task.orders.validate.module.payments"
+            }
+          ]
+        },
+        {
+          "object_key": "actor.team.payments",
+          "tag_key": "team.payments",
+          "sources": [
+            {
+              "source_type": "direct_assignment",
+              "source_key": "assign.actor.team.payments.team.payments"
+            }
+          ]
+        }
+      ],
+      "policy_rules": [
+        {
+          "rule_key": "policy.payments.write-payments-module",
+          "family": "resource_access",
+          "action": "write",
+          "subject_tag_keys": ["team.payments"],
+          "resource_tag_keys": ["module.payments"],
+          "effect": "allow"
+        },
+        {
+          "rule_key": "policy.payments.assign-payments-module",
+          "family": "tag_management",
+          "action": "assign_tag",
+          "subject_tag_keys": ["team.payments"],
+          "resource_tag_keys": ["module.payments"],
+          "target_tag_keys": ["module.payments"],
+          "effect": "allow"
+        },
+        {
+          "rule_key": "policy.payments.remove-archive-module",
+          "family": "tag_management",
+          "action": "remove_tag",
+          "subject_tag_keys": ["team.payments"],
+          "resource_tag_keys": ["module.archive"],
+          "target_tag_keys": ["module.archive"],
+          "effect": "allow"
+        }
+      ],
+      "policy_decisions": [
+        {
+          "decision_key": "decision.payments.write.orders.validate",
+          "family": "resource_access",
+          "action": "write",
+          "subject_object_key": "actor.team.payments",
+          "resource_object_key": "task.orders.validate",
+          "outcome": "allow",
+          "matched_rule_keys": ["policy.payments.write-payments-module"],
+          "reasons": ["subject and resource effective tags match policy rule"]
+        },
+        {
+          "decision_key": "decision.payments.read.orders.validate.denied",
+          "family": "resource_access",
+          "action": "read",
+          "subject_object_key": "actor.team.payments",
+          "resource_object_key": "task.orders.validate",
+          "outcome": "deny",
+          "matched_rule_keys": [],
+          "reasons": ["no matching allow rule"]
+        },
+        {
+          "decision_key": "decision.payments.assign-tag.orders.validate.module.payments",
+          "family": "tag_management",
+          "action": "assign_tag",
+          "subject_object_key": "actor.team.payments",
+          "target_object_key": "task.orders.validate",
+          "target_tag_key": "module.payments",
+          "outcome": "allow",
+          "matched_rule_keys": ["policy.payments.assign-payments-module"],
+          "reasons": ["subject may assign the payments module tag to payments resources"]
+        },
+        {
+          "decision_key": "decision.payments.remove-tag.orders.validate.module.payments.denied",
+          "family": "tag_management",
+          "action": "remove_tag",
+          "subject_object_key": "actor.team.payments",
+          "target_object_key": "task.orders.validate",
+          "target_tag_key": "module.payments",
+          "outcome": "deny",
+          "matched_rule_keys": [],
+          "reasons": ["no matching tag-removal allow rule"]
+        },
+        {
+          "decision_key": "decision.payments.assign-tag.actor.team.payments.module.payments.denied",
+          "family": "tag_management",
+          "action": "assign_tag",
+          "subject_object_key": "actor.team.payments",
+          "target_object_key": "actor.team.payments",
+          "target_tag_key": "module.payments",
+          "outcome": "deny",
+          "matched_rule_keys": [],
+          "reasons": ["no matching assignment allow rule for target actor"]
+        },
+        {
+          "decision_key": "decision.payments.remove-tag.orders.archive.module.archive",
+          "family": "tag_management",
+          "action": "remove_tag",
+          "subject_object_key": "actor.team.payments",
+          "target_object_key": "task.orders.archive",
+          "target_tag_key": "module.archive",
+          "outcome": "allow",
+          "matched_rule_keys": ["policy.payments.remove-archive-module"],
+          "reasons": ["subject may remove the retired archive module tag"]
+        }
+      ],
+      "canonical_flows": [
+        {
+          "flow_key": "Version.CreateInitialObject",
+          "strictness": "strict"
+        },
+        {
+          "flow_key": "Tag.Assign",
+          "strictness": "bounded"
+        },
+        {
+          "flow_key": "Policy.EvaluateResourceAction",
+          "strictness": "strict"
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "strictness": "bounded"
+        },
+        {
+          "flow_key": "Version.SetCurrent",
+          "strictness": "strict"
+        },
+        {
+          "flow_key": "Tag.Remove",
+          "strictness": "bounded"
+        },
+        {
+          "flow_key": "Tag.RecomputeEffectiveForObject",
+          "strictness": "loose"
+        },
+        {
+          "flow_key": "Policy.EvaluateTagAction",
+          "strictness": "strict"
+        }
+      ],
+      "flow_declarations": [
+        {
+          "flow_key": "Version.CreateInitialObject",
+          "shape": "orchestrated",
+          "strictness": "strict",
+          "semantic_boundary": "Create a logical object with its first immutable version, current pointer, and initial candidate mark as one semantic unit.",
+          "invariant_fields": [
+            "object_registry",
+            "object_version",
+            "object_version_pointer.current",
+            "object_version_mark_assignment.candidate"
+          ],
+          "deferred_consequences": [
+            "audit summaries",
+            "projection refresh",
+            "notifications"
+          ]
+        },
+        {
+          "flow_key": "Tag.Assign",
+          "shape": "orchestrated",
+          "strictness": "bounded",
+          "semantic_boundary": "Assign one direct tag to one logical object while preserving tag policy, category cardinality, and copied assignment context.",
+          "invariant_fields": [
+            "object_tag_assignment",
+            "category_uuid",
+            "category_cardinality_mode",
+            "assignment_source_type"
+          ],
+          "deferred_consequences": [
+            "effective tag recomputation",
+            "effective tag provenance refresh",
+            "cached effective tag projection"
+          ]
+        },
+        {
+          "flow_key": "Policy.EvaluateResourceAction",
+          "shape": "orchestrated",
+          "strictness": "strict",
+          "semantic_boundary": "Evaluate whether one subject may perform one resource action against one resource object under current effective authority context.",
+          "invariant_fields": [
+            "subject effective tags",
+            "resource effective tags",
+            "matched allow rules",
+            "decision outcome"
+          ],
+          "deferred_consequences": ["policy decision audit export"]
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "shape": "orchestrated",
+          "strictness": "bounded",
+          "semantic_boundary": "Resolve the next candidate version for an existing object with stale-base protection and immutable payload reuse.",
+          "invariant_fields": [
+            "base version is observed current",
+            "semantic payload canonicalization",
+            "duplicate version resolution",
+            "candidate mark for created version"
+          ],
+          "deferred_consequences": [
+            "version audit export",
+            "comparison scheduling",
+            "projection refresh"
+          ]
+        },
+        {
+          "flow_key": "Version.SetCurrent",
+          "shape": "orchestrated",
+          "strictness": "strict",
+          "semantic_boundary": "Move one object's current-version pointer with optimistic stale-pointer protection.",
+          "invariant_fields": [
+            "expected current version",
+            "target version belongs to object",
+            "current pointer mutation",
+            "pointer history evidence"
+          ],
+          "deferred_consequences": [
+            "pointer audit export",
+            "materialization reconciliation",
+            "projection refresh"
+          ]
+        },
+        {
+          "flow_key": "Tag.Remove",
+          "shape": "orchestrated",
+          "strictness": "bounded",
+          "semantic_boundary": "Remove one direct tag assignment without erasing its historical authority evidence.",
+          "invariant_fields": [
+            "direct assignment identity",
+            "immutable removal evidence",
+            "copied category context",
+            "removal authority"
+          ],
+          "deferred_consequences": [
+            "effective tag recomputation",
+            "effective tag provenance refresh",
+            "cached effective tag projection"
+          ]
+        },
+        {
+          "flow_key": "Tag.RecomputeEffectiveForObject",
+          "shape": "reactive",
+          "strictness": "loose",
+          "semantic_boundary": "Project the current effective tags and provenance for one logical object from governed tag evidence.",
+          "invariant_fields": [
+            "effective tag set",
+            "provenance source set"
+          ],
+          "deferred_consequences": [
+            "cached effective tag projection",
+            "downstream derivation fan-out"
+          ]
+        },
+        {
+          "flow_key": "Policy.EvaluateTagAction",
+          "shape": "orchestrated",
+          "strictness": "strict",
+          "semantic_boundary": "Evaluate whether one subject may perform one governed tag action against one target object and tag.",
+          "invariant_fields": [
+            "subject effective tags",
+            "target object effective tags",
+            "target tag and category",
+            "matched allow rules",
+            "decision outcome"
+          ],
+          "deferred_consequences": ["tag policy decision audit export"]
+        }
+      ],
+      "flow_envelopes": [
+        {
+          "flow_key": "Version.CreateInitialObject",
+          "request": {
+            "request_key": "request.version.create-initial.task.orders.validate",
+            "object_key": "task.orders.validate",
+            "object_type": "task",
+            "display_name": "Validate order",
+            "initial_lifecycle_state": "active",
+            "taggable": true,
+            "policy_subject": false,
+            "policy_resource": true,
+            "version_key": "version.task.orders.validate.0001",
+            "mark_key": "mark.version.task.orders.validate.0001.candidate",
+            "initial_version_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate"
+            },
+            "initial_version_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "created",
+            "object_key": "task.orders.validate",
+            "version_key": "version.task.orders.validate.0001",
+            "current_version_key": "version.task.orders.validate.0001",
+            "created_keys": [
+              "task.orders.validate",
+              "version.task.orders.validate.0001",
+              "mark.version.task.orders.validate.0001.candidate"
+            ],
+            "deferred_consequences": [
+              "audit summaries",
+              "projection refresh",
+              "notifications"
+            ]
+          }
+        },
+        {
+          "flow_key": "Version.CreateInitialObject",
+          "request": {
+            "request_key": "request.version.create-initial.task.orders.validate.duplicate",
+            "object_key": "task.orders.validate",
+            "object_type": "task",
+            "display_name": "Validate order",
+            "initial_lifecycle_state": "active",
+            "taggable": true,
+            "policy_subject": false,
+            "policy_resource": true,
+            "version_key": "rejected.version.task.orders.validate.duplicate",
+            "mark_key": "rejected.mark.version.task.orders.validate.duplicate.candidate",
+            "initial_version_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate"
+            },
+            "initial_version_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "rejected",
+            "object_key": "task.orders.validate",
+            "version_key": "rejected.version.task.orders.validate.duplicate",
+            "current_version_key": "rejected.version.task.orders.validate.duplicate",
+            "created_keys": [],
+            "deferred_consequences": ["rejection audit export"]
+          }
+        },
+        {
+          "flow_key": "Tag.Assign",
+          "request": {
+            "request_key": "request.tag.assign.task.orders.validate.module.payments",
+            "object_key": "task.orders.validate",
+            "tag_key": "module.payments",
+            "assignment_key": "assign.task.orders.validate.module.payments",
+            "authorization_decision_key": "decision.payments.assign-tag.orders.validate.module.payments",
+            "reason": "initial-authority-seed",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "assigned",
+            "assignment_key": "assign.task.orders.validate.module.payments",
+            "object_key": "task.orders.validate",
+            "tag_key": "module.payments",
+            "category_key": "module",
+            "deferred_consequences": [
+              "effective tag recomputation",
+              "effective tag provenance refresh",
+              "cached effective tag projection"
+            ]
+          }
+        },
+        {
+          "flow_key": "Tag.Assign",
+          "request": {
+            "request_key": "request.tag.assign.actor.team.payments.module.payments.rejected",
+            "object_key": "actor.team.payments",
+            "tag_key": "module.payments",
+            "assignment_key": "rejected.assign.actor.team.payments.module.payments",
+            "authorization_decision_key": "decision.payments.assign-tag.actor.team.payments.module.payments.denied",
+            "reason": "policy-denied",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "rejected",
+            "assignment_key": "rejected.assign.actor.team.payments.module.payments",
+            "object_key": "actor.team.payments",
+            "tag_key": "module.payments",
+            "category_key": "module",
+            "deferred_consequences": ["rejection audit export"]
+          }
+        },
+        {
+          "flow_key": "Policy.EvaluateResourceAction",
+          "request": {
+            "request_key": "request.policy.evaluate-resource.actor.team.payments.write.task.orders.validate",
+            "subject_object_key": "actor.team.payments",
+            "resource_object_key": "task.orders.validate",
+            "action": "write",
+            "decision_key": "decision.payments.write.orders.validate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "allow",
+            "decision_key": "decision.payments.write.orders.validate",
+            "matched_rule_keys": ["policy.payments.write-payments-module"],
+            "reasons": [
+              "subject and resource effective tags match policy rule"
+            ],
+            "deferred_consequences": ["policy decision audit export"]
+          }
+        },
+        {
+          "flow_key": "Policy.EvaluateResourceAction",
+          "request": {
+            "request_key": "request.policy.evaluate-resource.actor.team.payments.read.task.orders.validate",
+            "subject_object_key": "actor.team.payments",
+            "resource_object_key": "task.orders.validate",
+            "action": "read",
+            "decision_key": "decision.payments.read.orders.validate.denied",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "deny",
+            "decision_key": "decision.payments.read.orders.validate.denied",
+            "matched_rule_keys": [],
+            "reasons": ["no matching allow rule"],
+            "deferred_consequences": ["policy decision audit export"]
+          }
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "request": {
+            "request_key": "request.version.create-next.task.orders.validate.created",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "proposed_version_key": "version.task.orders.validate.0003",
+            "proposed_mark_key": "mark.version.task.orders.validate.0003.candidate",
+            "semantic_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate",
+              "validation_mode": "audited"
+            },
+            "candidate_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "created",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "observed_current_version_key": "version.task.orders.validate.0001",
+            "resolved_version_key": "version.task.orders.validate.0003",
+            "created_keys": [
+              "version.task.orders.validate.0003",
+              "mark.version.task.orders.validate.0003.candidate"
+            ],
+            "deferred_consequences": [
+              "version audit export",
+              "comparison scheduling",
+              "projection refresh"
+            ]
+          }
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "request": {
+            "request_key": "request.version.create-next.task.orders.validate.reused",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "proposed_version_key": "proposal.version.task.orders.validate.reused",
+            "proposed_mark_key": "proposal.mark.version.task.orders.validate.reused.candidate",
+            "semantic_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate",
+              "validation_mode": "strict"
+            },
+            "candidate_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "reused_existing",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "observed_current_version_key": "version.task.orders.validate.0001",
+            "resolved_version_key": "version.task.orders.validate.0002",
+            "created_keys": [],
+            "deferred_consequences": ["version audit export"]
+          }
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "request": {
+            "request_key": "request.version.create-next.task.orders.validate.no-change",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "proposed_version_key": "proposal.version.task.orders.validate.no-change",
+            "proposed_mark_key": "proposal.mark.version.task.orders.validate.no-change.candidate",
+            "semantic_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate"
+            },
+            "candidate_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "no_change_current",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0001",
+            "observed_current_version_key": "version.task.orders.validate.0001",
+            "resolved_version_key": "version.task.orders.validate.0001",
+            "created_keys": [],
+            "deferred_consequences": ["version audit export"]
+          }
+        },
+        {
+          "flow_key": "Version.CreateNextVersion",
+          "request": {
+            "request_key": "request.version.create-next.task.orders.validate.stale",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0002",
+            "proposed_version_key": "proposal.version.task.orders.validate.stale",
+            "proposed_mark_key": "proposal.mark.version.task.orders.validate.stale.candidate",
+            "semantic_payload": {
+              "task_key": "orders.validate",
+              "intent": "orders-validate",
+              "validation_mode": "audited"
+            },
+            "candidate_mark": "candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "rejected_stale_base",
+            "object_key": "task.orders.validate",
+            "base_version_key": "version.task.orders.validate.0002",
+            "observed_current_version_key": "version.task.orders.validate.0001",
+            "resolved_version_key": null,
+            "created_keys": [],
+            "deferred_consequences": ["rejection audit export"]
+          }
+        },
+        {
+          "flow_key": "Version.SetCurrent",
+          "request": {
+            "request_key": "request.version.set-current.task.orders.validate.updated",
+            "object_key": "task.orders.validate",
+            "expected_current_version_key": "version.task.orders.validate.0002",
+            "target_version_key": "version.task.orders.validate.0001",
+            "reason": "rollback-to-stable",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "updated",
+            "object_key": "task.orders.validate",
+            "previous_current_version_key": "version.task.orders.validate.0002",
+            "current_version_key": "version.task.orders.validate.0001",
+            "pointer_changed": true,
+            "deferred_consequences": [
+              "pointer audit export",
+              "materialization reconciliation",
+              "projection refresh"
+            ]
+          }
+        },
+        {
+          "flow_key": "Version.SetCurrent",
+          "request": {
+            "request_key": "request.version.set-current.task.orders.validate.no-change",
+            "object_key": "task.orders.validate",
+            "expected_current_version_key": "version.task.orders.validate.0001",
+            "target_version_key": "version.task.orders.validate.0001",
+            "reason": "confirm-current",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "no_change",
+            "object_key": "task.orders.validate",
+            "previous_current_version_key": "version.task.orders.validate.0001",
+            "current_version_key": "version.task.orders.validate.0001",
+            "pointer_changed": false,
+            "deferred_consequences": ["pointer audit export"]
+          }
+        },
+        {
+          "flow_key": "Version.SetCurrent",
+          "request": {
+            "request_key": "request.version.set-current.task.orders.validate.stale",
+            "object_key": "task.orders.validate",
+            "expected_current_version_key": "version.task.orders.validate.0002",
+            "target_version_key": "version.task.orders.validate.0003",
+            "reason": "promote-candidate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "rejected_stale_pointer",
+            "object_key": "task.orders.validate",
+            "previous_current_version_key": "version.task.orders.validate.0001",
+            "current_version_key": "version.task.orders.validate.0001",
+            "pointer_changed": false,
+            "deferred_consequences": ["rejection audit export"]
+          }
+        },
+        {
+          "flow_key": "Tag.Remove",
+          "request": {
+            "request_key": "request.tag.remove.task.orders.archive.module.archive",
+            "object_key": "task.orders.archive",
+            "tag_key": "module.archive",
+            "assignment_key": "assign.task.orders.archive.module.archive",
+            "removal_key": "remove.task.orders.archive.module.archive",
+            "authorization_decision_key": "decision.payments.remove-tag.orders.archive.module.archive",
+            "reason": "module-retired",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "removed",
+            "removal_key": "remove.task.orders.archive.module.archive",
+            "assignment_key": "assign.task.orders.archive.module.archive",
+            "object_key": "task.orders.archive",
+            "tag_key": "module.archive",
+            "category_key": "module",
+            "deferred_consequences": [
+              "effective tag recomputation",
+              "effective tag provenance refresh",
+              "cached effective tag projection"
+            ]
+          }
+        },
+        {
+          "flow_key": "Tag.Remove",
+          "request": {
+            "request_key": "request.tag.remove.task.orders.validate.module.payments.rejected",
+            "object_key": "task.orders.validate",
+            "tag_key": "module.payments",
+            "assignment_key": "assign.task.orders.validate.module.payments",
+            "removal_key": "rejected.remove.task.orders.validate.module.payments",
+            "authorization_decision_key": "decision.payments.remove-tag.orders.validate.module.payments.denied",
+            "reason": "policy-denied",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "rejected",
+            "removal_key": "rejected.remove.task.orders.validate.module.payments",
+            "assignment_key": "assign.task.orders.validate.module.payments",
+            "object_key": "task.orders.validate",
+            "tag_key": "module.payments",
+            "category_key": "module",
+            "deferred_consequences": ["rejection audit export"]
+          }
+        },
+        {
+          "flow_key": "Tag.RecomputeEffectiveForObject",
+          "request": {
+            "request_key": "request.tag.recompute-effective.task.orders.validate",
+            "object_key": "task.orders.validate",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "recomputed",
+            "object_key": "task.orders.validate",
+            "effective_tag_keys": ["module.payments"],
+            "provenance_source_keys": ["assign.task.orders.validate.module.payments"],
+            "deferred_consequences": [
+              "cached effective tag projection",
+              "downstream derivation fan-out"
+            ]
+          }
+        },
+        {
+          "flow_key": "Tag.RecomputeEffectiveForObject",
+          "request": {
+            "request_key": "request.tag.recompute-effective.actor.team.payments.no-change",
+            "object_key": "actor.team.payments",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "no_change",
+            "object_key": "actor.team.payments",
+            "effective_tag_keys": ["team.payments"],
+            "provenance_source_keys": ["assign.actor.team.payments.team.payments"],
+            "deferred_consequences": ["cached effective tag projection"]
+          }
+        },
+        {
+          "flow_key": "Policy.EvaluateTagAction",
+          "request": {
+            "request_key": "request.policy.evaluate-tag.actor.team.payments.assign-tag.task.orders.validate.module.payments",
+            "subject_object_key": "actor.team.payments",
+            "target_object_key": "task.orders.validate",
+            "target_tag_key": "module.payments",
+            "action": "assign_tag",
+            "decision_key": "decision.payments.assign-tag.orders.validate.module.payments",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "allow",
+            "decision_key": "decision.payments.assign-tag.orders.validate.module.payments",
+            "matched_rule_keys": ["policy.payments.assign-payments-module"],
+            "reasons": ["subject may assign the payments module tag to payments resources"],
+            "deferred_consequences": ["tag policy decision audit export"]
+          }
+        },
+        {
+          "flow_key": "Policy.EvaluateTagAction",
+          "request": {
+            "request_key": "request.policy.evaluate-tag.actor.team.payments.remove-tag.task.orders.validate.module.payments",
+            "subject_object_key": "actor.team.payments",
+            "target_object_key": "task.orders.validate",
+            "target_tag_key": "module.payments",
+            "action": "remove_tag",
+            "decision_key": "decision.payments.remove-tag.orders.validate.module.payments.denied",
+            "caller_object_key": "actor.team.payments"
+          },
+          "result": {
+            "outcome": "deny",
+            "decision_key": "decision.payments.remove-tag.orders.validate.module.payments.denied",
+            "matched_rule_keys": [],
+            "reasons": ["no matching tag-removal allow rule"],
+            "deferred_consequences": ["tag policy decision audit export"]
+          }
+        }
+      ]
+    }
+  ]
+}

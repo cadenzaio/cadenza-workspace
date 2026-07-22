@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "release_key": "cadenza-distributed-foundation-rc1",
+  "display_name": "Cadenza Distributed Foundation RC1",
+  "release_date": "2026-07-22",
+  "status": "preparing",
+  "registry_publication": false,
+  "repositories": [
+    {
+      "name": "cadenza-workspace",
+      "path": ".",
+      "version": "2026.07-rc.1",
+      "tag": "distributed-foundation-rc.1",
+      "history": "curated_clean",
+      "package_role": "architecture_and_release_manifest",
+      "required_jobs": ["governance", "release-metadata"]
+    },
+    {
+      "name": "cadenza",
+      "path": "cadenza",
+      "version": "4.0.0-rc.1",
+      "tag": "v4.0.0-rc.1",
+      "history": "preserve",
+      "package_role": "public_npm_package",
+      "version_file": "package.json",
+      "version_kind": "json",
+      "required_jobs": ["core"]
+    },
+    {
+      "name": "cadenza-python",
+      "path": "cadenza-python",
+      "version": "0.1.0rc1",
+      "display_version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_python_package",
+      "version_file": "pyproject.toml",
+      "version_kind": "python",
+      "required_jobs": ["core"]
+    },
+    {
+      "name": "cadenza-elixir",
+      "path": "cadenza-elixir",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_hex_package",
+      "version_file": "mix.exs",
+      "version_kind": "elixir",
+      "required_jobs": ["core"]
+    },
+    {
+      "name": "cadenza-csharp",
+      "path": "cadenza-csharp",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_nuget_package",
+      "version_file": "src/Cadenza/Cadenza.csproj",
+      "version_kind": "csharp",
+      "required_jobs": ["core"]
+    },
+    {
+      "name": "cadenza-environment",
+      "path": "cadenza-environment",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_source_private_assembly_packages",
+      "version_file": "package.json",
+      "version_kind": "json",
+      "required_jobs": ["environment"]
+    },
+    {
+      "name": "cadenza-chamber",
+      "path": "cadenza-chamber",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_rust_source_and_chamber_adapter",
+      "version_file": "Cargo.toml",
+      "version_kind": "cargo",
+      "required_jobs": ["chamber"]
+    },
+    {
+      "name": "cadenza-cell",
+      "path": "cadenza-cell",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_rust_source",
+      "version_file": "Cargo.toml",
+      "version_kind": "cargo",
+      "required_jobs": ["cell"]
+    },
+    {
+      "name": "cadenza-reference-system",
+      "path": "cadenza-reference-system",
+      "version": "0.1.0-rc.1",
+      "tag": "v0.1.0-rc.1",
+      "history": "clean_initial",
+      "package_role": "public_source_private_proof_package",
+      "version_file": "package.json",
+      "version_kind": "json",
+      "required_jobs": ["reference-system"]
+    }
+  ],
+  "toolchains": {
+    "node": "24.18.0",
+    "yarn": "1.22.22",
+    "python": ["3.13.14", "3.14.6"],
+    "elixir": "1.17.3-otp-27",
+    "erlang_otp": "27.3.4.14",
+    "dotnet_sdk": "10.0.302",
+    "rust": "1.97.0",
+    "postgresql": "16.14",
+    "mermaid_cli": "11.12.0",
+    "syft": "1.49.0"
+  },
+  "compatibility": {
+    "core_contracts": {
+      "primitive_core": "v0",
+      "actor_core": "v1",
+      "graph_conclusion": "v0",
+      "execution_evidence": "v0"
+    },
+    "environment_contracts": {
+      "authority_security": "v0",
+      "environment_bootstrap": "v0",
+      "distribution": "v0",
+      "actor_distribution": "v1"
+    },
+    "runtime_protocols": {
+      "chamber_cell": "0.10.0",
+      "chamber_typescript_adapter": "0.1.0",
+      "cell_peer": "0.2.0",
+      "cell_peer_transport": "cadenza-cell-tls-v0",
+      "launcher": "0.1.0",
+      "activation_issuer": "0.2.0",
+      "authority_gateway": "0.1.0"
+    },
+    "environment_migrations": {
+      "first": "001_bootstrap_authority.sql",
+      "last": "015_actor_failure_and_lifecycle.sql",
+      "count": 15
+    }
+  },
+  "external_publication_controls": {
+    "dco_check": "required",
+    "default_branch": "main",
+    "pull_request_required": true,
+    "force_push_prohibited": true,
+    "branch_deletion_prohibited": true,
+    "private_vulnerability_reporting": true
+  },
+  "source_assertions": [
+    {
+      "path": "cadenza-chamber/src/cell_protocol.rs",
+      "contains": "CELL_PROTOCOL_VERSION: &str = \"0.10.0\""
+    },
+    {
+      "path": "cadenza-chamber/adapters/typescript/src/main.ts",
+      "contains": "ADAPTER_VERSION = \"0.1.0\""
+    },
+    {
+      "path": "cadenza-cell/src/peer_transport.rs",
+      "contains": "PEER_PROTOCOL_VERSION: &str = \"0.2.0\""
+    },
+    {
+      "path": "cadenza-cell/src/peer_transport.rs",
+      "contains": "PEER_TRANSPORT_PROTOCOL: &str = \"cadenza-cell-tls-v0\""
+    },
+    {
+      "path": "cadenza-cell/src/launcher_protocol.rs",
+      "contains": "LAUNCHER_PROTOCOL_VERSION: &str = \"0.1.0\""
+    },
+    {
+      "path": "cadenza-cell/src/activation_issuer_protocol.rs",
+      "contains": "ACTIVATION_ISSUER_PROTOCOL_VERSION: &str = \"0.2.0\""
+    }
+  ]
+}

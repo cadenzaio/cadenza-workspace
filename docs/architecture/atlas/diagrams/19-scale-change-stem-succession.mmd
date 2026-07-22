@@ -1,0 +1,23 @@
+sequenceDiagram
+  autonumber
+  participant Desired as Desired state
+  participant Authority
+  participant StemA as Stem owner epoch N
+  participant Cell
+  participant Chamber
+  participant StemB as Successor epoch N+1
+
+  Desired->>Authority: request replica increase
+  StemA->>Authority: read canonical snapshot under lease N
+  StemA->>Authority: commit deterministic plan and exact actions
+  Authority-->>Cell: fenced action for current Cell generation
+  Cell->>Chamber: converge successor residency
+  Chamber-->>Cell: ready only after runtime and custody agree
+  Cell-->>Authority: signed current observation
+  Note over Authority,StemA: Process liveness is not readiness. Authority and observation must agree.
+  StemA--xAuthority: owner lost before next reconciliation
+  Authority->>StemB: grant lease epoch N+1 after expiry and takeover evidence
+  StemB->>Authority: read current snapshot and prior outcomes
+  StemB->>Authority: continue only unapplied current actions
+  Authority-->>Cell: next exact action or stable no-op
+  Cell-->>Authority: converged observation

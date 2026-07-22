@@ -1,0 +1,33 @@
+flowchart TB
+  subgraph authoring["Visible authoring surface"]
+    author["Human or agent author"]
+    workflow["Workflow: logical flow"]
+    tasks["Tasks: intended business function"]
+    author -->|expresses intent| workflow
+    workflow -->|orders affect| tasks
+  end
+
+  subgraph substrate["Governed Cadenza substrate"]
+    semantics["Primitive semantics"]
+    authority["Durable authority and policy"]
+    runtime["Materialization, containment, distribution, scale and recovery"]
+    evidence["Evidence and interpretation"]
+    semantics ==> |governs meaning| authority
+    authority ==> |authorizes| runtime
+    runtime -.->|reports bounded truth| evidence
+  end
+
+  tasks -->|business definitions| semantics
+  runtime -->|executes without topology leakage| tasks
+  evidence -.->|makes consequence interpretable| author
+
+  classDef business fill:#ffe4dc,stroke:#9a4d38,color:#172026;
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  class author,workflow,tasks business;
+  class semantics semantic;
+  class authority authority;
+  class runtime trusted;
+  class evidence evidence;

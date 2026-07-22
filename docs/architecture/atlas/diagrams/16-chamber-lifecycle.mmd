@@ -1,0 +1,26 @@
+stateDiagram-v2
+  state "Created" as Created
+  state "Activated" as Activated
+  state "Preparing image and adapter" as Preparing
+  state "Ready for ingress" as Ready
+  state "Draining" as Draining
+  state "Stopped" as Stopped
+  state "Failed" as Failed
+
+  [*] --> Created
+  Created --> Activated: verify activation chain and runtime image
+  Activated --> Preparing: establish fixed protocol and custody descriptors
+  Preparing --> Ready: adapter, source slice and evidence custody agree
+  Ready --> Draining: assignment withdrawal or replacement
+  Draining --> Stopped: accepted work and actor residencies settled
+  Created --> Failed: admission rejected
+  Activated --> Failed: preparation failure
+  Preparing --> Failed: adapter or authority mismatch
+  Ready --> Failed: fatal supervision or custody failure
+  Failed --> Stopped: cleanup only
+  Stopped --> [*]
+
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Created,Activated,Preparing,Ready,Draining,Stopped isolated;
+  class Failed denied;

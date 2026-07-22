@@ -1,0 +1,30 @@
+stateDiagram-v2
+  state "Planned" as Planned
+  state "Authorized under stem epoch" as Authorized
+  state "Claimed" as Claimed
+  state "Applied" as Applied
+  state "Deferred retry" as Deferred
+  state "Outcome uncertain" as Uncertain
+  state "Resolved" as Resolved
+  state "Superseded or rejected" as Superseded
+
+  [*] --> Planned
+  Planned --> Authorized: canonical snapshot and deterministic plan commit
+  Authorized --> Claimed: current stem owner claims exact action
+  Claimed --> Applied: runtime consequence acknowledged
+  Claimed --> Deferred: provider or authority temporarily unavailable
+  Deferred --> Claimed: bounded retry under same valid authority
+  Claimed --> Uncertain: connection lost after possible commit
+  Uncertain --> Resolved: query exact idempotency identity
+  Resolved --> Applied: committed outcome confirmed
+  Authorized --> Superseded: lease, generation or plan no longer current
+  Deferred --> Superseded: authority expires before retry
+  Superseded --> [*]
+  Applied --> [*]
+
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Planned,Authorized,Claimed,Applied authority;
+  class Deferred,Uncertain,Resolved evidence;
+  class Superseded denied;

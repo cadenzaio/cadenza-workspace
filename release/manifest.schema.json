@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.io/release/distributed-foundation-manifest-v1.schema.json",
+  "title": "Cadenza distributed foundation release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_key",
+    "release_date",
+    "candidate_digest",
+    "repositories",
+    "toolchains",
+    "compatibility",
+    "contract_bundles",
+    "generated_artifacts",
+    "release_artifacts",
+    "registry_publication"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "release_key": { "type": "string", "minLength": 1 },
+    "release_date": { "type": "string", "format": "date" },
+    "candidate_digest": { "$ref": "#/$defs/digest" },
+    "repositories": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "version",
+          "tag",
+          "commit",
+          "source_tree_digest",
+          "history",
+          "package_role"
+        ],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "minLength": 1 },
+          "tag": { "type": "string", "minLength": 1 },
+          "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+          "source_tree_digest": { "$ref": "#/$defs/digest" },
+          "history": { "type": "string", "minLength": 1 },
+          "package_role": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "toolchains": { "type": "object" },
+    "compatibility": { "type": "object" },
+    "contract_bundles": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/digest" }
+    },
+    "generated_artifacts": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/digest" }
+    },
+    "release_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "sha256": { "$ref": "#/$defs/digest" }
+        }
+      }
+    },
+    "registry_publication": { "const": false }
+  },
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

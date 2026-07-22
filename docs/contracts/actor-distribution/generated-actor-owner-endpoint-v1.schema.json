@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.dev/contracts/generated-actor-owner-endpoint-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "version", "endpoint_task_key", "source_task_key", "source_task_version_key", "actor_object_key", "access", "source_slice_key", "chamber_key", "image_epoch"],
+  "properties": {
+    "contract": {"const": "cadenza.generated-actor-owner-endpoint"},
+    "version": {"const": "1.0.0"},
+    "endpoint_task_key": {"$ref": "#/$defs/key"},
+    "source_task_key": {"$ref": "#/$defs/key"},
+    "source_task_version_key": {"$ref": "#/$defs/key"},
+    "actor_object_key": {"$ref": "#/$defs/key"},
+    "access": {"enum": ["read", "write"]},
+    "source_slice_key": {"$ref": "#/$defs/key"},
+    "chamber_key": {"$ref": "#/$defs/key"},
+    "image_epoch": {"$ref": "#/$defs/positive"}
+  },
+  "$defs": {
+    "key": {"type": "string", "minLength": 1, "maxLength": 512, "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"},
+    "digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "positive": {"type": "integer", "minimum": 1, "maximum": 9007199254740991}
+  }
+}

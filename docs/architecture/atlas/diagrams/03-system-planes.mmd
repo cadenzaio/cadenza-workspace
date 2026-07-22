@@ -1,0 +1,28 @@
+flowchart TB
+  definition["Semantic definition plane<br/>intent, task, relationship, signal, actor"]
+  authority["Durable authority and control plane<br/>policy, image, placement, assignment, outcome"]
+  runtime["Runtime execution plane<br/>Cell, Chamber, adapter, core"]
+  affect["Business affect plane<br/>decisions, provider effects, actor mutation"]
+  evidence["Evidence and interpretation plane<br/>trace, custody, ledger, projection"]
+
+  definition ==> |declares desired meaning| authority
+  authority ==> |grants exact affect| runtime
+  runtime -->|executes authorized behavior| affect
+  affect -.->|bounded outcome| runtime
+  runtime -.->|structured events and commitments| evidence
+  evidence -.->|current interpreted state| authority
+  evidence -.->|business-visible result or failure| definition
+
+  definition --x |cannot grant host privilege| runtime
+  affect --x |cannot rewrite durable authority| authority
+
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef business fill:#ffe4dc,stroke:#9a4d38,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  class definition semantic;
+  class authority authority;
+  class runtime isolated;
+  class affect business;
+  class evidence evidence;

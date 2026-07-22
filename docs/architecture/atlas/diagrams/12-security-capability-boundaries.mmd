@@ -1,0 +1,42 @@
+flowchart TB
+  admin["Administrative migration identity"]
+  postgres[("PostgreSQL authority")]
+  roles["Purpose-separated literal roles<br/>activation, reconciliation, evidence, actor, supply"]
+  cell["Unprivileged Cell"]
+  launcher["Root-owned launcher"]
+  peer["Enrolled peer Cell"]
+  chamber["gVisor-contained Chamber"]
+  adapter["Language adapter"]
+  logic["Authored business logic"]
+  ledger["Evidence ledger"]
+  secrets["Credentials, keys, host objects"]
+
+  admin ==> |exclusive checksummed migrations| postgres
+  postgres ==> |exact grants only| roles
+  roles -->|fixed inherited descriptor| cell
+  cell -->|signed measured plan| launcher
+  launcher -->|one fixed runsc invocation| chamber
+  cell <-->|TLS 1.3 and enrolled identity| peer
+  cell -->|mediated capability facade| chamber
+  chamber --> adapter
+  adapter --> logic
+  chamber ==> |bounded reports| cell
+  cell ==> |signed custody batches| ledger
+
+  logic --x |host, SQL, placement or credential access| secrets
+  chamber --x |generic SQL or launcher command| postgres
+  cell --x |root execution| launcher
+  ledger --x |raw business context or callable source| logic
+
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef business fill:#ffe4dc,stroke:#9a4d38,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class admin,postgres,roles authority;
+  class cell,launcher,peer trusted;
+  class chamber,adapter isolated;
+  class logic business;
+  class ledger evidence;
+  class secrets denied;

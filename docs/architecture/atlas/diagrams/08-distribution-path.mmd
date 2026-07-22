@@ -1,0 +1,36 @@
+sequenceDiagram
+  autonumber
+  box rgb(238,229,247) Source sandbox
+    participant SourceChamber as Source Chamber
+  end
+  box rgb(220,236,255) Source trusted host
+    participant SourceCell as Source Cell
+  end
+  box rgb(255,242,204) Current authority
+    participant Authority as Route and generation authority
+  end
+  box rgb(220,236,255) Target trusted host
+    participant TargetCell as Target Cell
+  end
+  box rgb(238,229,247) Target sandbox
+    participant TargetChamber as Target Chamber
+  end
+
+  SourceChamber->>SourceCell: Delegate exact primitive execution
+  SourceCell->>Authority: Resolve current projected route member
+  Authority-->>SourceCell: Member, assignment, source image and route epoch
+  alt Local member
+    SourceCell->>TargetChamber: Validated local ingress
+    TargetChamber-->>SourceCell: Normalized outcome
+  else Remote current member
+    SourceCell->>TargetCell: TLS 1.3 signed execution envelope
+    TargetCell->>Authority: Verify enrollment and exact current generation
+    Authority-->>TargetCell: Current authority agrees
+    TargetCell->>TargetChamber: Proceed with exact ingress
+    TargetChamber-->>TargetCell: Normalized outcome
+    TargetCell-->>SourceCell: Signed result preserving started state
+  else Stale or unauthorized member
+    Authority-->>SourceCell: Generation, epoch or assignment mismatch
+    SourceCell--xSourceChamber: Reject before target affect and do not reroute silently
+  end
+  SourceCell-->>SourceChamber: Continue graph with result or explicit failure

@@ -1,0 +1,32 @@
+name: Feature proposal
+description: Propose a bounded improvement
+title: "[Proposal]: "
+labels: ["proposal"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: What valuable behavior is currently difficult or impossible?
+    validations:
+      required: true
+  - type: textarea
+    id: whole
+    attributes:
+      label: Coherence with the intended whole
+      description: Explain why this repository owns the change and what complexity it removes.
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Contract and boundary impact
+      description: Identify public API, authority, security, or cross-repository consequences.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: true

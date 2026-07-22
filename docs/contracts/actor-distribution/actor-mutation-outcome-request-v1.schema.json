@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.dev/contracts/actor-mutation-outcome-request-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "version",
+    "actor_mutation_key",
+    "authority",
+    "execution",
+    "requested_at_unix_ms"
+  ],
+  "properties": {
+    "contract": { "const": "cadenza.actor-mutation-outcome-request" },
+    "version": { "const": "1.0.0" },
+    "actor_mutation_key": { "$ref": "#/$defs/key" },
+    "authority": { "$ref": "actor-residency-grant-v1.schema.json" },
+    "execution": { "$ref": "#/$defs/execution" },
+    "requested_at_unix_ms": { "$ref": "#/$defs/positive" }
+  },
+  "$defs": {
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "positive": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trace_key", "graph_execution_key", "task_execution_key"],
+      "properties": {
+        "trace_key": { "type": "string", "pattern": "^trace\\.[a-f0-9-]{36}$" },
+        "graph_execution_key": { "type": "string", "pattern": "^graph-execution\\.[a-f0-9-]{36}$" },
+        "task_execution_key": { "type": "string", "pattern": "^task-execution\\.[a-f0-9-]{36}$" }
+      }
+    }
+  }
+}

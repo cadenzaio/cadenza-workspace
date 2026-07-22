@@ -1,0 +1,31 @@
+flowchart TB
+  intent["Intent: quote-order"]
+  root["Validate order"]
+  price["Calculate price"]
+  risk["Assess risk"]
+  audit["Detached audit consequence"]
+  terminalA["Price terminal delta"]
+  terminalB["Risk terminal delta"]
+  conclusion{"Deterministic conclusion"}
+  completed["Composed context"]
+  conflict["Explicit composition failure<br/>with provenance"]
+
+  intent -->|inquiry selects responder| root
+  root -->|awaited relationship| price
+  root -->|awaited relationship| risk
+  root -.->|signal detach; not graph completion| audit
+  price -->|contributes| terminalA
+  risk -->|contributes or policy opts out| terminalB
+  terminalA --> conclusion
+  terminalB --> conclusion
+  conclusion -->|disjoint or identical changes| completed
+  conclusion -->|same path, different values| conflict
+
+  classDef business fill:#ffe4dc,stroke:#9a4d38,color:#172026;
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class intent semantic;
+  class root,price,risk,audit business;
+  class terminalA,terminalB,conclusion,completed evidence;
+  class conflict denied;

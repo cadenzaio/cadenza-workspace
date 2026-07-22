@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "binding_extension_id": "cadenza.actor.binding.v1",
+  "cases": [
+    {
+      "kind": "actor_semantic_round_trip",
+      "definition": {
+        "schema_version": 1,
+        "actor_key": "fixture.actor.counter",
+        "name": "Fixture counter",
+        "description": "Counts independently by account",
+        "keying": {
+          "default_key": "counter.default",
+          "resolver": {
+            "source": "field",
+            "field": "account_id"
+          }
+        },
+        "state": {
+          "durable": {
+            "init_state": {
+              "count": 0
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "count"
+              ]
+            }
+          },
+          "runtime": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "extensions": [
+          {
+            "id": "fixture.actor.audit.v1",
+            "order": 40,
+            "config": {
+              "enabled": true
+            }
+          }
+        ]
+      },
+      "binding": {
+        "id": "cadenza.actor.binding.v1",
+        "order": 20,
+        "config": {
+          "actor_key": "fixture.actor.counter",
+          "access": "write",
+          "role": "user",
+          "interaction": "local_residency"
+        }
+      },
+      "invocations": [
+        {
+          "input": {
+            "account_id": "account-a"
+          },
+          "increment": 1
+        },
+        {
+          "input": {
+            "account_id": "account-a"
+          },
+          "increment": 2
+        },
+        {
+          "input": {
+            "account_id": "account-b"
+          },
+          "increment": 5
+        }
+      ],
+      "expected": {
+        "states": {
+          "account-a": {
+            "count": 3
+          },
+          "account-b": {
+            "count": 5
+          }
+        },
+        "versions": {
+          "account-a": 2,
+          "account-b": 1
+        }
+      }
+    }
+  ],
+  "forbidden_actor_definition_fields": [
+    "tasks",
+    "task_bindings",
+    "load_policy",
+    "write_contract",
+    "retry",
+    "idempotency",
+    "consistency_profile",
+    "kind",
+    "is_meta",
+    "runtime_read_guard"
+  ]
+}

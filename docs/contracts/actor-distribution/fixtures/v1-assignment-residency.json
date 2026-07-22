@@ -1,0 +1,71 @@
+{
+  "contract": "cadenza.actor-assignment-residency-conformance",
+  "version": "1.0.0",
+  "case": {
+    "request": {
+      "contract": "cadenza.actor-owner-resolution-request",
+      "version": "1.0.0",
+      "environment_key": "environment.fixture.primary",
+      "actor_object_key": "actor.fixture.counter",
+      "actor_state_key_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "requesting_cell_key": "cell.fixture.caller",
+      "requesting_cell_generation_key": "cell-generation.fixture.caller.0001",
+      "resolved_at_unix_ms": 1784505600000
+    },
+    "assignment": {
+      "contract": "cadenza.actor-assignment",
+      "version": "1.0.0",
+      "assignment_key": "actor-assignment.fixture.counter.0001",
+      "environment_key": "environment.fixture.primary",
+      "actor_object_key": "actor.fixture.counter",
+      "actor_state_key_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "actor_assignment_epoch": 1,
+      "placement_unit_key": "unit.fixture.counter",
+      "unit_definition_revision": 1,
+      "owner_replica_key": "replica.fixture.counter.1",
+      "owner_replica_assignment_epoch": 1,
+      "owner_cell_key": "cell.fixture.owner",
+      "owner_cell_generation_key": "cell-generation.fixture.owner.0001",
+      "owner_slice_key": "slice.fixture.counter",
+      "owner_chamber_key": "chamber.fixture.counter.1",
+      "owner_image_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "owner_image_epoch": 1,
+      "owner_route_member_key": "route-member.fixture.counter.1",
+      "outcome": "created",
+      "assigned_at_unix_ms": 1784505600000,
+      "valid_until_unix_ms": 1784505660000
+    },
+    "residency": {
+      "contract": "cadenza.actor-residency-grant",
+      "version": "1.0.0",
+      "environment_key": "environment.fixture.primary",
+      "actor_object_key": "actor.fixture.counter",
+      "actor_state_key_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "assignment_key": "actor-assignment.fixture.counter.0001",
+      "actor_assignment_epoch": 1,
+      "placement_unit_key": "unit.fixture.counter",
+      "unit_definition_revision": 1,
+      "owner_replica_key": "replica.fixture.counter.1",
+      "owner_replica_assignment_epoch": 1,
+      "owner_cell_key": "cell.fixture.owner",
+      "owner_cell_generation_key": "cell-generation.fixture.owner.0001",
+      "owner_slice_key": "slice.fixture.counter",
+      "owner_chamber_key": "chamber.fixture.counter.1",
+      "owner_image_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "owner_image_epoch": 1,
+      "valid_until_unix_ms": 1784505660000
+    },
+    "endpoint": {
+      "contract": "cadenza.generated-actor-owner-endpoint",
+      "version": "1.0.0",
+      "endpoint_task_key": "task.internal.actor-owner.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "source_task_key": "task.fixture.counter.increment",
+      "source_task_version_key": "version.task.fixture.counter.increment.0001",
+      "actor_object_key": "actor.fixture.counter",
+      "access": "write",
+      "source_slice_key": "slice.fixture.counter",
+      "chamber_key": "chamber.fixture.counter.1",
+      "image_epoch": 1
+    }
+  }
+}

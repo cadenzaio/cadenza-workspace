@@ -1,0 +1,28 @@
+stateDiagram-v2
+  state "Uninitialized" as Uninitialized
+  state "Genesis authority" as Genesis
+  state "Trust root established" as Rooted
+  state "Seed authority applied" as Seeded
+  state "Handoff ready" as HandoffReady
+  state "Operational" as Operational
+  state "Failed closed" as Failed
+
+  [*] --> Uninitialized
+  Uninitialized --> Genesis: create explicit environment identity
+  Genesis --> Rooted: establish trust root and first Cell
+  Rooted --> Seeded: apply checksummed seed pack
+  Seeded --> HandoffReady: activate authority-access slice
+  HandoffReady --> Operational: retire bootstrap affect and confirm runtime authority
+
+  Genesis --> Failed: invalid genesis or identity conflict
+  Rooted --> Failed: trust or signature failure
+  Seeded --> Failed: checksum or migration failure
+  HandoffReady --> Failed: handoff evidence absent
+  Failed --> [*]: no partial operational claim
+
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Uninitialized,Genesis,Rooted,Seeded,HandoffReady authority;
+  class Operational trusted;
+  class Failed denied;

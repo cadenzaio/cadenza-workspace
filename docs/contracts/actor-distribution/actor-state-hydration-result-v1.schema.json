@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.dev/contracts/actor-state-hydration-result-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "version",
+    "environment_key",
+    "actor_object_key",
+    "actor_state_key_digest",
+    "actor_assignment_epoch",
+    "state_status",
+    "state_version",
+    "durable_state",
+    "state_digest",
+    "hydrated_at_unix_ms"
+  ],
+  "properties": {
+    "contract": { "const": "cadenza.actor-state-hydration-result" },
+    "version": { "const": "1.0.0" },
+    "environment_key": { "$ref": "#/$defs/key" },
+    "actor_object_key": { "$ref": "#/$defs/key" },
+    "actor_state_key_digest": { "$ref": "#/$defs/digest" },
+    "actor_assignment_epoch": { "$ref": "#/$defs/positive" },
+    "state_status": { "enum": ["absent", "committed"] },
+    "state_version": { "$ref": "#/$defs/nonnegative" },
+    "durable_state": { "type": ["object", "null"] },
+    "state_digest": {
+      "oneOf": [{ "$ref": "#/$defs/digest" }, { "type": "null" }]
+    },
+    "hydrated_at_unix_ms": { "$ref": "#/$defs/positive" }
+  },
+  "$defs": {
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "positive": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "nonnegative": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}

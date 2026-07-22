@@ -1,0 +1,31 @@
+sequenceDiagram
+  autonumber
+  participant Caller
+  participant OwnerA as Actor owner epoch N
+  participant Cell as Cell persistence facade
+  participant Authority as Durable actor authority
+  participant OwnerB as Successor owner epoch N+1
+
+  Caller->>OwnerA: actor task mutation
+  OwnerA->>Cell: commit candidate state, expected version and epoch N
+  Cell->>Authority: literal idempotent mutation operation
+  alt Exact receipt returns
+    Authority-->>Cell: committed state version V+1
+    Cell-->>OwnerA: durable receipt
+    OwnerA-->>Caller: mutation result
+  else Connection lost after possible commit
+    Cell-->>OwnerA: outcome uncertain, never false success
+    Cell->>Authority: resolve exact mutation identity
+    Authority-->>Cell: committed receipt or not-committed result
+    Cell-->>OwnerA: resolved outcome
+  end
+  Note over OwnerA,Authority: Local candidate state is never authoritative before the durable receipt.
+  OwnerA--xCell: owner process or Cell generation is lost
+  Authority->>OwnerB: assign epoch N+1 after fenced owner loss
+  OwnerB->>Authority: hydrate committed state and version
+  Authority-->>OwnerB: state V+1 and current assignment
+  OwnerA--xAuthority: stale epoch N commit rejected
+  Caller->>OwnerB: next mutation
+  OwnerB->>Authority: commit under epoch N+1 and expected version V+1
+  Authority-->>OwnerB: durable state version V+2
+  OwnerB-->>Caller: continued mutation result

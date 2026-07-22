@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-21",
+  "authorities": {
+    "core_runtime_primitives": {
+      "authority_repo": "cadenza",
+      "authority_mode": "working_implementation_authority",
+      "semantic_authority": "language-neutral specs, JSON conformance fixtures, shared invariants, and decision records",
+      "scope": [
+        "task",
+        "signal",
+        "intent_inquiry",
+        "actor_core",
+        "actor_task_binding",
+        "graph_runner",
+        "graph_conclusion",
+        "relationship_result_contribution"
+      ],
+      "consumers": [
+        "cadenza-python",
+        "cadenza-elixir",
+        "cadenza-csharp",
+        "cadenza-chamber",
+        "cadenza-cell"
+      ]
+    },
+    "execution_evidence_contracts": {
+      "authority_repo": "cadenza",
+      "authority_mode": "language_neutral_execution_semantic_authority",
+      "semantic_authority": "language-neutral runtime-report schemas, canonical JSON fixtures, causal invariants, evidence profiles, runtime custody barriers, and decision records",
+      "scope": [
+        "execution_trace",
+        "graph_execution",
+        "task_execution",
+        "signal_emission",
+        "inquiry_execution",
+        "inquiry_responder_execution",
+        "relationship_execution",
+        "context_composition_evidence",
+        "distribution_execution",
+        "transport_attempt",
+        "execution_evidence_envelope",
+        "execution_evidence_observation_basis",
+        "execution_evidence_profiles",
+        "execution_evidence_custody_barriers",
+        "execution_evidence_runtime_reports",
+        "execution_evidence_normalized_records"
+      ],
+      "consumers": [
+        "cadenza-python",
+        "cadenza-elixir",
+        "cadenza-csharp",
+        "cadenza-chamber",
+        "cadenza-cell",
+        "cadenza-environment"
+      ]
+    },
+    "execution_evidence_ledger_contracts": {
+      "authority_repo": "cadenza-environment",
+      "authority_mode": "durable_environment_evidence_authority",
+      "semantic_authority": "language-neutral custody, ledger, replay, compaction, and processing schemas with canonical fixtures and decision records",
+      "scope": [
+        "execution_evidence_custody",
+        "execution_evidence_batches",
+        "execution_evidence_custody_entries",
+        "execution_evidence_processing_attempts",
+        "execution_evidence_ledger",
+        "execution_evidence_compaction",
+        "execution_evidence_historical_replay"
+      ],
+      "consumers": ["cadenza-cell"]
+    },
+    "authority_security_contracts": {
+      "authority_repo": "cadenza-environment",
+      "authority_mode": "durable_environment_authority",
+      "semantic_authority": "language-neutral specs, JSON conformance fixtures, shared invariants, and decision records",
+      "scope": [
+        "logical_object_identity",
+        "versioning",
+        "tags",
+        "effective_tags",
+        "policy_decisions",
+        "authority_flow_contracts",
+        "authority_gateway_operations",
+        "runtime_authority_evidence",
+        "environment_operational_transition"
+      ],
+      "consumers": ["cadenza-chamber", "cadenza-cell"]
+    },
+    "environment_bootstrap_contracts": {
+      "authority_repo": "cadenza-environment",
+      "authority_mode": "environment_bootstrap_package",
+      "semantic_authority": "language-neutral specs, JSON conformance fixtures, seed manifests, invariants, and decision records",
+      "scope": [
+        "environment_identity",
+        "environment_trust_root",
+        "bootstrap_state_machine",
+        "bootstrap_evidence",
+        "seed_pack_contracts",
+        "capability_registry",
+        "authority_access_slice_handoff",
+        "bootstrap_persistence_adapter"
+      ],
+      "consumers": ["cadenza-chamber", "cadenza-cell"]
+    },
+    "distribution_authority_contracts": {
+      "authority_repo": "cadenza-environment",
+      "authority_mode": "durable_environment_distribution_authority",
+      "semantic_authority": "language-neutral specs, JSON conformance fixtures, shared invariants, and decision records",
+      "scope": [
+        "runtime_slice_authority",
+        "runtime_slice_materialization_custody",
+        "runtime_slice_execution_evidence_policy",
+        "runtime_slice_capability_facades",
+        "cell_enrollment",
+        "cell_lifecycle_authority",
+        "static_placement_units",
+        "replica_assignment",
+        "signed_replica_residency",
+        "activation_issuer_delegation",
+        "operational_activation_issuance",
+        "operational_authority_mount_promotion",
+        "authority_mount_promotion_evidence",
+        "cell_convergence_projections",
+        "runtime_observation_appenders",
+        "derived_route_members",
+        "distribution_control_meta_slice",
+        "placement_desired_state",
+        "placement_overrides",
+        "signed_cell_generation_observations",
+        "replica_convergence_projections",
+        "stem_reconciliation_lease",
+        "stem_recovery_resolution",
+        "stem_recovery_evidence",
+        "stem_recovery_control_role_boundary",
+        "authority_activation_policy_custody",
+        "reconciliation_snapshots",
+        "deterministic_reconciliation_plans",
+        "reconciliation_actions",
+        "reconciliation_action_outcomes",
+        "cell_supply_provider_registration",
+        "pre_enrolled_cell_supply_profiles",
+        "signed_cell_supply_provider_generations",
+        "cell_supply_directives",
+        "signed_cell_supply_observations",
+        "cell_supply_provider_role_boundaries",
+        "cell_supply_lifecycle_reader_role_boundary",
+        "pinned_local_cell_supply_profile",
+        "cell_supply_process_custody",
+        "actor_placement_authority",
+        "actor_assignment_epoch",
+        "actor_owner_resolution",
+        "actor_assignment_relinquishment",
+        "actor_state_hydration",
+        "actor_mutation_commit",
+        "actor_mutation_outcome_resolution",
+        "actor_lifecycle_evidence"
+      ],
+      "consumers": ["cadenza-chamber", "cadenza-cell"]
+    },
+    "chamber_runtime_contracts": {
+      "authority_repo": "cadenza-chamber",
+      "authority_mode": "language_neutral_runtime_substrate_authority",
+      "semantic_authority": "language-neutral schemas, JSON conformance fixtures, shared invariants, and decision records",
+      "scope": [
+        "chamber_activation",
+        "delegated_activation_chain_verification",
+        "runtime_image",
+        "runtime_actor_image",
+        "task_side_actor_binding_materialization",
+        "generated_actor_owner_endpoints",
+        "actor_assignment_fencing",
+        "chamber_lifecycle",
+        "runtime_adapter_host",
+        "language_adapter_protocol",
+        "language_adapter_artifact_manifest",
+        "typescript_reference_adapter",
+        "chamber_authority_projection",
+        "projection_application",
+        "opaque_route_transport_callbacks",
+        "primitive_ingress",
+        "normalized_execution_outcomes",
+        "runtime_evidence"
+      ],
+      "consumers": [
+        "cadenza",
+        "cadenza-cell",
+        "future-language-runtime-adapters"
+      ]
+    },
+    "cell_runtime_contracts": {
+      "authority_repo": "cadenza-cell",
+      "authority_mode": "trusted_local_host_substrate_authority",
+      "semantic_authority": "language-neutral schemas, deterministic containment profiles, shared invariants, and decision records",
+      "scope": [
+        "cell_identity",
+        "cell_lifecycle",
+        "containment_plan",
+        "containment_launcher",
+        "capability_broker",
+        "chamber_process_control",
+        "cell_generation",
+        "host_meta_authority",
+        "chamber_registry",
+        "projection_publication",
+        "route_member_interpretation",
+        "local_remote_route_validation",
+        "multi_chamber_orchestration",
+        "cell_host_process",
+        "peer_tls_sessions",
+        "enrollment_scoped_peer_transport_identity",
+        "current_peer_generation_verification",
+        "signed_execution_envelopes",
+        "peer_replay_state",
+        "peer_transport_evidence",
+        "pre_enrolled_cell_supply_supervisor",
+        "pinned_cell_supply_profiles",
+        "cell_supply_process_custody",
+        "supply_managed_cell_lifecycle",
+        "stem_recovery_host_resolver",
+        "stem_recovery_credential_boundary",
+        "actor_owner_resolution",
+        "actor_residency_coordination",
+        "actor_owner_endpoint_routing",
+        "actor_persistence_facade_custody",
+        "actor_residency_drain_barrier",
+        "actor_lifecycle_evidence_capture"
+      ],
+      "consumers": ["cadenza-chamber", "future-cell-orchestration"]
+    }
+  },
+  "snapshot_bundles": {
+    "core_conformance_v0": {
+      "authority_repo": "cadenza",
+      "authority_path": "contracts/core/v0/fixtures",
+      "consumers": [
+        {
+          "repo": "cadenza-python",
+          "path": "conformance/core/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-elixir",
+          "path": "conformance/core/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-csharp",
+          "path": "conformance/core/v0/fixtures"
+        }
+      ]
+    },
+    "actor_core_v1": {
+      "authority_repo": "cadenza",
+      "authority_path": "contracts/actor-core/v1/fixtures",
+      "consumers": [
+        {
+          "repo": "cadenza-python",
+          "path": "conformance/actor-core/v1/fixtures"
+        },
+        {
+          "repo": "cadenza-elixir",
+          "path": "conformance/actor-core/v1/fixtures"
+        },
+        {
+          "repo": "cadenza-csharp",
+          "path": "conformance/actor-core/v1/fixtures"
+        }
+      ]
+    },
+    "graph_conclusion_v0": {
+      "authority_repo": "cadenza",
+      "authority_path": "contracts/graph-conclusion/v0/fixtures",
+      "consumers": [
+        {
+          "repo": "cadenza-python",
+          "path": "conformance/graph-conclusion/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-elixir",
+          "path": "conformance/graph-conclusion/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-csharp",
+          "path": "conformance/graph-conclusion/v0/fixtures"
+        }
+      ]
+    },
+    "execution_evidence_v0": {
+      "authority_repo": "cadenza",
+      "authority_path": "contracts/execution-evidence/v0/fixtures",
+      "consumers": [
+        {
+          "repo": "cadenza-python",
+          "path": "conformance/execution-evidence/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-elixir",
+          "path": "conformance/execution-evidence/v0/fixtures"
+        },
+        {
+          "repo": "cadenza-csharp",
+          "path": "conformance/execution-evidence/v0/fixtures"
+        }
+      ]
+    },
+    "environment_bootstrap_v0": {
+      "authority_repo": "cadenza-environment",
+      "authority_path": "contracts/environment-bootstrap/fixtures/v0-bootstrap-foundation.json",
+      "consumers": [
+        {
+          "repo": "cadenza-chamber",
+          "path": "contracts/fixtures/bootstrap-v0-foundation.json"
+        }
+      ]
+    },
+    "authority_gateway_artifact_v0": {
+      "authority_repo": "cadenza-environment",
+      "authority_path": "packages/authority-gateway/artifact/authority-gateway-v0.json",
+      "consumers": [
+        {
+          "repo": "cadenza-cell",
+          "path": "contracts/fixtures/authority-gateway-v0.json"
+        }
+      ]
+    }
+  },
+  "change_rules": {
+    "breaking_change_requires": ["design_required", "explicit_approval"],
+    "cross_repo_propagation": "same_task_or_linked_followups"
+  }
+}

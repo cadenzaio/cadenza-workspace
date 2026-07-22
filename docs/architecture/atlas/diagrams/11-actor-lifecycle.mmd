@@ -1,0 +1,37 @@
+stateDiagram-v2
+  state "Unassigned" as Unassigned
+  state "Assigned epoch N" as Assigned
+  state "Hydrating committed state" as Hydrating
+  state "Ready owner residency" as Ready
+  state "Mutation commit in progress" as Committing
+  state "Commit outcome uncertain" as Uncertain
+  state "Draining" as Draining
+  state "Owner lost" as Lost
+  state "Reassigned epoch N+1" as Reassigned
+  state "Fenced stale owner" as Fenced
+
+  [*] --> Unassigned
+  Unassigned --> Assigned: first touch selects owner
+  Assigned --> Hydrating: owner residency starts
+  Hydrating --> Ready: committed state and version loaded
+  Ready --> Committing: strict write-through mutation
+  Committing --> Ready: exact durable receipt advances version
+  Committing --> Uncertain: connection lost after possible commit
+  Uncertain --> Ready: resolve exact committed outcome
+  Uncertain --> Fenced: conflict or stale assignment
+  Ready --> Draining: planned withdrawal
+  Draining --> Unassigned: accepted work settled and residency relinquished
+  Ready --> Lost: owner or Cell generation disappears
+  Lost --> Reassigned: authority advances assignment epoch
+  Reassigned --> Hydrating: successor loads committed state
+  Lost --> Fenced: prior epoch loses commit authority
+  Fenced --> [*]
+
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Unassigned,Assigned,Reassigned authority;
+  class Hydrating,Ready,Committing,Draining isolated;
+  class Uncertain,Lost evidence;
+  class Fenced denied;

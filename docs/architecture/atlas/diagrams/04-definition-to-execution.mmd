@@ -1,0 +1,30 @@
+sequenceDiagram
+  autonumber
+  box rgb(255,242,204) Durable authority boundary
+    participant Authority as Definition and image authority
+  end
+  box rgb(220,236,255) Trusted Cell host
+    participant Cell
+  end
+  box rgb(238,229,247) Isolated Chamber
+    participant Chamber
+    participant Adapter as Language adapter
+    participant Core as Primitive core
+  end
+  box rgb(255,228,220) Authored behavior
+    participant Task as Business task
+  end
+
+  Authority->>Cell: Exact signed assignment, image and source-slice digests
+  Cell->>Cell: Verify current generation, policy and containment measurement
+  Cell->>Chamber: Launch measured runtime and transfer fixed descriptors
+  Chamber->>Authority: Read through literal capability facade
+  Authority-->>Chamber: Serialized definition authority
+  Chamber->>Adapter: Materialize controlled callable source
+  Adapter-->>Chamber: Callable or normalized materialization failure
+  Chamber->>Core: Materialize primitive from definition plus callable
+  Core->>Task: Execute governed handler
+  Task-->>Core: Business context or domain failure
+  Core-->>Chamber: Normalized primitive outcome and evidence
+  Chamber-->>Cell: Result plus execution-custody barrier
+  Note over Authority,Task: Core never evaluates callable source and business context never receives host credentials.

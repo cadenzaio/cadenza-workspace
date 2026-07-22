@@ -1,0 +1,368 @@
+{
+  "case": {
+    "distribution_control_slice": {
+      "authority": {
+        "environment_key": "environment.local.primary",
+        "slice_key": "slice.meta.distribution-control",
+        "object_key": "object.slice.meta.distribution-control",
+        "version_key": "version.slice.meta.distribution-control.0001",
+        "lane": "meta_support",
+        "trust_profile": "mediated",
+        "artifact_key": "artifact.cadenza.distribution-control.v0",
+        "artifact_digest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+        "artifact_handler_key": "cadenza-declarative-meta-slice-v0",
+        "artifact_provenance_ref": "contract://distribution/v0/distribution-control",
+        "runtime_id": "cadenza.runtime.typescript",
+        "adapter_version": "0.1.0",
+        "activation_policy_ref": "policy.activation.meta-support.v1",
+        "execution_evidence_policy": {
+          "profile": "boundary",
+          "processing_eligible": true
+        },
+        "required_capabilities": [],
+        "capability_facades": [],
+        "runtime_support_digest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+        "responsibilities": [
+          { "kind": "task", "key": "task.meta.distribution.enroll-cell" },
+          { "kind": "task", "key": "task.meta.distribution.register-runtime-slice" },
+          { "kind": "task", "key": "task.meta.distribution.revoke-runtime-slice" },
+          { "kind": "task", "key": "task.meta.distribution.define-placement-unit" },
+          { "kind": "task", "key": "task.meta.distribution.define-placement-replica" },
+          { "kind": "task", "key": "task.meta.distribution.assign-placement-replica" },
+          { "kind": "task", "key": "task.meta.distribution.suspend-cell" },
+          { "kind": "task", "key": "task.meta.distribution.revoke-cell" }
+        ],
+        "status": "active"
+      },
+      "flows": [
+        {
+          "flow_key": "flow.meta.distribution.enroll-cell",
+          "intent_name": "enroll-cell",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.enroll-cell",
+              "delegates_to_task_key": "task.authority.cell.enroll"
+            }
+          ],
+          "relationships": []
+        },
+        {
+          "flow_key": "flow.meta.distribution.register-runtime-slice",
+          "intent_name": "register-runtime-slice",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.register-runtime-slice",
+              "delegates_to_task_key": "task.authority.runtime-slice.register"
+            }
+          ],
+          "relationships": []
+        },
+        {
+          "flow_key": "flow.meta.distribution.revoke-runtime-slice",
+          "intent_name": "revoke-runtime-slice",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.revoke-runtime-slice",
+              "delegates_to_task_key": "task.authority.runtime-slice.revoke"
+            }
+          ],
+          "relationships": []
+        },
+        {
+          "flow_key": "flow.meta.distribution.suspend-cell",
+          "intent_name": "suspend-cell",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.suspend-cell",
+              "delegates_to_task_key": "task.authority.cell.suspend"
+            }
+          ],
+          "relationships": []
+        },
+        {
+          "flow_key": "flow.meta.distribution.revoke-cell",
+          "intent_name": "revoke-cell",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.revoke-cell",
+              "delegates_to_task_key": "task.authority.cell.revoke"
+            }
+          ],
+          "relationships": []
+        },
+        {
+          "flow_key": "flow.meta.distribution.define-static-placement",
+          "intent_name": "define-static-placement",
+          "tasks": [
+            {
+              "task_key": "task.meta.distribution.define-placement-unit",
+              "delegates_to_task_key": "task.authority.placement.define-unit"
+            },
+            {
+              "task_key": "task.meta.distribution.define-placement-replica",
+              "delegates_to_task_key": "task.authority.placement.define-replica"
+            },
+            {
+              "task_key": "task.meta.distribution.assign-placement-replica",
+              "delegates_to_task_key": "task.authority.placement.assign-replica"
+            }
+          ],
+          "relationships": [
+            {
+              "from_task_key": "task.meta.distribution.define-placement-unit",
+              "to_task_key": "task.meta.distribution.define-placement-replica"
+            },
+            {
+              "from_task_key": "task.meta.distribution.define-placement-replica",
+              "to_task_key": "task.meta.distribution.assign-placement-replica"
+            }
+          ]
+        }
+      ]
+    },
+    "assignment": {
+      "assigned_cell_key": "cell.local.standard.1",
+      "assignment_epoch": 1,
+      "replica_key": "replica.business.orders.0001",
+      "state": "assigned",
+      "unit_definition_revision": 1,
+      "unit_key": "unit.business.orders"
+    },
+    "cells": [
+      {
+        "capability_grants": [
+          {
+            "capability_key": "network_client",
+            "mode": "use"
+          },
+          {
+            "capability_key": "network_server",
+            "mode": "use"
+          }
+        ],
+        "cell_key": "cell.local.standard.1",
+        "cell_public_key_ref": "key://cell/local/standard/1/control",
+        "environment_key": "environment.local.primary",
+        "internal_endpoint": "127.0.0.1:43101",
+        "slot_capacity": 4,
+        "status": "active",
+        "transport_key_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "transport_protocol": "cadenza-cell-tls-v0",
+        "transport_public_key_ref": "key://cell/local/standard/1/transport",
+        "trust_profile": "standard"
+      },
+      {
+        "capability_grants": [
+          {
+            "capability_key": "authority_access",
+            "mode": "admin"
+          },
+          {
+            "capability_key": "cell_control",
+            "mode": "admin"
+          }
+        ],
+        "cell_key": "cell.local.trusted.1",
+        "cell_public_key_ref": "key://cell/local/trusted/1/control",
+        "environment_key": "environment.local.primary",
+        "internal_endpoint": "127.0.0.1:43100",
+        "slot_capacity": 8,
+        "status": "active",
+        "transport_key_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+        "transport_protocol": "cadenza-cell-tls-v0",
+        "transport_public_key_ref": "key://cell/local/trusted/1/transport",
+        "trust_profile": "trusted_control"
+      }
+    ],
+    "runtime_slices": [
+      {
+        "environment_key": "environment.local.primary",
+        "slice_key": "slice.business.orders",
+        "object_key": "object.slice.business.orders",
+        "version_key": "version.slice.business.orders.0001",
+        "lane": "business",
+        "trust_profile": "mediated",
+        "artifact_key": "artifact.slice.business.orders.0001",
+        "artifact_digest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+        "artifact_handler_key": "cadenza-source-slice-v0",
+        "artifact_provenance_ref": "contract://distribution/v0/orders-source",
+        "runtime_id": "cadenza.runtime.typescript",
+        "adapter_version": "0.1.0",
+        "activation_policy_ref": "policy.activation.source.v1",
+        "required_capabilities": [
+          {
+            "capability_key": "network_client",
+            "mode": "use"
+          }
+        ],
+        "runtime_support_digest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+        "responsibilities": [
+          {
+            "kind": "task",
+            "key": "task.business.orders.calculate-total"
+          }
+        ],
+        "status": "active"
+      },
+      {
+        "environment_key": "environment.local.primary",
+        "slice_key": "slice.meta.orders-audit",
+        "object_key": "object.slice.meta.orders-audit",
+        "version_key": "version.slice.meta.orders-audit.0001",
+        "lane": "meta_support",
+        "trust_profile": "pure",
+        "artifact_key": "artifact.slice.meta.orders-audit.0001",
+        "artifact_digest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+        "artifact_handler_key": "cadenza-source-slice-v0",
+        "artifact_provenance_ref": "contract://distribution/v0/orders-audit-source",
+        "runtime_id": "cadenza.runtime.typescript",
+        "adapter_version": "0.1.0",
+        "activation_policy_ref": "policy.activation.source.v1",
+        "required_capabilities": [],
+        "runtime_support_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "responsibilities": [
+          {
+            "kind": "signal",
+            "key": "business.order.created"
+          }
+        ],
+        "status": "active"
+      }
+    ],
+    "placement_unit": {
+      "definition_revision": 1,
+      "members": [
+        {
+          "role": "primary",
+          "slice_key": "slice.business.orders"
+        },
+        {
+          "role": "support",
+          "slice_key": "slice.meta.orders-audit"
+        }
+      ],
+      "mode": "replicated",
+      "required_capabilities": [
+        {
+          "capability_key": "network_client",
+          "mode": "use"
+        }
+      ],
+      "requires_trusted_cell": false,
+      "slot_cost": 1,
+      "unit_key": "unit.business.orders"
+    },
+    "replica": {
+      "replica_key": "replica.business.orders.0001",
+      "unit_definition_revision": 1,
+      "unit_key": "unit.business.orders"
+    },
+    "residencies": [
+      {
+        "contract": "cadenza.replica-member-residency",
+        "version": "0.1.0",
+        "assignment_epoch": 1,
+        "cell_generation_key": "cell-generation.local.standard.0001",
+        "cell_key": "cell.local.standard.1",
+        "expires_at_unix_ms": 4000000000000,
+        "image_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+        "image_epoch": 1,
+        "member_chamber_key": "chamber.business.orders.0001",
+        "observed_at_unix_ms": 3999999999000,
+        "replica_key": "replica.business.orders.0001",
+        "residency_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "slice_key": "slice.business.orders",
+        "status": "ready",
+        "unit_definition_revision": 1,
+        "unit_key": "unit.business.orders",
+        "attestation": {
+          "transport_public_key_ref": "key://cell/local/standard/1/transport",
+          "algorithm": "ed25519",
+          "signature": "base64:fixture-signature"
+        }
+      },
+      {
+        "contract": "cadenza.replica-member-residency",
+        "version": "0.1.0",
+        "assignment_epoch": 1,
+        "cell_generation_key": "cell-generation.local.standard.0001",
+        "cell_key": "cell.local.standard.1",
+        "expires_at_unix_ms": 4000000000000,
+        "image_digest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+        "image_epoch": 1,
+        "member_chamber_key": "chamber.meta.orders-audit.0001",
+        "observed_at_unix_ms": 3999999999000,
+        "replica_key": "replica.business.orders.0001",
+        "residency_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "slice_key": "slice.meta.orders-audit",
+        "status": "ready",
+        "unit_definition_revision": 1,
+        "unit_key": "unit.business.orders",
+        "attestation": {
+          "transport_public_key_ref": "key://cell/local/standard/1/transport",
+          "algorithm": "ed25519",
+          "signature": "base64:fixture-signature"
+        }
+      }
+    ],
+    "route_member": {
+      "assignment_epoch": 1,
+      "cell_generation_key": "cell-generation.local.standard.0001",
+      "cell_key": "cell.local.standard.1",
+      "image_digest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "image_epoch": 1,
+      "lane": "business",
+      "member_chamber_key": "chamber.business.orders.0001",
+      "replica_key": "replica.business.orders.0001",
+      "responsibility_key": "task.business.orders.calculate-total",
+      "responsibility_kind": "task",
+      "route_epoch": 1,
+      "route_member_key": "route-member.business.orders.0001.slice.business.orders.calculate-total",
+      "slice_key": "slice.business.orders",
+      "unit_definition_revision": 1,
+      "unit_key": "unit.business.orders"
+    }
+  },
+  "contract": "cadenza.multi-cell-distribution",
+  "negative_proofs": [
+    "distribution.reject-expired-enrollment-grant",
+    "distribution.reject-revoked-source-activation",
+    "distribution.reject-root-signature-drift",
+    "distribution.reject-candidate-possession-drift",
+    "distribution.reject-enrollment-replay-conflict",
+    "distribution.reject-self-declared-trust",
+    "distribution.reject-unknown-capability",
+    "distribution.reject-capability-mode-mismatch",
+    "distribution.reject-trust-mismatch",
+    "distribution.reject-capacity-overflow",
+    "distribution.reject-stale-authority-revision",
+    "distribution.reject-stale-unit-revision",
+    "distribution.reject-stale-assignment-epoch",
+    "distribution.reject-cross-cell-residency",
+    "distribution.reject-partial-replica-readiness",
+    "distribution.reject-expired-residency",
+    "distribution.reject-suspended-cell-route",
+    "distribution.reject-revoked-cell-route",
+    "distribution.reject-ambient-topology",
+    "distribution.reject-generic-authority-operation"
+  ],
+  "positive_proofs": [
+    "distribution.general-source-authority",
+    "distribution.source-registration-revocation",
+    "distribution.root-authorized-cell-enrollment",
+    "distribution.candidate-transport-key-possession",
+    "distribution.distinct-cell-key-purposes",
+    "distribution.active-enrollment",
+    "distribution.governed-capability-capacity",
+    "distribution.multi-member-placement-unit",
+    "distribution.derived-unit-requirements",
+    "distribution.static-replica-assignment",
+    "distribution.complete-ready-residency",
+    "distribution.derived-route-member",
+    "distribution.declarative-control-meta-slice",
+    "distribution.cell-bounded-projection",
+    "distribution.idempotent-authority-operations",
+    "distribution.immutable-evidence"
+  ],
+  "version": "0.1.0"
+}

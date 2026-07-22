@@ -1,0 +1,43 @@
+flowchart TB
+  trace["Trace<br/>overarching causal identity"]
+  graph1["Graph execution A<br/>one local graph run"]
+  primitive["Task, signal, inquiry and relationship executions"]
+  detached["Detached signal continuation"]
+  graph2["Graph execution B<br/>new local graph run, same trace"]
+  distribution["Distribution execution"]
+  transport["Transport attempt"]
+  chamberEvidence["Chamber bounded reports<br/>identity, phase, outcome, commitments"]
+  journal["Cell append-only signed journal"]
+  batch["Sealed custody batch"]
+  ledger["Durable evidence ledger"]
+  projection["Interpretable projection"]
+  raw["Raw context, callable source, credentials"]
+
+  trace --> graph1
+  graph1 --> primitive
+  primitive -.-> detached
+  detached --> graph2
+  primitive --> distribution
+  distribution --> transport
+  primitive -.-> chamberEvidence
+  graph2 -.-> chamberEvidence
+  distribution -.-> chamberEvidence
+  transport -.-> chamberEvidence
+  chamberEvidence ==> |custody barrier before success| journal
+  journal ==> |seal and claim| batch
+  batch ==> |idempotent process and receipt| ledger
+  ledger -.-> projection
+  raw --x |disclosure denied| chamberEvidence
+
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class trace,graph1,graph2,primitive,detached,distribution,transport semantic;
+  class chamberEvidence isolated;
+  class journal,batch trusted;
+  class ledger authority;
+  class projection evidence;
+  class raw denied;

@@ -1,0 +1,197 @@
+{
+  "cases": [
+    {
+      "baseline": {
+        "order_id": "order-1"
+      },
+      "expected": {
+        "context": {
+          "order_id": "order-1",
+          "total": 42
+        },
+        "status": "completed"
+      },
+      "key": "linear-terminal",
+      "terminals": [
+        {
+          "context": {
+            "order_id": "order-1",
+            "total": 42
+          },
+          "contributes_to_result": true,
+          "provenance": "task.total"
+        }
+      ]
+    },
+    {
+      "baseline": {
+        "order_id": "order-1"
+      },
+      "expected": {
+        "context": {
+          "order_id": "order-1",
+          "risk": "low",
+          "total": 42
+        },
+        "status": "completed"
+      },
+      "key": "disjoint-terminal-deltas",
+      "terminals": [
+        {
+          "context": {
+            "order_id": "order-1",
+            "total": 42
+          },
+          "contributes_to_result": true,
+          "provenance": "task.total"
+        },
+        {
+          "context": {
+            "order_id": "order-1",
+            "risk": "low"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.risk"
+        }
+      ]
+    },
+    {
+      "baseline": {},
+      "expected": {
+        "context": {
+          "status": "ready"
+        },
+        "status": "completed"
+      },
+      "key": "identical-write-collapse",
+      "terminals": [
+        {
+          "context": {
+            "status": "ready"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.first"
+        },
+        {
+          "context": {
+            "status": "ready"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.second"
+        }
+      ]
+    },
+    {
+      "baseline": {
+        "status": "pending"
+      },
+      "expected": {
+        "conflict_paths": [
+          "/status"
+        ],
+        "status": "composition_failed"
+      },
+      "key": "conflicting-write",
+      "terminals": [
+        {
+          "context": {
+            "status": "accepted"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.accept"
+        },
+        {
+          "context": {
+            "status": "rejected"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.reject"
+        }
+      ]
+    },
+    {
+      "baseline": {
+        "payload": {
+          "keep": true,
+          "remove": true
+        }
+      },
+      "expected": {
+        "conflict_paths": [
+          "/payload",
+          "/payload/remove"
+        ],
+        "status": "composition_failed"
+      },
+      "key": "parent-child-conflict",
+      "terminals": [
+        {
+          "context": {
+            "payload": "replaced"
+          },
+          "contributes_to_result": true,
+          "provenance": "task.replace"
+        },
+        {
+          "context": {
+            "payload": {
+              "keep": true
+            }
+          },
+          "contributes_to_result": true,
+          "provenance": "task.delete"
+        }
+      ]
+    },
+    {
+      "baseline": {
+        "order_id": "order-1"
+      },
+      "expected": {
+        "context": {
+          "order_id": "order-1",
+          "total": 42
+        },
+        "status": "completed"
+      },
+      "key": "excluded-branch-awaited",
+      "terminals": [
+        {
+          "context": {
+            "audit_blob": "ignored",
+            "order_id": "order-1"
+          },
+          "contributes_to_result": false,
+          "provenance": "task.audit"
+        },
+        {
+          "context": {
+            "order_id": "order-1",
+            "total": 42
+          },
+          "contributes_to_result": true,
+          "provenance": "task.total"
+        }
+      ]
+    }
+  ],
+  "contract": "cadenza.graph-conclusion",
+  "negative_proofs": [
+    "conclusion.reject-completion-order-precedence",
+    "conclusion.reject-split-local-baseline",
+    "conclusion.reject-silent-conflict-merge",
+    "conclusion.reject-exclusion-as-detachment",
+    "conclusion.reject-metadata-conflict",
+    "conclusion.reject-partial-success-after-terminal-failure"
+  ],
+  "positive_proofs": [
+    "conclusion.one-run-entry-baseline",
+    "conclusion.disjoint-delta-merge",
+    "conclusion.identical-write-collapse",
+    "conclusion.explicit-conflict-failure",
+    "conclusion.relationship-contribution-policy",
+    "conclusion.authored-join-forwarding",
+    "conclusion.deterministic-terminal-provenance"
+  ],
+  "version": "0.1.0"
+}

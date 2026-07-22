@@ -1,0 +1,40 @@
+flowchart TB
+  desired["Desired placement state"]
+  lease{"Current stem lease<br/>one owner and epoch"}
+  snapshot["Canonical authority snapshot"]
+  plan["Deterministic reconciliation plan"]
+  action["Exact fenced action authority"]
+  supply["Pre-enrolled Cell supply directive"]
+  cell["Cell-local convergence"]
+  chamber["Chamber residency"]
+  observation["Signed observation and readiness"]
+  takeover["Successor stem<br/>next fenced epoch"]
+  stale["Stale owner or generation"]
+
+  desired ==> lease
+  lease -->|current owner reads| snapshot
+  snapshot --> plan
+  plan ==> action
+  action -->|capacity absent| supply
+  supply -->|fresh authorized Cell generation| cell
+  action -->|target Cell present| cell
+  cell --> chamber
+  chamber -.-> observation
+  observation -.-> snapshot
+  lease -.->|expires or owner lost| takeover
+  takeover ==> |immutable takeover evidence| snapshot
+  stale --x action
+  stale --x observation
+
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class desired semantic;
+  class lease,snapshot,plan,action authority;
+  class supply,cell trusted;
+  class chamber isolated;
+  class observation,takeover evidence;
+  class stale denied;

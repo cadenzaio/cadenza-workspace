@@ -1,0 +1,23 @@
+stateDiagram-v2
+  state "Created generation" as Created
+  state "Starting" as Starting
+  state "Operational" as Operational
+  state "Draining" as Draining
+  state "Stopped" as Stopped
+  state "Failed" as Failed
+
+  [*] --> Created
+  Created --> Starting: verify enrollment, generation and host inputs
+  Starting --> Operational: current signed observation and custody ready
+  Operational --> Draining: authority withdraws or generation supersedes
+  Draining --> Stopped: routes withdrawn, Chambers empty, custody settled
+  Created --> Failed: invalid identity or host input
+  Starting --> Failed: authority, launcher or custody failure
+  Operational --> Failed: monotonic fatal boundary failure
+  Failed --> Stopped: cleanup only
+  Stopped --> [*]
+
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Created,Starting,Operational,Draining,Stopped trusted;
+  class Failed denied;

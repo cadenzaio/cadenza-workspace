@@ -1,0 +1,21 @@
+sequenceDiagram
+  autonumber
+  participant Caller
+  participant Broker as Inquiry broker
+  participant GraphA as Graph execution A
+  participant Task
+  participant Signal as Signal broker
+  participant GraphB as Graph execution B
+  participant Evidence
+
+  Caller->>Broker: inquire under new trace
+  Broker->>GraphA: start responder graph
+  GraphA->>Task: execute awaited task relationship
+  Task-->>GraphA: terminal business context
+  Task-->>Signal: emit detached signal with trace identity
+  GraphA->>Evidence: graph and composition evidence
+  GraphA-->>Broker: deterministic conclusion
+  Broker-->>Caller: result or explicit failure
+  Signal->>GraphB: start new graph execution under same trace
+  GraphB->>Evidence: causally linked continuation evidence
+  Note over GraphA,GraphB: Graph A completion does not wait for Graph B, but both remain interpretable under one trace.

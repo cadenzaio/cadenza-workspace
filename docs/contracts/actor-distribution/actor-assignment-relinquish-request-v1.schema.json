@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.dev/contracts/actor-assignment-relinquish-request-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract",
+    "version",
+    "environment_key",
+    "owner_cell_key",
+    "owner_cell_generation_key",
+    "owner_chamber_key",
+    "owner_image_digest",
+    "owner_image_epoch",
+    "requested_at_unix_ms"
+  ],
+  "properties": {
+    "contract": { "const": "cadenza.actor-assignment-relinquish-request" },
+    "version": { "const": "1.0.0" },
+    "environment_key": { "$ref": "#/$defs/key" },
+    "owner_cell_key": { "$ref": "#/$defs/key" },
+    "owner_cell_generation_key": { "$ref": "#/$defs/key" },
+    "owner_chamber_key": { "$ref": "#/$defs/key" },
+    "owner_image_digest": { "$ref": "#/$defs/digest" },
+    "owner_image_epoch": { "$ref": "#/$defs/positive" },
+    "requested_at_unix_ms": { "$ref": "#/$defs/positive" }
+  },
+  "$defs": {
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "positive": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 }
+  }
+}

@@ -1,0 +1,45 @@
+# Ignore everything by default
+*
+
+# Track meta-repo root files
+!README.md
+!AGENTS.md
+!.gitignore
+!CHANGELOG.md
+!CODE_OF_CONDUCT.md
+!CONTRIBUTING.md
+!LICENSE
+!RELEASE.md
+!SECURITY.md
+!SUPPORT.md
+!contracts.config.json
+!automation.config.json
+!release/
+!release/**
+
+# Track meta-repo docs/scripts
+!docs/
+!docs/**
+!scripts/
+!scripts/**
+!.github/
+!.github/CODEOWNERS
+!.github/PULL_REQUEST_TEMPLATE.md
+!.github/ISSUE_TEMPLATE/
+!.github/ISSUE_TEMPLATE/**
+!.github/workflows/
+!.github/workflows/**
+
+# Local/generated artifacts inside explicitly included trees
+**/.DS_Store
+**/__pycache__/
+**/*.py[cod]
+
+# Private or deferred product-development material
+docs/agent-harness/benchmarks/
+docs/agent-harness/corpus-manifests/
+docs/agent-harness/external-corpus/
+docs/cadenza-meta-memory.md
+scripts/cadenza-memory*
+scripts/cadenza_memory.py
+scripts/weave-*

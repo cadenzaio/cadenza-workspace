@@ -1,0 +1,54 @@
+{
+  "bounds": {
+    "maximum_context_bytes": 1048576,
+    "maximum_control_lifetime_ms": 30000,
+    "maximum_frame_bytes": 2097152,
+    "maximum_replay_entries": 16384,
+    "maximum_result_bytes": 1048576
+  },
+  "contract": "cadenza.cell-peer-transport",
+  "execution": {
+    "envelope_key": "peer-envelope.fixture.0001",
+    "operation": "delegate",
+    "route_epoch": 1,
+    "route_member_key": "route-member.replica.business.orders.0001.slice.business.orders.task.task.business.orders.calculate-total",
+    "source_cell_generation_key": "cell-generation.local.source.0001",
+    "target_cell_generation_key": "cell-generation.local.target.0001"
+  },
+  "evidence": {
+    "contract": "cadenza.cell-peer-transport-evidence",
+    "phases": [
+      "source_outcome",
+      "target_accepted",
+      "target_started",
+      "target_completed"
+    ],
+    "raw_business_context_permitted": false,
+    "version": "0.1.0"
+  },
+  "negative_proofs": [
+    "peer.reject-spki-drift",
+    "peer.reject-suspended-enrollment",
+    "peer.reject-stale-generation",
+    "peer.reject-signature-drift",
+    "peer.reject-assignment-drift",
+    "peer.reject-replay",
+    "peer.reject-expired-control",
+    "peer.reject-unknown-field",
+    "peer.reject-oversized-frame",
+    "peer.preserve-started-state-after-proceed"
+  ],
+  "protocol": {
+    "controls": [
+      "open",
+      "opened",
+      "accepted",
+      "proceed"
+    ],
+    "tls_versions": [
+      "1.3"
+    ],
+    "transport_protocol": "cadenza-cell-tls-v0"
+  },
+  "version": "0.1.0"
+}

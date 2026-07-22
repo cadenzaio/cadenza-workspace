@@ -1,0 +1,40 @@
+name: Agent Harness Check
+
+on:
+  pull_request:
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "automation.config.json"
+      - "contracts.config.json"
+      - "docs/**"
+      - "scripts/check-agent-harness.sh"
+      - "scripts/generate-sboms.sh"
+      - "scripts/workspace-snapshot.sh"
+      - ".github/workflows/agent-harness-check.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "automation.config.json"
+      - "contracts.config.json"
+      - "docs/**"
+      - "scripts/check-agent-harness.sh"
+      - "scripts/generate-sboms.sh"
+      - "scripts/workspace-snapshot.sh"
+      - ".github/workflows/agent-harness-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  agent-harness:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Validate workspace agent harness
+        run: ./scripts/check-agent-harness.sh

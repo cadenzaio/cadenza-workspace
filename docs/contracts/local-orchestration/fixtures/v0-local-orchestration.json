@@ -1,0 +1,131 @@
+{
+  "case": {
+    "acknowledgement": {
+      "cell_generation_key": "cell-generation.local.control.0001",
+      "chamber_key": "chamber.business.source.1",
+      "image_epoch": 1,
+      "projection_digest": "sha256:1b8853bbe35c08a52103559366d01debdbcc347407d97cefb71659be996bd3b7",
+      "projection_revision": 1,
+      "source_host_meta_authority_revision": 4
+    },
+    "cell_generation": {
+      "cell_generation_key": "cell-generation.local.control.0001",
+      "cell_key": "cell.local.control.1",
+      "environment_key": "environment.local.primary"
+    },
+    "host_meta_authority_revision": 4,
+    "route_delegation_request": {
+      "cell_generation_key": "cell-generation.local.control.0001",
+      "context": {"order": 1},
+      "deadline_unix_ms": 4000000000000,
+      "idempotency_key": "idempotency.local.0001",
+      "initiating_subject": "subject.local.test",
+      "maximum_result_bytes": 1048576,
+      "projection_revision": 1,
+      "route_epoch": 1,
+      "route_group_key": "route.target.calculate-total",
+      "runtime_principal": "principal.local.test",
+      "selected_route_member_key": "route-member.business.target.1",
+      "source_chamber_key": "chamber.business.source.1",
+      "source_effect_key": "task-execution.10000000-0000-4000-8000-000000000003",
+      "source_graph_execution_key": "graph-execution.10000000-0000-4000-8000-000000000002",
+      "source_image_epoch": 1,
+      "target_key": "task.business.calculate-total",
+      "trace_key": "trace.10000000-0000-4000-8000-000000000001"
+    },
+    "route_signal_request": {
+      "cell_generation_key": "cell-generation.local.control.0001",
+      "context": {"order": 1},
+      "deadline_unix_ms": 4000000000000,
+      "idempotency_key": "idempotency.local.0001",
+      "initiating_subject": "subject.local.test",
+      "projection_revision": 1,
+      "route_epoch": 1,
+      "route_group_key": "route.signal.order-created.audit",
+      "runtime_principal": "principal.local.test",
+      "selected_route_member_key": "route-member.meta.audit.1",
+      "signal_key": "business.order.created",
+      "source_chamber_key": "chamber.business.source.1",
+      "source_effect_key": "signal-emission.10000000-0000-4000-8000-000000000003",
+      "source_graph_execution_key": "graph-execution.10000000-0000-4000-8000-000000000002",
+      "source_image_epoch": 1,
+      "source_signal_emission_key": "signal-emission.10000000-0000-4000-8000-000000000003",
+      "trace_key": "trace.10000000-0000-4000-8000-000000000001"
+    },
+    "projection": {
+      "cell_generation": {
+        "cell_generation_key": "cell-generation.local.control.0001",
+        "cell_key": "cell.local.control.1",
+        "environment_key": "environment.local.primary"
+      },
+      "projection_digest": "sha256:1b8853bbe35c08a52103559366d01debdbcc347407d97cefb71659be996bd3b7",
+      "projection_revision": 1,
+      "routes_by_signal": {
+        "business.order.created": [
+          {
+            "candidate_route_member_keys": [
+              "route-member.meta.audit.1"
+            ],
+            "route_epoch": 1,
+            "route_group_key": "route.signal.order-created.audit",
+            "selection": "single_fixed"
+          }
+        ]
+      },
+      "routes_by_target": {
+        "task.business.calculate-total": {
+          "candidate_route_member_keys": [
+            "route-member.business.target.1"
+          ],
+          "route_group_key": "route.target.calculate-total",
+          "route_epoch": 1,
+          "selection": "single_fixed"
+        }
+      },
+      "self_chamber_key": "chamber.business.source.1",
+      "self_image_epoch": 1,
+      "source_host_meta_authority_revision": 4,
+      "support_slice_keys": []
+    }
+  },
+  "contract": "cadenza.local-orchestration",
+  "negative_proofs": [
+    "local.reject-cross-generation",
+    "local.reject-stale-host-revision",
+    "local.reject-stale-projection",
+    "local.reject-projection-digest-mismatch",
+    "local.reject-projection-before-static-descriptor",
+    "local.reject-acknowledgement-mismatch",
+    "local.reject-unacknowledged-ingress",
+    "local.reject-stale-route",
+    "local.reject-silent-reroute",
+    "local.reject-layer-violation",
+    "local.reject-target-draining",
+    "local.reject-post-start-safe-retry",
+    "local.reject-signal-loop",
+    "local.reject-actor-route-v0",
+    "local.reject-ambient-host-port",
+    "local.reject-active-execution-contract-v0"
+  ],
+  "positive_proofs": [
+    "local.generation-bound-authority",
+    "local.monotonic-host-revision",
+    "local.chamber-specific-projection",
+    "local.atomic-full-snapshot-apply",
+    "local.exact-projection-acknowledgement",
+    "local.eligibility-after-ack",
+    "local.source-selected-route",
+    "local.host-validates-no-reroute",
+    "local.delegation-start-boundary",
+    "local.delegation-uses-core-conclusion",
+    "local.composition-failure-is-started-execution-failure",
+    "local.absolute-deadline",
+    "local.detached-signal-acceptance",
+    "local.local-inquiry-proxy",
+    "local.successor-before-drain",
+    "local.serialized-quiescence",
+    "local.ordered-evidence",
+    "local.source-contained-linux"
+  ],
+  "version": "0.2.0"
+}

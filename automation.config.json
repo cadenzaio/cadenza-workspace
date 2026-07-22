@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "updated_at": "2026-03-11",
+  "scope": "workspace_meta",
+  "quality_score_path": "docs/agent-harness/quality-score.md",
+  "active_plan_dir": "docs/agent-harness/exec-plans/active",
+  "weekly_automations": [
+    {
+      "id": "active_plan_assumption_health_report",
+      "name": "Active Plan & Assumption Health Report",
+      "status": "planned",
+      "schedule": {
+        "type": "weekly",
+        "day": "monday",
+        "time_local": "09:00"
+      },
+      "target": "meta_repo_docs",
+      "prompt": "Summarize active plans, blocked work, stale assumptions, and any policy drift that should change the workspace quality score.",
+      "artifacts": [
+        "docs/agent-harness/quality-score.md",
+        "docs/agent-harness/exec-plans/active/2026-07-09-planning-hygiene-sprint-0.md"
+      ]
+    },
+    {
+      "id": "cadenza_docs_mastery_scan",
+      "name": "Cadenza Docs Mastery Scan",
+      "status": "planned",
+      "schedule": {
+        "type": "weekly",
+        "day": "wednesday",
+        "time_local": "09:00"
+      },
+      "target": "all_child_repos",
+      "prompt": "Scan each child repo for missing entrypoint docs, stale commands, missing AGENTS files, broken links from workspace repo cards, and missing guidance that would help agents learn how to use Cadenza correctly.",
+      "artifacts": [
+        "docs/agent-harness/quality-score.md",
+        "docs/agent-harness/exec-plans/active/2026-07-09-planning-hygiene-sprint-0.md"
+      ]
+    },
+    {
+      "id": "contract_drift_detector",
+      "name": "Contract Drift Detector",
+      "status": "planned",
+      "schedule": {
+        "type": "weekly",
+        "day": "thursday",
+        "time_local": "09:00"
+      },
+      "target": "contract_authority_repos",
+      "prompt": "Compare contract authorities against consumer repos and note any unpropagated changes, stale docs, or missing follow-up tasks.",
+      "artifacts": [
+        "docs/agent-harness/quality-score.md"
+      ]
+    },
+    {
+      "id": "agents_md_evolution",
+      "name": "Agent Harness Evolution",
+      "status": "planned",
+      "schedule": {
+        "type": "weekly",
+        "day": "friday",
+        "time_local": "09:00"
+      },
+      "target": "meta_repo_only",
+      "prompt": "Propose small approved improvements that keep AGENTS.md short, keep templates current, deepen Cadenza learning guidance, and reduce avoidable context load for future agents.",
+      "artifacts": [
+        "AGENTS.md",
+        "docs/agent-harness/quality-score.md",
+        "docs/agent-harness/exec-plans/active/2026-07-09-planning-hygiene-sprint-0.md"
+      ]
+    }
+  ],
+  "notes": [
+    "This file defines automation entrypoints, expected outputs, and workspace-local artifact paths.",
+    "Execution implementation may live in external scheduler tooling.",
+    "Automations should update the quality score or the active harness plan instead of creating ad hoc notes.",
+    "Workflow assumptions must not depend on external ticket labels or issue states."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "theme": "base",
+  "deterministicIds": true,
+  "deterministicIDSeed": "cadenza-atlas-v1",
+  "handDrawnSeed": 42,
+  "flowchart": {
+    "curve": "basis",
+    "htmlLabels": true,
+    "nodeSpacing": 32,
+    "rankSpacing": 48,
+    "useMaxWidth": true
+  },
+  "sequence": {
+    "actorMargin": 48,
+    "diagramMarginX": 32,
+    "diagramMarginY": 24,
+    "messageMargin": 32,
+    "useMaxWidth": true,
+    "wrap": true
+  },
+  "themeVariables": {
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "16px",
+    "lineColor": "#3f4a52",
+    "primaryColor": "#f5f7f8",
+    "primaryTextColor": "#172026",
+    "primaryBorderColor": "#59656e",
+    "secondaryColor": "#eef3f5",
+    "tertiaryColor": "#ffffff",
+    "noteBkgColor": "#fff7d6",
+    "noteBorderColor": "#8a6d1d",
+    "noteTextColor": "#342b12",
+    "activationBkgColor": "#e5eef7",
+    "activationBorderColor": "#285f8f",
+    "signalColor": "#3f4a52",
+    "signalTextColor": "#172026"
+  }
+}

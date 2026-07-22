@@ -1,0 +1,35 @@
+stateDiagram-v2
+  state "Reported" as Reported
+  state "Appended to signed journal" as Appended
+  state "Sealed batch" as Sealed
+  state "Claimed for processing" as Claimed
+  state "Commit outcome unknown" as Unknown
+  state "Durable ledger receipt" as Durable
+  state "Acknowledged locally" as Acknowledged
+  state "Compacted with predecessor authority" as Compacted
+  state "Pressure blocks new affect" as Pressure
+
+  [*] --> Reported
+  Reported --> Appended: Chamber success waits for custody barrier
+  Appended --> Sealed: bounded segment closes
+  Sealed --> Claimed: evidence processor owns attempt
+  Claimed --> Durable: ledger returns exact receipt
+  Claimed --> Unknown: transport lost after possible commit
+  Unknown --> Durable: exact attempt resolves committed
+  Unknown --> Claimed: exact attempt resolves not committed
+  Durable --> Acknowledged: receipt signature and identity verify
+  Acknowledged --> Compacted: predecessor authority published first
+  Appended --> Pressure: journal reserve or backlog bound reached
+  Pressure --> Sealed: processing restores admissible capacity
+  Compacted --> [*]
+
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef evidence fill:#dff5f2,stroke:#26756b,color:#172026;
+  classDef denied fill:#fde2e2,stroke:#a33d3d,color:#172026;
+  class Reported isolated;
+  class Appended,Sealed,Claimed,Acknowledged,Compacted trusted;
+  class Durable authority;
+  class Unknown evidence;
+  class Pressure denied;

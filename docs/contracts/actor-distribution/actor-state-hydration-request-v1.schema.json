@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cadenza.dev/contracts/actor-state-hydration-request-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "version", "authority", "execution", "requested_at_unix_ms"],
+  "properties": {
+    "contract": { "const": "cadenza.actor-state-hydration-request" },
+    "version": { "const": "1.0.0" },
+    "authority": { "$ref": "actor-residency-grant-v1.schema.json" },
+    "execution": { "$ref": "#/$defs/execution" },
+    "requested_at_unix_ms": { "$ref": "#/$defs/positive" }
+  },
+  "$defs": {
+    "positive": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trace_key", "graph_execution_key", "task_execution_key"],
+      "properties": {
+        "trace_key": { "type": "string", "pattern": "^trace\\.[a-f0-9-]{36}$" },
+        "graph_execution_key": { "type": "string", "pattern": "^graph-execution\\.[a-f0-9-]{36}$" },
+        "task_execution_key": { "type": "string", "pattern": "^task-execution\\.[a-f0-9-]{36}$" }
+      }
+    }
+  }
+}

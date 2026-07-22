@@ -1,0 +1,38 @@
+flowchart TB
+  workspace["Workspace meta repo<br/>governance, contract map, cross-repo architecture"]
+
+  subgraph semantics["Primitive semantic authority"]
+    ts["cadenza<br/>TypeScript authority"]
+    py["cadenza-python<br/>idiomatic translation"]
+    ex["cadenza-elixir<br/>BEAM-native translation"]
+    cs["cadenza-csharp<br/>.NET translation"]
+    ts ==> |shared contracts and fixtures| py
+    ts ==> |shared contracts and fixtures| ex
+    ts ==> |shared contracts and fixtures| cs
+  end
+
+  environment["cadenza-environment<br/>bootstrap and durable authority"]
+  chamber["cadenza-chamber<br/>contained runtime and adapter protocol"]
+  cell["cadenza-cell<br/>trusted host, containment and distribution"]
+  reference["cadenza-reference-system<br/>outside-in business consumer"]
+
+  workspace ==> |maps contract ownership| ts
+  workspace ==> |maps contract ownership| environment
+  workspace ==> |maps contract ownership| chamber
+  workspace ==> |maps contract ownership| cell
+  environment ==> |approved images, placement and operations| cell
+  cell -->|process custody and mediated capabilities| chamber
+  chamber -->|official adapter consumes package| ts
+  reference -->|public authoring API| ts
+  reference -.->|proof descriptor, never contract authority| environment
+
+  classDef semantic fill:#dff3e5,stroke:#2b6f44,color:#172026;
+  classDef authority fill:#fff2cc,stroke:#8a6d1d,color:#172026;
+  classDef trusted fill:#dcecff,stroke:#285f8f,color:#172026;
+  classDef isolated fill:#eee5f7,stroke:#6c4c8f,color:#172026;
+  classDef business fill:#ffe4dc,stroke:#9a4d38,color:#172026;
+  class workspace,ts,py,ex,cs semantic;
+  class environment authority;
+  class cell trusted;
+  class chamber isolated;
+  class reference business;

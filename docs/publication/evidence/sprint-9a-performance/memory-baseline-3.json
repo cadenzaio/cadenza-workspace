@@ -1,0 +1,269 @@
+{
+  "contract": "cadenza.core-benchmark-report",
+  "version": "0",
+  "suite": "memory",
+  "generated_at": "2026-07-21T13:35:05.284Z",
+  "results": [
+    {
+      "kind": "memory",
+      "scenario": "memory-graph",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 11403712,
+      "final_heap_used_bytes": 11512256,
+      "retained_delta_bytes": 108544,
+      "peak_heap_used_bytes": 19474352,
+      "later_batch_slope_bytes_per_operation": 36.26,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 11420984,
+          "rss_bytes": 109805568,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 11425136,
+          "rss_bytes": 109805568,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 11489904,
+          "rss_bytes": 109821952,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 11521200,
+          "rss_bytes": 109953024,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 11491096,
+          "rss_bytes": 112934912,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 11493024,
+          "rss_bytes": 112951296,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 11502064,
+          "rss_bytes": 112951296,
+          "external_bytes": 3460746
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 11512256,
+          "rss_bytes": 112951296,
+          "external_bytes": 3460746
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 72706,
+        "barriers": 36358
+      },
+      "runtime": {
+        "node": "v24.14.1",
+        "v8": "13.6.233.17-node.44",
+        "platform": "darwin",
+        "os_release": "25.5.0",
+        "architecture": "arm64",
+        "cpu_model": "Apple M1 Pro",
+        "cpu_count": 10,
+        "core_revision": "bba46d3bf67a935b5577b690b8e56a4b8e42d87f"
+      }
+    },
+    {
+      "kind": "memory",
+      "scenario": "memory-signal",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 11309992,
+      "final_heap_used_bytes": 11538888,
+      "retained_delta_bytes": 228896,
+      "peak_heap_used_bytes": 15819832,
+      "later_batch_slope_bytes_per_operation": -8.924,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 11417016,
+          "rss_bytes": 106807296,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 11522856,
+          "rss_bytes": 106872832,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 11553344,
+          "rss_bytes": 108298240,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 11541992,
+          "rss_bytes": 109379584,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 11545184,
+          "rss_bytes": 109379584,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 11551536,
+          "rss_bytes": 109379584,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 11552576,
+          "rss_bytes": 109428736,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 11538888,
+          "rss_bytes": 109445120,
+          "external_bytes": 3591834
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 14922,
+        "barriers": 8291
+      },
+      "runtime": {
+        "node": "v24.14.1",
+        "v8": "13.6.233.17-node.44",
+        "platform": "darwin",
+        "os_release": "25.5.0",
+        "architecture": "arm64",
+        "cpu_model": "Apple M1 Pro",
+        "cpu_count": 10,
+        "core_revision": "bba46d3bf67a935b5577b690b8e56a4b8e42d87f"
+      }
+    },
+    {
+      "kind": "memory",
+      "scenario": "memory-retry",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 11381160,
+      "final_heap_used_bytes": 11536136,
+      "retained_delta_bytes": 154976,
+      "peak_heap_used_bytes": 17926416,
+      "later_batch_slope_bytes_per_operation": -11.244,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 11394864,
+          "rss_bytes": 104120320,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 11448976,
+          "rss_bytes": 104267776,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 11558616,
+          "rss_bytes": 104448000,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 11547088,
+          "rss_bytes": 104628224,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 11547312,
+          "rss_bytes": 104628224,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 11532784,
+          "rss_bytes": 106299392,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 11543824,
+          "rss_bytes": 106315776,
+          "external_bytes": 3591834
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 11536136,
+          "rss_bytes": 106315776,
+          "external_bytes": 3591834
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 13270,
+        "barriers": 6640
+      },
+      "runtime": {
+        "node": "v24.14.1",
+        "v8": "13.6.233.17-node.44",
+        "platform": "darwin",
+        "os_release": "25.5.0",
+        "architecture": "arm64",
+        "cpu_model": "Apple M1 Pro",
+        "cpu_count": 10,
+        "core_revision": "bba46d3bf67a935b5577b690b8e56a4b8e42d87f"
+      }
+    }
+  ]
+}

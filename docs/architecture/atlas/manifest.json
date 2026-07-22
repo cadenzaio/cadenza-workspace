@@ -1,0 +1,1278 @@
+{
+  "version": 1,
+  "renderer": "ghcr.io/mermaid-js/mermaid-cli/mermaid-cli@sha256:bad64c9d9ad917c8dfbe9d9e9c162b96f6615ff019b37058638d16eb27ce7783",
+  "owner": "Cadenza architecture maintainers",
+  "allowedRoles": [
+    "semantic-authority",
+    "durable-authority",
+    "trusted-host",
+    "isolated-runtime",
+    "business-logic",
+    "external-substrate",
+    "evidence",
+    "denied"
+  ],
+  "diagrams": [
+    {
+      "id": "01-intended-whole",
+      "title": "The Intended Whole",
+      "kind": "orientation",
+      "audience": ["all readers"],
+      "question": "What complexity should an application author see, and where does the rest go?",
+      "scope": "The authoring experience and the governed substrate that preserves it.",
+      "omits": [
+        "runtime protocols",
+        "database tables",
+        "provider-specific infrastructure"
+      ],
+      "identities": [
+        "human or agent author",
+        "workflow",
+        "business task",
+        "Cadenza substrate"
+      ],
+      "states": ["authored", "governed", "executing", "interpretable"],
+      "affects": [
+        "authoring",
+        "coordination",
+        "runtime support",
+        "evidence feedback"
+      ],
+      "boundaries": ["business logic to runtime substrate"],
+      "roles": [
+        "business-logic",
+        "semantic-authority",
+        "trusted-host",
+        "evidence"
+      ],
+      "evidence": [
+        "docs/cadenza-intended-whole.md",
+        "docs/publication/sprint-9c-agent-authoring-trial-v1.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/01-intended-whole.mmd",
+      "rendered": "docs/architecture/atlas/rendered/01-intended-whole.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "02-repository-contract-ownership",
+      "title": "Repository And Contract Ownership",
+      "kind": "ownership",
+      "audience": ["contributors", "release maintainers"],
+      "question": "Which repository owns each meaning, runtime boundary, and consumer direction?",
+      "scope": "Official source repositories, cross-repository contract authority, and the reference consumer.",
+      "omits": ["legacy repositories", "managed product", "file-level modules"],
+      "identities": [
+        "workspace governance",
+        "language cores",
+        "Environment",
+        "Chamber",
+        "Cell",
+        "reference system"
+      ],
+      "states": [
+        "authority",
+        "translation",
+        "runtime consumption",
+        "proof consumption"
+      ],
+      "affects": [
+        "contract publication",
+        "conformance",
+        "runtime integration",
+        "outside-in proof"
+      ],
+      "boundaries": [
+        "semantic authority",
+        "durable authority",
+        "runtime substrate",
+        "consumer"
+      ],
+      "roles": [
+        "semantic-authority",
+        "durable-authority",
+        "trusted-host",
+        "isolated-runtime",
+        "business-logic"
+      ],
+      "evidence": [
+        "contracts.config.json",
+        "docs/architecture.md",
+        "docs/publication/sprint-9a-final-publication-boundary-gate-v2.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/02-repository-contract-ownership.mmd",
+      "rendered": "docs/architecture/atlas/rendered/02-repository-contract-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "03-system-planes",
+      "title": "System Planes",
+      "kind": "architecture",
+      "audience": ["application authors", "runtime contributors", "operators"],
+      "question": "How do semantic definition, durable authority, runtime execution, business affect, and evidence remain distinct?",
+      "scope": "The five cooperating planes and their legitimate directional affect.",
+      "omits": [
+        "individual processes",
+        "protocol fields",
+        "deployment topology"
+      ],
+      "identities": [
+        "definition plane",
+        "authority plane",
+        "runtime plane",
+        "business-affect plane",
+        "evidence plane"
+      ],
+      "states": [
+        "declared",
+        "authorized",
+        "materialized",
+        "affected",
+        "interpreted"
+      ],
+      "affects": [
+        "definition",
+        "authorization",
+        "execution",
+        "business consequence",
+        "observation"
+      ],
+      "boundaries": [
+        "authority crossing",
+        "runtime crossing",
+        "evidence disclosure"
+      ],
+      "roles": [
+        "semantic-authority",
+        "durable-authority",
+        "isolated-runtime",
+        "business-logic",
+        "evidence"
+      ],
+      "evidence": [
+        "docs/architecture.md",
+        "docs/security/cadenza-security-model-v1.md",
+        "docs/contracts/execution-evidence/v0.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/03-system-planes.mmd",
+      "rendered": "docs/architecture/atlas/rendered/03-system-planes.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "04-definition-to-execution",
+      "title": "Definition To Execution",
+      "kind": "sequence",
+      "audience": [
+        "application authors",
+        "runtime contributors",
+        "security reviewers"
+      ],
+      "question": "How does serialized callable authority become a running primitive without core evaluating source?",
+      "scope": "Authority selection, Chamber admission, controlled callable materialization, core primitive materialization, and execution.",
+      "omits": [
+        "placement planning",
+        "language-specific compiler internals",
+        "business provider calls"
+      ],
+      "identities": [
+        "durable definition",
+        "Cell",
+        "Chamber",
+        "language adapter",
+        "core runtime",
+        "task"
+      ],
+      "states": [
+        "serialized",
+        "authorized",
+        "contained",
+        "callable",
+        "materialized",
+        "executed"
+      ],
+      "affects": [
+        "admission",
+        "callable compilation",
+        "primitive creation",
+        "task execution"
+      ],
+      "boundaries": ["authority to Cell", "Cell to sandbox", "adapter to core"],
+      "roles": [
+        "durable-authority",
+        "trusted-host",
+        "isolated-runtime",
+        "semantic-authority",
+        "business-logic"
+      ],
+      "evidence": [
+        "docs/decisions/2026-07-11-callable-materialization-boundary.md",
+        "docs/cadenza-language-runtime-contract.md",
+        "cadenza-chamber/contracts/v0.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/04-definition-to-execution.mmd",
+      "rendered": "docs/architecture/atlas/rendered/04-definition-to-execution.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "05-environment-bootstrap",
+      "title": "Environment Bootstrap",
+      "kind": "state",
+      "audience": [
+        "operators",
+        "security reviewers",
+        "Environment contributors"
+      ],
+      "question": "How does a new environment move from no authority to operational authority without retaining bootstrap power?",
+      "scope": "Genesis, root establishment, seed application, handoff, root retirement, and operational activation.",
+      "omits": [
+        "migration SQL",
+        "provider implementation",
+        "ordinary runtime scaling"
+      ],
+      "identities": [
+        "environment",
+        "genesis authority",
+        "trust root",
+        "first Cell",
+        "authority-access slice"
+      ],
+      "states": [
+        "uninitialized",
+        "genesis",
+        "rooted",
+        "seeded",
+        "handoff-ready",
+        "operational",
+        "failed"
+      ],
+      "affects": [
+        "authority creation",
+        "trust establishment",
+        "handoff",
+        "retirement",
+        "operational transition"
+      ],
+      "boundaries": [
+        "bootstrap principal",
+        "retired trust root",
+        "operational authority"
+      ],
+      "roles": ["durable-authority", "trusted-host", "denied"],
+      "evidence": [
+        "docs/contracts/environment-bootstrap/v0.md",
+        "cadenza-environment/contracts/environment-bootstrap/README.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/05-environment-bootstrap.mmd",
+      "rendered": "docs/architecture/atlas/rendered/05-environment-bootstrap.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "06-runtime-topology",
+      "title": "Runtime Topology",
+      "kind": "topology",
+      "audience": ["operators", "runtime contributors"],
+      "question": "Which runtime identities exist, where do they execute, and which boundaries do they cross?",
+      "scope": "One environment with authority, stem, supply, two Cells, contained Chambers, adapters, and authored logic.",
+      "omits": [
+        "cloud provider topology",
+        "load balancers",
+        "managed-product control"
+      ],
+      "identities": [
+        "PostgreSQL authority",
+        "stem",
+        "supply supervisor",
+        "Cell",
+        "Chamber",
+        "adapter",
+        "business logic"
+      ],
+      "states": [
+        "desired",
+        "planned",
+        "resident",
+        "ready",
+        "executing",
+        "observed"
+      ],
+      "affects": [
+        "reconciliation",
+        "supply",
+        "containment",
+        "routing",
+        "execution",
+        "evidence"
+      ],
+      "boundaries": [
+        "durable authority",
+        "host trust",
+        "sandbox",
+        "peer transport"
+      ],
+      "roles": [
+        "durable-authority",
+        "trusted-host",
+        "isolated-runtime",
+        "business-logic",
+        "evidence"
+      ],
+      "evidence": [
+        "docs/architecture.md",
+        "docs/contracts/local-orchestration/v0.md",
+        "docs/contracts/distribution/v0.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/06-runtime-topology.mmd",
+      "rendered": "docs/architecture/atlas/rendered/06-runtime-topology.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "07-graph-behavior",
+      "title": "Graph Behavior And Result Composition",
+      "kind": "behavior",
+      "audience": ["application authors", "core contributors"],
+      "question": "How do tasks coordinate, detach, answer inquiries, and produce deterministic results or explicit conflicts?",
+      "scope": "A local graph run with relationships, a detached signal, an inquiry response, contribution policy, and conclusion.",
+      "omits": ["distributed routing", "runtime placement", "evidence storage"],
+      "identities": [
+        "intent",
+        "task",
+        "relationship",
+        "signal",
+        "terminal contribution",
+        "graph conclusion"
+      ],
+      "states": [
+        "requested",
+        "running",
+        "detached",
+        "terminal",
+        "completed",
+        "composition-failed"
+      ],
+      "affects": [
+        "task succession",
+        "detached coordination",
+        "result contribution",
+        "conflict detection"
+      ],
+      "boundaries": ["graph completion", "detached work", "result composition"],
+      "roles": ["business-logic", "semantic-authority", "evidence", "denied"],
+      "evidence": [
+        "docs/contracts/graph-conclusion/v0.md",
+        "cadenza/tests/unit/graph-conclusion.test.ts",
+        "cadenza/tests/unit/inquiry-broker.test.ts"
+      ],
+      "source": "docs/architecture/atlas/diagrams/07-graph-behavior.mmd",
+      "rendered": "docs/architecture/atlas/rendered/07-graph-behavior.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "08-distribution-path",
+      "title": "Local And Remote Distribution Path",
+      "kind": "sequence",
+      "audience": ["runtime contributors", "security reviewers", "operators"],
+      "question": "How does one primitive request reach an exact local or remote Chamber and fail closed on stale authority?",
+      "scope": "Route interpretation, peer authentication, generation verification, target ingress, continuation, and rejection.",
+      "omits": [
+        "placement planning",
+        "provider-specific networking",
+        "business result shape"
+      ],
+      "identities": [
+        "source Chamber",
+        "source Cell",
+        "route authority",
+        "target Cell",
+        "target Chamber"
+      ],
+      "states": [
+        "selected",
+        "verified",
+        "started",
+        "completed",
+        "stale-rejected"
+      ],
+      "affects": [
+        "route selection",
+        "peer delegation",
+        "primitive ingress",
+        "result continuation"
+      ],
+      "boundaries": ["Chamber to Cell", "Cell to Cell TLS", "Cell to Chamber"],
+      "roles": [
+        "isolated-runtime",
+        "trusted-host",
+        "durable-authority",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/cell-peer-transport/v0.md",
+        "cadenza-cell/tests/peer_transport.rs",
+        "cadenza-cell/tests/orchestrator.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/08-distribution-path.mmd",
+      "rendered": "docs/architecture/atlas/rendered/08-distribution-path.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "09-execution-evidence",
+      "title": "Execution Evidence And Trace Relationships",
+      "kind": "evidence",
+      "audience": ["operators", "application authors", "evidence contributors"],
+      "question": "How are local work, graph runs, detached continuations, distribution, transport, custody, and durable interpretation related without exposing business context?",
+      "scope": "Evidence identity layers from trace through durable ledger processing.",
+      "omits": ["observer UI", "raw context", "provider logs"],
+      "identities": [
+        "trace",
+        "graph execution",
+        "task or signal execution",
+        "distribution execution",
+        "transport attempt",
+        "custody batch",
+        "ledger record"
+      ],
+      "states": [
+        "started",
+        "completed",
+        "failed",
+        "custodied",
+        "processed",
+        "interpretable"
+      ],
+      "affects": [
+        "causal linkage",
+        "commitment",
+        "custody",
+        "normalization",
+        "projection"
+      ],
+      "boundaries": [
+        "runtime capture",
+        "Cell journal",
+        "durable ledger",
+        "disclosure"
+      ],
+      "roles": [
+        "business-logic",
+        "isolated-runtime",
+        "trusted-host",
+        "evidence",
+        "durable-authority"
+      ],
+      "evidence": [
+        "docs/contracts/execution-evidence/v0.md",
+        "docs/contracts/execution-evidence/system-closure-v0.md",
+        "cadenza-cell/docs/execution-evidence-ledger-processing-closure-2026-07-17.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/09-execution-evidence.mmd",
+      "rendered": "docs/architecture/atlas/rendered/09-execution-evidence.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "10-scale-reconciliation",
+      "title": "Scale And Reconciliation",
+      "kind": "control",
+      "audience": ["operators", "runtime contributors"],
+      "question": "How does desired state become fenced runtime change without confusing intent, action authority, observation, and readiness?",
+      "scope": "Desired state, singleton stem lease, canonical plan, exact actions, supply, Cell convergence, observations, and succession.",
+      "omits": [
+        "cloud autoscaler APIs",
+        "cost policy",
+        "concurrent Chamber execution"
+      ],
+      "identities": [
+        "desired state",
+        "stem lease",
+        "reconciliation plan",
+        "action",
+        "supply directive",
+        "Cell",
+        "Chamber observation"
+      ],
+      "states": [
+        "desired",
+        "planned",
+        "authorized",
+        "applied",
+        "observed",
+        "ready",
+        "superseded"
+      ],
+      "affects": [
+        "planning",
+        "action issuance",
+        "capacity supply",
+        "local convergence",
+        "observation feedback"
+      ],
+      "boundaries": [
+        "singleton planning",
+        "action capability",
+        "provider custody",
+        "Cell generation"
+      ],
+      "roles": [
+        "semantic-authority",
+        "durable-authority",
+        "isolated-runtime",
+        "trusted-host",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/distribution/v0.md",
+        "docs/contracts/distribution/sprint-7g-closure-review-v0.md",
+        "cadenza-cell/tests/autonomous_cell_convergence.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/10-scale-reconciliation.mmd",
+      "rendered": "docs/architecture/atlas/rendered/10-scale-reconciliation.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "11-actor-lifecycle",
+      "title": "Distributed Actor Lifecycle",
+      "kind": "state",
+      "audience": ["application authors", "runtime contributors", "operators"],
+      "question": "How does one actor remain singular, durable, and recoverable across owner loss and uncertain commits?",
+      "scope": "First touch, assignment, residency, hydration, strict write-through mutation, uncertainty resolution, drain, and recovery.",
+      "omits": [
+        "actor business schema",
+        "placement scoring",
+        "provider storage internals"
+      ],
+      "identities": [
+        "actor key",
+        "assignment epoch",
+        "owner residency",
+        "durable state",
+        "mutation outcome"
+      ],
+      "states": [
+        "unassigned",
+        "assigned",
+        "hydrating",
+        "ready",
+        "commit-uncertain",
+        "draining",
+        "owner-lost",
+        "reassigned"
+      ],
+      "affects": [
+        "owner selection",
+        "state hydration",
+        "mutation commit",
+        "fencing",
+        "recovery"
+      ],
+      "boundaries": [
+        "assignment authority",
+        "owner residency",
+        "persistence facade",
+        "epoch fence"
+      ],
+      "roles": [
+        "semantic-authority",
+        "durable-authority",
+        "trusted-host",
+        "isolated-runtime",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/actor-distribution/v1.md",
+        "docs/contracts/actor-distribution/sprint-8d-closure-review-v1.md",
+        "cadenza-cell/tests/autonomous_cell_convergence.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/11-actor-lifecycle.mmd",
+      "rendered": "docs/architecture/atlas/rendered/11-actor-lifecycle.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "12-security-capability-boundaries",
+      "title": "Security And Capability Boundaries",
+      "kind": "security",
+      "audience": ["security reviewers", "operators", "runtime contributors"],
+      "question": "Which identities may hold credentials or capabilities, what exact affect may cross each boundary, and what is forbidden?",
+      "scope": "Administrative authority, purpose-separated database roles, Cell, launcher, Chamber, adapter, peer transport, and evidence disclosure.",
+      "omits": ["cloud IAM", "hardware security modules", "managed ingress"],
+      "identities": [
+        "administrator",
+        "database roles",
+        "Cell",
+        "launcher",
+        "Chamber",
+        "adapter",
+        "peer Cell",
+        "evidence ledger"
+      ],
+      "states": [
+        "authorized",
+        "contained",
+        "credentialed",
+        "revoked",
+        "denied"
+      ],
+      "affects": [
+        "literal authority operation",
+        "process launch",
+        "capability mediation",
+        "peer delegation",
+        "bounded evidence"
+      ],
+      "boundaries": [
+        "credential custody",
+        "privilege",
+        "containment",
+        "network trust",
+        "disclosure"
+      ],
+      "roles": [
+        "durable-authority",
+        "trusted-host",
+        "isolated-runtime",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/security/cadenza-security-model-v1.md",
+        "docs/security/cadenza-threat-model-v1.md",
+        "docs/security/supported-deployment-assumptions-v1.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/12-security-capability-boundaries.mmd",
+      "rendered": "docs/architecture/atlas/rendered/12-security-capability-boundaries.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "13-reference-business-journey",
+      "title": "Reference Order Journey",
+      "kind": "journey",
+      "audience": ["application authors", "new contributors", "operators"],
+      "question": "How does an authored order intent travel through business logic and hidden runtime support, including failure and recovery?",
+      "scope": "Order submission, deterministic composition, provider boundaries, actor state, detached audit, distributed pricing, evidence, and recovery.",
+      "omits": [
+        "every reference test branch",
+        "provider implementation internals",
+        "UI"
+      ],
+      "identities": [
+        "order intent",
+        "business graph",
+        "provider",
+        "order actor",
+        "Cell",
+        "Chamber",
+        "evidence trace"
+      ],
+      "states": [
+        "submitted",
+        "validated",
+        "priced",
+        "reserved",
+        "authorized",
+        "committed",
+        "audited",
+        "recovered"
+      ],
+      "affects": [
+        "inquiry",
+        "business decision",
+        "state mutation",
+        "detached consequence",
+        "distributed execution",
+        "recovery"
+      ],
+      "boundaries": [
+        "business to provider",
+        "Chamber to Cell",
+        "actor persistence",
+        "evidence custody"
+      ],
+      "roles": [
+        "business-logic",
+        "isolated-runtime",
+        "trusted-host",
+        "external-substrate",
+        "durable-authority",
+        "evidence"
+      ],
+      "evidence": [
+        "cadenza-reference-system/README.md",
+        "cadenza-reference-system/docs/business-architecture.md",
+        "docs/publication/sprint-9c-reproducibility-evidence-v1.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/13-reference-business-journey.mmd",
+      "rendered": "docs/architecture/atlas/rendered/13-reference-business-journey.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "14-local-run-detached-trace",
+      "title": "Local Graph Run And Detached Trace Continuation",
+      "kind": "sequence",
+      "audience": ["application authors", "core contributors"],
+      "question": "How does a local graph complete while detached work starts a new graph under the same trace?",
+      "scope": "Inquiry, local task relationships, conclusion, detached signal, and trace continuation.",
+      "omits": ["remote routing", "durable evidence processing"],
+      "identities": [
+        "trace",
+        "inquiry",
+        "graph execution",
+        "task",
+        "signal emission"
+      ],
+      "states": ["started", "completed", "detached", "continued"],
+      "affects": [
+        "task execution",
+        "composition",
+        "signal delivery",
+        "trace propagation"
+      ],
+      "boundaries": ["graph completion", "detached continuation"],
+      "roles": ["business-logic", "semantic-authority", "evidence"],
+      "evidence": [
+        "docs/contracts/execution-evidence/v0.md",
+        "cadenza/src/engine/GraphRunner.ts",
+        "cadenza/src/engine/SignalBroker.ts"
+      ],
+      "source": "docs/architecture/atlas/diagrams/14-local-run-detached-trace.mmd",
+      "rendered": "docs/architecture/atlas/rendered/14-local-run-detached-trace.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "15-cell-lifecycle",
+      "title": "Cell Lifecycle",
+      "kind": "state",
+      "audience": ["operators", "Cell contributors"],
+      "question": "When may a Cell generation host affect, drain, stop, or fail?",
+      "scope": "One immutable Cell process generation and its monotonic lifecycle.",
+      "omits": ["Cell supply provider process", "Chamber internals"],
+      "identities": ["Cell identity", "Cell generation", "current observation"],
+      "states": [
+        "created",
+        "starting",
+        "operational",
+        "draining",
+        "stopped",
+        "failed"
+      ],
+      "affects": [
+        "host activation",
+        "route publication",
+        "drain",
+        "generation fencing"
+      ],
+      "boundaries": ["stable enrollment", "ephemeral generation"],
+      "roles": ["trusted-host", "durable-authority", "denied"],
+      "evidence": [
+        "docs/contracts/distribution/v0.md",
+        "cadenza-cell/src/lifecycle.rs",
+        "cadenza-cell/tests/lifecycle.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/15-cell-lifecycle.mmd",
+      "rendered": "docs/architecture/atlas/rendered/15-cell-lifecycle.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "16-chamber-lifecycle",
+      "title": "Chamber Lifecycle",
+      "kind": "state",
+      "audience": ["operators", "Chamber contributors"],
+      "question": "Which preparation and custody transitions make a Chamber eligible for primitive ingress?",
+      "scope": "Activation, preparation, readiness, draining, stop, and monotonic failure.",
+      "omits": ["placement", "adapter implementation details"],
+      "identities": [
+        "Chamber identity",
+        "runtime image",
+        "adapter process",
+        "Cell protocol"
+      ],
+      "states": [
+        "created",
+        "activated",
+        "prepared",
+        "ready",
+        "draining",
+        "stopped",
+        "failed"
+      ],
+      "affects": ["admission", "materialization", "primitive ingress", "drain"],
+      "boundaries": [
+        "activation grant",
+        "runtime readiness",
+        "accepted-before-release"
+      ],
+      "roles": ["isolated-runtime", "trusted-host", "denied"],
+      "evidence": [
+        "cadenza-chamber/contracts/v0.md",
+        "cadenza-chamber/src/lifecycle.rs",
+        "cadenza-chamber/tests/lifecycle.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/16-chamber-lifecycle.mmd",
+      "rendered": "docs/architecture/atlas/rendered/16-chamber-lifecycle.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "17-reconciliation-action-lifecycle",
+      "title": "Reconciliation Action Lifecycle",
+      "kind": "state",
+      "audience": ["operators", "reconciliation contributors"],
+      "question": "How does one fenced reconciliation action move from plan to verified outcome?",
+      "scope": "Canonical action authority, claim, execution, uncertain outcome, resolution, and supersession.",
+      "omits": ["plan generation algorithm", "provider internals"],
+      "identities": ["plan", "action", "stem epoch", "outcome"],
+      "states": [
+        "planned",
+        "authorized",
+        "claimed",
+        "applied",
+        "deferred",
+        "uncertain",
+        "resolved",
+        "superseded"
+      ],
+      "affects": ["claim", "runtime change", "outcome recording", "retry"],
+      "boundaries": ["stem lease epoch", "action identity", "semantic failure"],
+      "roles": ["durable-authority", "isolated-runtime", "evidence", "denied"],
+      "evidence": [
+        "docs/contracts/distribution/v0.md",
+        "docs/contracts/distribution/sprint-7b-closure-review-v0.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/17-reconciliation-action-lifecycle.mmd",
+      "rendered": "docs/architecture/atlas/rendered/17-reconciliation-action-lifecycle.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "18-evidence-custody-lifecycle",
+      "title": "Execution Evidence Custody Lifecycle",
+      "kind": "state",
+      "audience": ["operators", "evidence contributors"],
+      "question": "When may execution evidence be acknowledged, retried, compacted, or retained?",
+      "scope": "Report admission, journal append, sealing, claim, ledger processing, receipt, acknowledgement, and compaction.",
+      "omits": ["event-family detail", "observer projections"],
+      "identities": [
+        "evidence record",
+        "journal segment",
+        "batch",
+        "processing attempt",
+        "ledger receipt"
+      ],
+      "states": [
+        "reported",
+        "appended",
+        "sealed",
+        "claimed",
+        "commit-unknown",
+        "durable",
+        "acknowledged",
+        "compacted"
+      ],
+      "affects": [
+        "admission",
+        "custody transfer",
+        "idempotent processing",
+        "deletion"
+      ],
+      "boundaries": [
+        "Chamber success barrier",
+        "Cell journal",
+        "durable ledger"
+      ],
+      "roles": [
+        "isolated-runtime",
+        "trusted-host",
+        "durable-authority",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/execution-evidence/v0.md",
+        "docs/contracts/execution-evidence/system-closure-v0.md",
+        "cadenza-cell/src/journal.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/18-evidence-custody-lifecycle.mmd",
+      "rendered": "docs/architecture/atlas/rendered/18-evidence-custody-lifecycle.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "19-scale-change-stem-succession",
+      "title": "Scale Change And Stem Succession",
+      "kind": "sequence",
+      "audience": ["operators", "reconciliation contributors"],
+      "question": "How does a scale request converge, and how does work continue after the stem owner is lost?",
+      "scope": "Desired replica change, action execution, observation, lease loss, takeover, and continued convergence.",
+      "omits": ["provider billing", "placement scoring"],
+      "identities": [
+        "desired state",
+        "stem owner",
+        "authority",
+        "Cell",
+        "Chamber"
+      ],
+      "states": [
+        "desired",
+        "planned",
+        "applied",
+        "ready",
+        "owner-lost",
+        "taken-over"
+      ],
+      "affects": [
+        "scale intent",
+        "fenced action",
+        "local convergence",
+        "succession"
+      ],
+      "boundaries": ["stem lease", "Cell generation", "readiness observation"],
+      "roles": [
+        "semantic-authority",
+        "durable-authority",
+        "isolated-runtime",
+        "trusted-host",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/distribution/sprint-7g-closure-review-v0.md",
+        "cadenza-cell/docs/scale-orchestration-system-closure-2026-07-20.md"
+      ],
+      "source": "docs/architecture/atlas/diagrams/19-scale-change-stem-succession.mmd",
+      "rendered": "docs/architecture/atlas/rendered/19-scale-change-stem-succession.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "20-actor-write-failure-recovery",
+      "title": "Actor Write, Uncertain Commit, And Owner Recovery",
+      "kind": "sequence",
+      "audience": ["application authors", "operators", "actor contributors"],
+      "question": "How does an actor mutation preserve one durable truth through connection loss and owner loss?",
+      "scope": "Strict write-through mutation, unknown commit resolution, epoch fencing, reassignment, hydration, and continued mutation.",
+      "omits": ["actor placement scoring", "business-specific state"],
+      "identities": [
+        "caller",
+        "actor owner",
+        "Cell facade",
+        "authority",
+        "successor owner"
+      ],
+      "states": [
+        "ready",
+        "commit-in-progress",
+        "uncertain",
+        "resolved",
+        "owner-lost",
+        "rehydrated"
+      ],
+      "affects": [
+        "mutation",
+        "commit",
+        "outcome resolution",
+        "reassignment",
+        "hydration"
+      ],
+      "boundaries": [
+        "owner residency",
+        "assignment epoch",
+        "persistence capability"
+      ],
+      "roles": [
+        "business-logic",
+        "isolated-runtime",
+        "trusted-host",
+        "durable-authority",
+        "evidence",
+        "denied"
+      ],
+      "evidence": [
+        "docs/contracts/actor-distribution/v1.md",
+        "docs/contracts/actor-distribution/sprint-8d-closure-review-v1.md",
+        "cadenza-cell/tests/autonomous_cell_convergence.rs"
+      ],
+      "source": "docs/architecture/atlas/diagrams/20-actor-write-failure-recovery.mmd",
+      "rendered": "docs/architecture/atlas/rendered/20-actor-write-failure-recovery.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "30-cadenza-module-ownership",
+      "title": "Cadenza Core Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["core contributors"],
+      "question": "How are TypeScript core semantics, execution, conclusion, and evidence separated?",
+      "scope": "Stable TypeScript source ownership areas.",
+      "omits": ["individual functions", "legacy runtime host"],
+      "identities": [
+        "public facade",
+        "definitions",
+        "registry",
+        "engine",
+        "conclusion",
+        "evidence"
+      ],
+      "states": ["defined", "registered", "executed", "concluded", "reported"],
+      "affects": ["API use", "execution", "composition", "reporting"],
+      "boundaries": ["public API", "neutral core"],
+      "roles": ["semantic-authority", "evidence"],
+      "evidence": ["cadenza/src", "cadenza/tests/unit", "cadenza/contracts"],
+      "source": "cadenza/docs/module-ownership.mmd",
+      "rendered": "cadenza/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "31-python-module-ownership",
+      "title": "Python Core Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["Python core contributors"],
+      "question": "How does Python express portable primitive meaning idiomatically?",
+      "scope": "Stable Python package ownership areas.",
+      "omits": ["individual functions", "distributed adapter"],
+      "identities": [
+        "facade",
+        "definitions",
+        "task API",
+        "runtime",
+        "actor",
+        "conclusion",
+        "evidence"
+      ],
+      "states": ["defined", "executed", "concluded", "reported"],
+      "affects": ["API use", "local execution", "conformance"],
+      "boundaries": ["public package", "shared contract"],
+      "roles": ["semantic-authority", "evidence"],
+      "evidence": [
+        "cadenza-python/src/cadenza",
+        "cadenza-python/tests",
+        "cadenza-python/conformance"
+      ],
+      "source": "cadenza-python/docs/module-ownership.mmd",
+      "rendered": "cadenza-python/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "32-elixir-module-ownership",
+      "title": "Elixir Core Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["Elixir core contributors"],
+      "question": "How do portable primitives and BEAM-native runtime behavior cooperate?",
+      "scope": "Stable Elixir application and library ownership areas.",
+      "omits": ["Phoenix", "distributed adapter"],
+      "identities": [
+        "facade",
+        "OTP application",
+        "definitions",
+        "Runtime process",
+        "actor",
+        "conclusion",
+        "evidence"
+      ],
+      "states": ["started", "defined", "executed", "concluded", "reported"],
+      "affects": ["application lifecycle", "local execution", "conformance"],
+      "boundaries": ["public package", "runtime process", "shared contract"],
+      "roles": ["semantic-authority", "isolated-runtime", "evidence"],
+      "evidence": [
+        "cadenza-elixir/lib",
+        "cadenza-elixir/test",
+        "cadenza-elixir/mix.exs"
+      ],
+      "source": "cadenza-elixir/docs/module-ownership.mmd",
+      "rendered": "cadenza-elixir/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "33-csharp-module-ownership",
+      "title": "C# Core Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["C# core contributors"],
+      "question": "How does the .NET package divide primitive, registry, validation, policy, conclusion, and evidence concerns?",
+      "scope": "Stable C# project ownership areas.",
+      "omits": ["individual classes", "distributed adapter"],
+      "identities": [
+        "facade",
+        "primitives",
+        "registry",
+        "schema",
+        "signal policy",
+        "conclusion",
+        "evidence"
+      ],
+      "states": ["defined", "validated", "executed", "concluded", "reported"],
+      "affects": ["API use", "local execution", "conformance"],
+      "boundaries": ["public package", "shared contract"],
+      "roles": ["semantic-authority", "evidence"],
+      "evidence": [
+        "cadenza-csharp/src/Cadenza",
+        "cadenza-csharp/tests/Cadenza.Tests",
+        "cadenza-csharp/Cadenza.sln"
+      ],
+      "source": "cadenza-csharp/docs/module-ownership.mmd",
+      "rendered": "cadenza-csharp/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "34-environment-module-ownership",
+      "title": "Environment Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["Environment contributors", "operators"],
+      "question": "Which package owns contracts, bootstrap, literal authority access, and reconciliation?",
+      "scope": "Environment monorepo packages and PostgreSQL adapter.",
+      "omits": ["table-level schema", "individual operations"],
+      "identities": [
+        "authority contracts",
+        "bootstrap",
+        "gateway",
+        "stem",
+        "PostgreSQL adapter"
+      ],
+      "states": [
+        "specified",
+        "bootstrapped",
+        "authorized",
+        "planned",
+        "committed"
+      ],
+      "affects": [
+        "contract generation",
+        "migration",
+        "literal operations",
+        "reconciliation"
+      ],
+      "boundaries": [
+        "portable contract",
+        "durable authority",
+        "contained meta slice"
+      ],
+      "roles": ["semantic-authority", "durable-authority", "isolated-runtime"],
+      "evidence": [
+        "cadenza-environment/packages",
+        "cadenza-environment/contracts",
+        "cadenza-environment/README.md"
+      ],
+      "source": "cadenza-environment/docs/module-ownership.mmd",
+      "rendered": "cadenza-environment/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "35-chamber-module-ownership",
+      "title": "Chamber Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["Chamber contributors", "security reviewers"],
+      "question": "How does Chamber separate admission, image authority, hosting, adapters, execution, actors, and custody?",
+      "scope": "Stable Rust Chamber and TypeScript adapter ownership areas.",
+      "omits": [
+        "individual protocol fields",
+        "Cell containment implementation"
+      ],
+      "identities": [
+        "activation",
+        "runtime image",
+        "host",
+        "adapter",
+        "runtime",
+        "actor",
+        "custody"
+      ],
+      "states": ["verified", "prepared", "ready", "executing", "custodied"],
+      "affects": [
+        "admission",
+        "supervision",
+        "primitive ingress",
+        "actor execution",
+        "evidence"
+      ],
+      "boundaries": ["Cell protocol", "adapter process", "execution custody"],
+      "roles": ["durable-authority", "isolated-runtime", "evidence"],
+      "evidence": [
+        "cadenza-chamber/src",
+        "cadenza-chamber/adapters/typescript",
+        "cadenza-chamber/tests"
+      ],
+      "source": "cadenza-chamber/docs/module-ownership.mmd",
+      "rendered": "cadenza-chamber/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "36-cell-module-ownership",
+      "title": "Cell Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["Cell contributors", "security reviewers", "operators"],
+      "question": "How does Cell separate identity, host convergence, containment, routing, providers, actors, and evidence custody?",
+      "scope": "Stable Rust Cell ownership areas.",
+      "omits": ["individual protocol fields", "provider SQL"],
+      "identities": [
+        "identity",
+        "host",
+        "containment",
+        "Chamber custody",
+        "routing",
+        "providers",
+        "actor coordination",
+        "journal"
+      ],
+      "states": ["enrolled", "current", "contained", "routed", "custodied"],
+      "affects": [
+        "host lifecycle",
+        "launch",
+        "distribution",
+        "provider mediation",
+        "actor ownership",
+        "evidence"
+      ],
+      "boundaries": [
+        "generation authority",
+        "root launcher",
+        "peer TLS",
+        "Chamber sandbox",
+        "ledger"
+      ],
+      "roles": ["durable-authority", "trusted-host", "evidence"],
+      "evidence": [
+        "cadenza-cell/src",
+        "cadenza-cell/tests",
+        "cadenza-cell/contracts"
+      ],
+      "source": "cadenza-cell/docs/module-ownership.mmd",
+      "rendered": "cadenza-cell/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    },
+    {
+      "id": "37-reference-system-module-ownership",
+      "title": "Reference System Module Ownership",
+      "kind": "module-ownership",
+      "audience": ["application authors", "reference-system contributors"],
+      "question": "How does the reference consumer keep domain behavior separate from providers, deployment authority, artifacts, and proofs?",
+      "scope": "Reference-system authored modules and proof surfaces.",
+      "omits": ["runtime implementation", "provider infrastructure"],
+      "identities": [
+        "domain",
+        "system facade",
+        "providers",
+        "authority descriptor",
+        "distributed artifact",
+        "tests"
+      ],
+      "states": ["authored", "assembled", "described", "generated", "proved"],
+      "affects": [
+        "business execution",
+        "provider boundary",
+        "artifact generation",
+        "proof"
+      ],
+      "boundaries": [
+        "business logic",
+        "provider",
+        "deployment descriptor",
+        "framework consumer"
+      ],
+      "roles": [
+        "business-logic",
+        "external-substrate",
+        "durable-authority",
+        "evidence"
+      ],
+      "evidence": [
+        "cadenza-reference-system/src",
+        "cadenza-reference-system/tests",
+        "cadenza-reference-system/artifacts"
+      ],
+      "source": "cadenza-reference-system/docs/module-ownership.mmd",
+      "rendered": "cadenza-reference-system/docs/module-ownership.svg",
+      "lastValidated": "2026-07-22"
+    }
+  ]
+}

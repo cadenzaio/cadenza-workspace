@@ -1,0 +1,1027 @@
+{
+  "contract": "cadenza.environment-bootstrap",
+  "version": "0.1.0",
+  "conformance": {
+    "positive_proofs": [
+      "bootstrap.environment-identity",
+      "bootstrap.trust-root-public-only",
+      "bootstrap.first-cell-enrollment",
+      "bootstrap.static-principal-trace",
+      "bootstrap.adjacent-state-transitions",
+      "bootstrap.idempotent-input",
+      "bootstrap.ordered-evidence",
+      "bootstrap.chained-evidence",
+      "bootstrap.capability-registry-complete",
+      "bootstrap.seed-pack-digest",
+      "bootstrap.seed-application-provenance",
+      "bootstrap.authority-access-single-holder",
+      "bootstrap.handoff-complete",
+      "bootstrap.handoff-attested",
+      "bootstrap.no-source-materialization"
+    ],
+    "negative_proofs": [
+      "bootstrap.reject-state-skip",
+      "bootstrap.reject-conflicting-input",
+      "bootstrap.reject-private-material",
+      "bootstrap.reject-source-payload",
+      "bootstrap.reject-seed-digest-mismatch",
+      "bootstrap.reject-duplicate-capability",
+      "bootstrap.reject-second-authority-holder",
+      "bootstrap.reject-incomplete-handoff",
+      "bootstrap.reject-unsigned-handoff",
+      "bootstrap.reject-invalid-attestation",
+      "bootstrap.reject-non-handoff-ready"
+    ]
+  },
+  "conformance_key_resolutions": [
+    {
+      "public_key_ref": "keyref://bootstrap/environment.local.primary/root/1",
+      "algorithm": "ed25519",
+      "public_key_spki_base64": "MCowBQYDK2VwAyEAAU32DgLEEAw9ySUgaxT2pEggVy7z5Liz2i8wz7USclw="
+    }
+  ],
+  "case": {
+    "name": "generated first trusted environment reaches handoff ready",
+    "input": {
+      "bootstrap_version": "0.1.0",
+      "bootstrap_principal_key": "system.bootstrap.local",
+      "bootstrap_proof_ref": "proofref://bootstrap/environment.local.primary/genesis",
+      "environment_key": "environment.local.primary",
+      "root_key_id": "key.environment.local.primary.root.1",
+      "root_public_key_ref": "keyref://bootstrap/environment.local.primary/root/1",
+      "first_cell": {
+        "cell_key": "cell.local.control.1",
+        "trust_profile": "trusted_control",
+        "cell_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1",
+        "transport_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/transport",
+        "transport_key_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "evidence_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/evidence",
+        "evidence_key_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "internal_endpoint": "127.0.0.1:43100",
+        "transport_protocol": "cadenza-cell-tls-v0",
+        "capability_grants": [
+          {
+            "capability_key": "authority_access",
+            "mode": "admin"
+          },
+          {
+            "capability_key": "cell_control",
+            "mode": "admin"
+          },
+          {
+            "capability_key": "execution_evidence",
+            "mode": "use"
+          },
+          {
+            "capability_key": "execution_evidence_ledger",
+            "mode": "use"
+          },
+          {
+            "capability_key": "network_client",
+            "mode": "use"
+          },
+          {
+            "capability_key": "network_server",
+            "mode": "use"
+          },
+          {
+            "capability_key": "reconciliation_control",
+            "mode": "use"
+          }
+        ],
+        "slot_capacity": 8
+      },
+      "seed_packs": [
+        {
+          "pack_key": "seed.foundation.v0",
+          "pack_version": 1,
+          "content_digest": "sha256:0388d2662f6f12f7f6b2edc59867b6317f9bf3e1995f875c2a3e3bedcb32f70c"
+        },
+        {
+          "pack_key": "seed.authority-kernel.v0",
+          "pack_version": 1,
+          "content_digest": "sha256:de04040d858c82971d049078626267606c63ac44c2fc1623d7a4b89f42a5725a"
+        }
+      ]
+    },
+    "input_digest": "sha256:1ecdc53b43ac1aa6e2dfbbd1c29f9eeb2a136f83d26339e64dba96d5b01ff56a",
+    "environment": {
+      "environment_key": "environment.local.primary",
+      "lifecycle_state": "active",
+      "created_at": "2026-07-12T00:00:00.000Z"
+    },
+    "trust_root": {
+      "environment_key": "environment.local.primary",
+      "root_key_id": "key.environment.local.primary.root.1",
+      "root_public_key_ref": "keyref://bootstrap/environment.local.primary/root/1",
+      "trust_root_version": 1,
+      "status": "active",
+      "created_at": "2026-07-12T00:00:01.000Z"
+    },
+    "first_cell_enrollment": {
+      "cell_key": "cell.local.control.1",
+      "environment_key": "environment.local.primary",
+      "trust_profile": "trusted_control",
+      "enrolled_by": "static_bootstrap",
+      "cell_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1",
+      "transport_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/transport",
+      "transport_key_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "evidence_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/evidence",
+      "evidence_key_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "internal_endpoint": "127.0.0.1:43100",
+      "transport_protocol": "cadenza-cell-tls-v0",
+      "capability_grants": [
+        {
+          "capability_key": "authority_access",
+          "mode": "admin"
+        },
+        {
+          "capability_key": "cell_control",
+          "mode": "admin"
+        },
+        {
+          "capability_key": "execution_evidence",
+          "mode": "use"
+        },
+        {
+          "capability_key": "execution_evidence_ledger",
+          "mode": "use"
+        },
+        {
+          "capability_key": "network_client",
+          "mode": "use"
+        },
+        {
+          "capability_key": "network_server",
+          "mode": "use"
+        },
+        {
+          "capability_key": "reconciliation_control",
+          "mode": "use"
+        }
+      ],
+      "slot_capacity": 8,
+      "status": "active",
+      "enrolled_at": "2026-07-12T00:00:02.000Z"
+    },
+    "bootstrap_run": {
+      "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+      "environment_key": "environment.local.primary",
+      "bootstrap_version": "0.1.0",
+      "bootstrap_principal_key": "system.bootstrap.local",
+      "bootstrap_proof_ref": "proofref://bootstrap/environment.local.primary/genesis",
+      "input_digest": "sha256:1ecdc53b43ac1aa6e2dfbbd1c29f9eeb2a136f83d26339e64dba96d5b01ff56a",
+      "requested_at": "2026-07-12T00:00:00.000Z",
+      "state": "handoff_ready"
+    },
+    "transitions": [
+      {
+        "sequence": 1,
+        "from_state": "uninitialized",
+        "to_state": "schema_ready"
+      },
+      {
+        "sequence": 2,
+        "from_state": "schema_ready",
+        "to_state": "trust_established"
+      },
+      {
+        "sequence": 3,
+        "from_state": "trust_established",
+        "to_state": "foundation_seeded"
+      },
+      {
+        "sequence": 4,
+        "from_state": "foundation_seeded",
+        "to_state": "authority_slice_ready"
+      },
+      {
+        "sequence": 5,
+        "from_state": "authority_slice_ready",
+        "to_state": "handoff_ready"
+      }
+    ],
+    "step_evidence": [
+      {
+        "evidence_key": "evidence.bootstrap.0001",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "sequence": 1,
+        "from_state": "uninitialized",
+        "to_state": "schema_ready",
+        "outcome": "committed",
+        "recorded_at": "2026-07-12T00:00:01.000Z",
+        "details_digest": "sha256:9c524c516972596e1d4060e40da0597485384247d9424c056e2583acbf4a7b11",
+        "bootstrap_principal_key": "system.bootstrap.local",
+        "previous_evidence_digest": null,
+        "evidence_digest": "sha256:226e58ecb040fd18063015ec3a1aa3de8c9327e46c6f7c4b72d0f34d8e5e2535"
+      },
+      {
+        "evidence_key": "evidence.bootstrap.0002",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "sequence": 2,
+        "from_state": "schema_ready",
+        "to_state": "trust_established",
+        "outcome": "committed",
+        "recorded_at": "2026-07-12T00:00:02.000Z",
+        "details_digest": "sha256:527c9d2aa797c20a4cf813fec4ef05c4eae28f6348291494395047ec69de0462",
+        "bootstrap_principal_key": "system.bootstrap.local",
+        "previous_evidence_digest": "sha256:226e58ecb040fd18063015ec3a1aa3de8c9327e46c6f7c4b72d0f34d8e5e2535",
+        "evidence_digest": "sha256:126aa7b9e344d6a8f8a5cd984dfb680ece741525e895a72b43e786938b67a3ca"
+      },
+      {
+        "evidence_key": "evidence.bootstrap.0003",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "sequence": 3,
+        "from_state": "trust_established",
+        "to_state": "foundation_seeded",
+        "outcome": "committed",
+        "recorded_at": "2026-07-12T00:00:03.000Z",
+        "details_digest": "sha256:7252c5361857dd1d70078ba68907ab63faed0a324ef8359793cb6784fb0634ab",
+        "bootstrap_principal_key": "system.bootstrap.local",
+        "previous_evidence_digest": "sha256:126aa7b9e344d6a8f8a5cd984dfb680ece741525e895a72b43e786938b67a3ca",
+        "evidence_digest": "sha256:34103f9af5e87e99f1b60b4903e2f26b6bee9d0713694e1c152ade2d8cd82a04"
+      },
+      {
+        "evidence_key": "evidence.bootstrap.0004",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "sequence": 4,
+        "from_state": "foundation_seeded",
+        "to_state": "authority_slice_ready",
+        "outcome": "committed",
+        "recorded_at": "2026-07-12T00:00:04.000Z",
+        "details_digest": "sha256:faecdeabc162e232ee3d21bb0387533b5851009077b10aea14f1d9e5c5e9229c",
+        "bootstrap_principal_key": "system.bootstrap.local",
+        "previous_evidence_digest": "sha256:34103f9af5e87e99f1b60b4903e2f26b6bee9d0713694e1c152ade2d8cd82a04",
+        "evidence_digest": "sha256:77226e7c7dc64361d88019a9558c95dd0a234eaea7d229ee0947f6426cade8d0"
+      },
+      {
+        "evidence_key": "evidence.bootstrap.0005",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "sequence": 5,
+        "from_state": "authority_slice_ready",
+        "to_state": "handoff_ready",
+        "outcome": "committed",
+        "recorded_at": "2026-07-12T00:00:05.000Z",
+        "details_digest": "sha256:d048880ab07befb0ba0889d832383214fb4c4dff40c4d6a154e55ba4e27ef512",
+        "bootstrap_principal_key": "system.bootstrap.local",
+        "previous_evidence_digest": "sha256:77226e7c7dc64361d88019a9558c95dd0a234eaea7d229ee0947f6426cade8d0",
+        "evidence_digest": "sha256:a7be3f9f3fdfd3908b099478f44f5ff09b2933c4f4a3880ec5e75c6431490b8e"
+      }
+    ],
+    "capabilities": [
+      {
+        "capability_key": "authority_access",
+        "description": "Official authority query and mutation access",
+        "minimum_profile": "privileged",
+        "allowed_modes": [
+          "use",
+          "admin"
+        ]
+      },
+      {
+        "capability_key": "filesystem",
+        "description": "Mediated local file access",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "subprocess",
+        "description": "Mediated approved subprocess execution",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "network_client",
+        "description": "Mediated outbound network access",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "network_server",
+        "description": "Mediated listener and transport hosting",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "package_runtime",
+        "description": "Approved package-backed runtime access",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "secret_access",
+        "description": "Mediated secret-provider operations",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "cell_control",
+        "description": "Trusted cell lifecycle control",
+        "minimum_profile": "privileged",
+        "allowed_modes": [
+          "use",
+          "admin"
+        ]
+      },
+      {
+        "capability_key": "execution_evidence",
+        "description": "Mediated local execution-evidence custody operations",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "execution_evidence_ledger",
+        "description": "Mediated immutable execution-evidence ledger append",
+        "minimum_profile": "mediated",
+        "allowed_modes": [
+          "use"
+        ]
+      },
+      {
+        "capability_key": "reconciliation_control",
+        "description": "Contained reconciliation policy-loop control",
+        "minimum_profile": "privileged",
+        "allowed_modes": [
+          "use"
+        ]
+      }
+    ],
+    "seed_packs": [
+      {
+        "pack_key": "seed.foundation.v0",
+        "pack_version": 1,
+        "content_digest": "sha256:0388d2662f6f12f7f6b2edc59867b6317f9bf3e1995f875c2a3e3bedcb32f70c",
+        "records": [
+          {
+            "record_type": "capability_registry",
+            "record_key": "capability-registry.v0",
+            "payload": {
+              "capabilities": [
+                {
+                  "capability_key": "authority_access",
+                  "description": "Official authority query and mutation access",
+                  "minimum_profile": "privileged",
+                  "allowed_modes": [
+                    "use",
+                    "admin"
+                  ]
+                },
+                {
+                  "capability_key": "filesystem",
+                  "description": "Mediated local file access",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "subprocess",
+                  "description": "Mediated approved subprocess execution",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "network_client",
+                  "description": "Mediated outbound network access",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "network_server",
+                  "description": "Mediated listener and transport hosting",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "package_runtime",
+                  "description": "Approved package-backed runtime access",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "secret_access",
+                  "description": "Mediated secret-provider operations",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "cell_control",
+                  "description": "Trusted cell lifecycle control",
+                  "minimum_profile": "privileged",
+                  "allowed_modes": [
+                    "use",
+                    "admin"
+                  ]
+                },
+                {
+                  "capability_key": "execution_evidence",
+                  "description": "Mediated local execution-evidence custody operations",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "execution_evidence_ledger",
+                  "description": "Mediated immutable execution-evidence ledger append",
+                  "minimum_profile": "mediated",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                },
+                {
+                  "capability_key": "reconciliation_control",
+                  "description": "Contained reconciliation policy-loop control",
+                  "minimum_profile": "privileged",
+                  "allowed_modes": [
+                    "use"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "pack_key": "seed.authority-kernel.v0",
+        "pack_version": 1,
+        "content_digest": "sha256:de04040d858c82971d049078626267606c63ac44c2fc1623d7a4b89f42a5725a",
+        "records": [
+          {
+            "record_type": "logical_object",
+            "record_key": "slice.authority-access",
+            "payload": {
+              "object_key": "slice.authority-access",
+              "object_type": "runtime-slice",
+              "display_name": "Authority access",
+              "lifecycle_state": "active",
+              "taggable": true,
+              "policy_subject": false,
+              "policy_resource": true
+            }
+          },
+          {
+            "record_type": "object_version",
+            "record_key": "version.slice.authority-access.0001",
+            "payload": {
+              "version_key": "version.slice.authority-access.0001",
+              "object_key": "slice.authority-access",
+              "content_hash": "sha256:e39a491bdb2efe2663c49588bf901b60c3bf558bc85595dc3641f49972e750f5",
+              "semantic_payload": {
+                "slice_key": "slice.authority-access.v0",
+                "trust_profile": "privileged",
+                "required_capabilities": [
+                  {
+                    "capability_key": "authority_access",
+                    "mode": "admin"
+                  }
+                ],
+                "execution_evidence_policy": {
+                  "profile": "boundary",
+                  "processing_eligible": true
+                },
+                "handler_artifact": {
+                  "artifact_key": "artifact.cadenza.authority-gateway",
+                  "artifact_digest": "sha256:7eb295c2c51937fd763e9d3b08806047d4caa93a3d046581a02f6a6dd7e00000",
+                  "handler_key": "authority-gateway-v0"
+                },
+                "exported_task_families": [
+                  "graph_query",
+                  "graph_command",
+                  "projection_command",
+                  "bootstrap_admin"
+                ]
+              },
+              "created_at": "2026-07-12T00:00:03.000Z"
+            }
+          },
+          {
+            "record_type": "version_pointer",
+            "record_key": "pointer.slice.authority-access.current",
+            "payload": {
+              "object_key": "slice.authority-access",
+              "pointer_kind": "current",
+              "version_key": "version.slice.authority-access.0001"
+            }
+          },
+          {
+            "record_type": "version_mark",
+            "record_key": "mark.version.slice.authority-access.0001.stable",
+            "payload": {
+              "mark_key": "mark.version.slice.authority-access.0001.stable",
+              "version_key": "version.slice.authority-access.0001",
+              "mark": "stable",
+              "primary": true
+            }
+          },
+          {
+            "record_type": "activation_policy",
+            "record_key": "policy.bootstrap.activate-authority-slice.v0",
+            "payload": {
+              "environment_key": "environment.local.primary",
+              "cell_key": "cell.local.control.1",
+              "slice_key": "slice.authority-access.v0",
+              "required_trust_profile": "trusted_control",
+              "required_capability": {
+                "capability_key": "authority_access",
+                "mode": "admin"
+              },
+              "effect": "allow"
+            }
+          },
+          {
+            "record_type": "canonical_flow_declarations",
+            "record_key": "canonical-flows.authority.v0",
+            "payload": {
+              "flows": [
+                {
+                  "flow_key": "Version.CreateInitialObject",
+                  "shape": "orchestrated",
+                  "strictness": "strict",
+                  "semantic_boundary": "Create an object and its initial authority state atomically.",
+                  "invariant_fields": [
+                    "logical_object",
+                    "object_version",
+                    "current_pointer",
+                    "primary_mark"
+                  ],
+                  "deferred_consequences": [
+                    "projection_refresh"
+                  ]
+                },
+                {
+                  "flow_key": "Version.CreateNextVersion",
+                  "shape": "orchestrated",
+                  "strictness": "bounded",
+                  "semantic_boundary": "Resolve immutable next-version identity against the current base.",
+                  "invariant_fields": [
+                    "object_key",
+                    "base_version_key",
+                    "content_hash"
+                  ],
+                  "deferred_consequences": [
+                    "projection_refresh"
+                  ]
+                },
+                {
+                  "flow_key": "Version.SetCurrent",
+                  "shape": "orchestrated",
+                  "strictness": "strict",
+                  "semantic_boundary": "Move the current pointer with optimistic concurrency.",
+                  "invariant_fields": [
+                    "object_key",
+                    "expected_current_version_key",
+                    "target_version_key"
+                  ],
+                  "deferred_consequences": [
+                    "projection_refresh"
+                  ]
+                },
+                {
+                  "flow_key": "Tag.Assign",
+                  "shape": "orchestrated",
+                  "strictness": "bounded",
+                  "semantic_boundary": "Commit one governed direct tag assignment.",
+                  "invariant_fields": [
+                    "object_key",
+                    "tag_key",
+                    "category_key"
+                  ],
+                  "deferred_consequences": [
+                    "effective_tag_recompute"
+                  ]
+                },
+                {
+                  "flow_key": "Tag.Remove",
+                  "shape": "orchestrated",
+                  "strictness": "bounded",
+                  "semantic_boundary": "Commit immutable removal evidence for one assignment.",
+                  "invariant_fields": [
+                    "assignment_key",
+                    "object_key",
+                    "tag_key"
+                  ],
+                  "deferred_consequences": [
+                    "effective_tag_recompute"
+                  ]
+                },
+                {
+                  "flow_key": "Tag.RecomputeEffectiveForObject",
+                  "shape": "reactive",
+                  "strictness": "loose",
+                  "semantic_boundary": "Converge effective tags to active provenance.",
+                  "invariant_fields": [
+                    "object_key",
+                    "effective_tag_keys",
+                    "provenance_source_keys"
+                  ],
+                  "deferred_consequences": [
+                    "policy_projection_refresh"
+                  ]
+                },
+                {
+                  "flow_key": "Policy.EvaluateResourceAction",
+                  "shape": "orchestrated",
+                  "strictness": "strict",
+                  "semantic_boundary": "Produce allow or deny evidence for one resource action.",
+                  "invariant_fields": [
+                    "subject_object_key",
+                    "resource_object_key",
+                    "action"
+                  ],
+                  "deferred_consequences": [
+                    "audit_export"
+                  ]
+                },
+                {
+                  "flow_key": "Policy.EvaluateTagAction",
+                  "shape": "orchestrated",
+                  "strictness": "strict",
+                  "semantic_boundary": "Produce allow or deny evidence for one tag-management action.",
+                  "invariant_fields": [
+                    "subject_object_key",
+                    "target_object_key",
+                    "target_tag_key",
+                    "action"
+                  ],
+                  "deferred_consequences": [
+                    "audit_export"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "record_type": "authority_slice",
+            "record_key": "slice.authority-access.v0",
+            "payload": {
+              "object_key": "slice.authority-access",
+              "version_key": "version.slice.authority-access.0001",
+              "trust_profile": "privileged",
+              "required_capabilities": [
+                {
+                  "capability_key": "authority_access",
+                  "mode": "admin"
+                }
+              ],
+              "execution_evidence_policy": {
+                "profile": "boundary",
+                "processing_eligible": true
+              },
+              "handler_artifact": {
+                "artifact_key": "artifact.cadenza.authority-gateway",
+                "artifact_digest": "sha256:7eb295c2c51937fd763e9d3b08806047d4caa93a3d046581a02f6a6dd7e00000",
+                "handler_key": "authority-gateway-v0"
+              },
+              "exported_task_families": [
+                "graph_query",
+                "graph_command",
+                "projection_command",
+                "bootstrap_admin"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "seed_applications": [
+      {
+        "application_key": "seed-application.foundation.0001",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "pack_key": "seed.foundation.v0",
+        "pack_version": 1,
+        "content_digest": "sha256:0388d2662f6f12f7f6b2edc59867b6317f9bf3e1995f875c2a3e3bedcb32f70c",
+        "applied_at": "2026-07-12T00:00:03.000Z"
+      },
+      {
+        "application_key": "seed-application.authority-kernel.0001",
+        "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+        "environment_key": "environment.local.primary",
+        "pack_key": "seed.authority-kernel.v0",
+        "pack_version": 1,
+        "content_digest": "sha256:de04040d858c82971d049078626267606c63ac44c2fc1623d7a4b89f42a5725a",
+        "applied_at": "2026-07-12T00:00:04.000Z"
+      }
+    ],
+    "authority_slice": {
+      "slice_key": "slice.authority-access.v0",
+      "object_key": "slice.authority-access",
+      "version_key": "version.slice.authority-access.0001",
+      "trust_profile": "privileged",
+      "required_capabilities": [
+        {
+          "capability_key": "authority_access",
+          "mode": "admin"
+        }
+      ],
+      "execution_evidence_policy": {
+        "profile": "boundary",
+        "processing_eligible": true
+      },
+      "handler_artifact": {
+        "artifact_key": "artifact.cadenza.authority-gateway",
+        "artifact_digest": "sha256:7eb295c2c51937fd763e9d3b08806047d4caa93a3d046581a02f6a6dd7e00000",
+        "handler_key": "authority-gateway-v0"
+      },
+      "exported_task_families": [
+        "graph_query",
+        "graph_command",
+        "projection_command",
+        "bootstrap_admin"
+      ]
+    },
+    "handoff": {
+      "handoff_key": "handoff.environment.local.primary.0001",
+      "environment_key": "environment.local.primary",
+      "bootstrap_run_key": "bootstrap.environment.local.primary.0001",
+      "bootstrap_state": "handoff_ready",
+      "authority_revision": 1,
+      "trust_root": {
+        "root_key_id": "key.environment.local.primary.root.1",
+        "trust_root_version": 1,
+        "status": "active"
+      },
+      "first_cell": {
+        "cell_key": "cell.local.control.1",
+        "trust_profile": "trusted_control",
+        "cell_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1",
+        "transport_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/transport",
+        "transport_key_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "evidence_public_key_ref": "keyref://bootstrap/environment.local.primary/cell.local.control.1/evidence",
+        "evidence_key_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "internal_endpoint": "127.0.0.1:43100",
+        "transport_protocol": "cadenza-cell-tls-v0",
+        "capability_grants": [
+          {
+            "capability_key": "authority_access",
+            "mode": "admin"
+          },
+          {
+            "capability_key": "cell_control",
+            "mode": "admin"
+          },
+          {
+            "capability_key": "execution_evidence",
+            "mode": "use"
+          },
+          {
+            "capability_key": "execution_evidence_ledger",
+            "mode": "use"
+          },
+          {
+            "capability_key": "network_client",
+            "mode": "use"
+          },
+          {
+            "capability_key": "network_server",
+            "mode": "use"
+          },
+          {
+            "capability_key": "reconciliation_control",
+            "mode": "use"
+          }
+        ],
+        "slot_capacity": 8,
+        "status": "active"
+      },
+      "authority_slice": {
+        "slice_key": "slice.authority-access.v0",
+        "object_key": "slice.authority-access",
+        "version_key": "version.slice.authority-access.0001",
+        "artifact_key": "artifact.cadenza.authority-gateway",
+        "artifact_digest": "sha256:7eb295c2c51937fd763e9d3b08806047d4caa93a3d046581a02f6a6dd7e00000",
+        "required_capabilities": [
+          {
+            "capability_key": "authority_access",
+            "mode": "admin"
+          }
+        ],
+        "execution_evidence_policy": {
+          "profile": "boundary",
+          "processing_eligible": true
+        }
+      },
+      "seed_packs": [
+        {
+          "pack_key": "seed.foundation.v0",
+          "pack_version": 1,
+          "content_digest": "sha256:0388d2662f6f12f7f6b2edc59867b6317f9bf3e1995f875c2a3e3bedcb32f70c"
+        },
+        {
+          "pack_key": "seed.authority-kernel.v0",
+          "pack_version": 1,
+          "content_digest": "sha256:de04040d858c82971d049078626267606c63ac44c2fc1623d7a4b89f42a5725a"
+        }
+      ],
+      "runtime_requirement": {
+        "runtime_id": "cadenza.runtime.typescript",
+        "language_id": "typescript",
+        "adapter_version": "0.1.0",
+        "isolation": "chamber_process"
+      },
+      "activation_policy_ref": "policy.bootstrap.activate-authority-slice.v0",
+      "evidence_ref": "evidence.bootstrap.0005",
+      "evidence_chain_digest": "sha256:a7be3f9f3fdfd3908b099478f44f5ff09b2933c4f4a3880ec5e75c6431490b8e",
+      "created_at": "2026-07-12T00:00:05.000Z",
+      "handoff_digest": "sha256:9ffe6f14f42b34b8c43295ba45b1bed52600b511f5199c86ad29d82675a5b648",
+      "attestation": {
+        "signing_key_id": "key.environment.local.primary.root.1",
+        "algorithm": "ed25519",
+        "signature": "base64:aC3q1Ad/VQT3bFvqP2JZcpeZ5TzItqGMWDclkP+VpgfDaGtFOeZRvWeYAR3qL5cRoU6L75RWMfYGPUQ0QPf0DA=="
+      }
+    }
+  },
+  "negative_cases": [
+    {
+      "proof": "bootstrap.reject-state-skip",
+      "name": "state transition skips trust establishment",
+      "mutations": [
+        {
+          "operation": "replace",
+          "path": "/case/transitions/1/to_state",
+          "value": "foundation_seeded"
+        }
+      ],
+      "expected_failure": "state_transition_invalid",
+      "message_includes": "adjacent"
+    },
+    {
+      "proof": "bootstrap.reject-conflicting-input",
+      "name": "run input digest conflicts with normalized input",
+      "mutations": [
+        {
+          "operation": "replace",
+          "path": "/case/bootstrap_run/input_digest",
+          "value": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      ],
+      "expected_failure": "trust_conflict",
+      "message_includes": "input digest"
+    },
+    {
+      "proof": "bootstrap.reject-private-material",
+      "name": "trust root includes private key material",
+      "mutations": [
+        {
+          "operation": "add",
+          "path": "/case/trust_root/private_key",
+          "value": "forbidden"
+        }
+      ],
+      "expected_failure": "trust_input_invalid",
+      "message_includes": "private"
+    },
+    {
+      "proof": "bootstrap.reject-source-payload",
+      "name": "seed record includes source text",
+      "normalize_digests": true,
+      "mutations": [
+        {
+          "operation": "add",
+          "path": "/case/seed_packs/1/records/0/payload/source",
+          "value": "return true"
+        }
+      ],
+      "expected_failure": "seed_manifest_invalid",
+      "message_includes": "source"
+    },
+    {
+      "proof": "bootstrap.reject-seed-digest-mismatch",
+      "name": "seed content digest does not match content",
+      "mutations": [
+        {
+          "operation": "replace",
+          "path": "/case/seed_packs/0/content_digest",
+          "value": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        }
+      ],
+      "expected_failure": "seed_digest_mismatch",
+      "message_includes": "content digest"
+    },
+    {
+      "proof": "bootstrap.reject-duplicate-capability",
+      "name": "capability registry duplicates authority access",
+      "mutations": [
+        {
+          "operation": "add",
+          "path": "/case/capabilities/-",
+          "value": {
+            "capability_key": "authority_access",
+            "description": "Duplicate",
+            "minimum_profile": "privileged",
+            "allowed_modes": [
+              "admin"
+            ]
+          }
+        }
+      ],
+      "expected_failure": "seed_invariant_failed",
+      "message_includes": "duplicate capability"
+    },
+    {
+      "proof": "bootstrap.reject-second-authority-holder",
+      "name": "another seed object directly requires authority access",
+      "normalize_digests": true,
+      "mutations": [
+        {
+          "operation": "add",
+          "path": "/case/seed_packs/1/records/-",
+          "value": {
+            "record_type": "support_slice",
+            "record_key": "slice.other",
+            "payload": {
+              "required_capabilities": [
+                {
+                  "capability_key": "authority_access",
+                  "mode": "use"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "expected_failure": "seed_invariant_failed",
+      "message_includes": "sole holder"
+    },
+    {
+      "proof": "bootstrap.reject-incomplete-handoff",
+      "name": "handoff omits evidence reference",
+      "mutations": [
+        {
+          "operation": "remove",
+          "path": "/case/handoff/evidence_ref"
+        }
+      ],
+      "expected_failure": "handoff_generation_failed",
+      "message_includes": "evidence_ref"
+    },
+    {
+      "proof": "bootstrap.reject-unsigned-handoff",
+      "name": "handoff omits trust-root attestation",
+      "mutations": [
+        {
+          "operation": "remove",
+          "path": "/case/handoff/attestation"
+        }
+      ],
+      "expected_failure": "handoff_generation_failed",
+      "message_includes": "attestation"
+    },
+    {
+      "proof": "bootstrap.reject-invalid-attestation",
+      "name": "handoff signature cannot be verified",
+      "mutations": [
+        {
+          "operation": "replace",
+          "path": "/case/handoff/attestation/signature",
+          "value": "base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+        }
+      ],
+      "expected_failure": "handoff_generation_failed",
+      "message_includes": "signature"
+    },
+    {
+      "proof": "bootstrap.reject-non-handoff-ready",
+      "name": "handoff claims an earlier state",
+      "mutations": [
+        {
+          "operation": "replace",
+          "path": "/case/handoff/bootstrap_state",
+          "value": "authority_slice_ready"
+        }
+      ],
+      "expected_failure": "handoff_generation_failed",
+      "message_includes": "handoff_ready"
+    }
+  ]
+}

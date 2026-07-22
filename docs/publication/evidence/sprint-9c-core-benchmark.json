@@ -1,0 +1,576 @@
+{
+  "contract": "cadenza.core-benchmark-report",
+  "version": "0",
+  "suite": "core",
+  "generated_at": "2026-07-22T01:58:04.355Z",
+  "results": [
+    {
+      "kind": "timing",
+      "scenario": "one-task",
+      "profile": "structural",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 70.2512079999999,
+      "operations_per_second": 9964.241468986567,
+      "median_ms_per_operation": 0.10289792000000034,
+      "p95_ms_per_operation": 0.12870791999999937,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 12.870791999999938,
+          "milliseconds_per_operation": 0.12870791999999937
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 10.582583,
+          "milliseconds_per_operation": 0.10582583
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 9.940040999999951,
+          "milliseconds_per_operation": 0.09940040999999951
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 10.289792000000034,
+          "milliseconds_per_operation": 0.10289792000000034
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 10.564665999999988,
+          "milliseconds_per_operation": 0.10564665999999988
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 8.05316700000003,
+          "milliseconds_per_operation": 0.0805316700000003
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 7.950166999999965,
+          "milliseconds_per_operation": 0.07950166999999965
+        }
+      ],
+      "evidence": {
+        "reports": 5870,
+        "barriers": 2940
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "one-task",
+      "profile": "boundary",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 58.936751000000044,
+      "operations_per_second": 11877.139274270472,
+      "median_ms_per_operation": 0.08346334000000014,
+      "p95_ms_per_operation": 0.11762541999999997,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 11.762541999999996,
+          "milliseconds_per_operation": 0.11762541999999997
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 9.162000000000006,
+          "milliseconds_per_operation": 0.09162000000000006
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 8.346334000000013,
+          "milliseconds_per_operation": 0.08346334000000014
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 7.954125000000005,
+          "milliseconds_per_operation": 0.07954125000000005
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 9.342083000000002,
+          "milliseconds_per_operation": 0.09342083000000002
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 6.814084000000008,
+          "milliseconds_per_operation": 0.06814084000000008
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 5.555583000000013,
+          "milliseconds_per_operation": 0.055555830000000125
+        }
+      ],
+      "evidence": {
+        "reports": 3695,
+        "barriers": 1490
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "ten-task",
+      "profile": "structural",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 350,
+      "elapsed_ms": 180.82499900000002,
+      "operations_per_second": 1935.5730785874357,
+      "median_ms_per_operation": 0.5094933199999997,
+      "p95_ms_per_operation": 0.5976958400000001,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 50,
+          "elapsed_ms": 29.884792000000004,
+          "milliseconds_per_operation": 0.5976958400000001
+        },
+        {
+          "sample": 2,
+          "operations": 50,
+          "elapsed_ms": 26.058667000000014,
+          "milliseconds_per_operation": 0.5211733400000003
+        },
+        {
+          "sample": 3,
+          "operations": 50,
+          "elapsed_ms": 25.474665999999985,
+          "milliseconds_per_operation": 0.5094933199999997
+        },
+        {
+          "sample": 4,
+          "operations": 50,
+          "elapsed_ms": 22.380083000000013,
+          "milliseconds_per_operation": 0.4476016600000003
+        },
+        {
+          "sample": 5,
+          "operations": 50,
+          "elapsed_ms": 28.992166999999995,
+          "milliseconds_per_operation": 0.5798433399999999
+        },
+        {
+          "sample": 6,
+          "operations": 50,
+          "elapsed_ms": 23.927707999999996,
+          "milliseconds_per_operation": 0.4785541599999999
+        },
+        {
+          "sample": 7,
+          "operations": 50,
+          "elapsed_ms": 24.106916000000012,
+          "milliseconds_per_operation": 0.48213832000000023
+        }
+      ],
+      "evidence": {
+        "reports": 16606,
+        "barriers": 8308
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "ten-task",
+      "profile": "boundary",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 350,
+      "elapsed_ms": 82.334001,
+      "operations_per_second": 4250.977673245831,
+      "median_ms_per_operation": 0.21787250000000027,
+      "p95_ms_per_operation": 0.34551500000000035,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 50,
+          "elapsed_ms": 17.275750000000016,
+          "milliseconds_per_operation": 0.34551500000000035
+        },
+        {
+          "sample": 2,
+          "operations": 50,
+          "elapsed_ms": 10.893625000000014,
+          "milliseconds_per_operation": 0.21787250000000027
+        },
+        {
+          "sample": 3,
+          "operations": 50,
+          "elapsed_ms": 10.885541999999987,
+          "milliseconds_per_operation": 0.21771083999999974
+        },
+        {
+          "sample": 4,
+          "operations": 50,
+          "elapsed_ms": 10.642957999999993,
+          "milliseconds_per_operation": 0.21285915999999985
+        },
+        {
+          "sample": 5,
+          "operations": 50,
+          "elapsed_ms": 11.532916999999998,
+          "milliseconds_per_operation": 0.23065833999999996
+        },
+        {
+          "sample": 6,
+          "operations": 50,
+          "elapsed_ms": 10.188041999999996,
+          "milliseconds_per_operation": 0.20376083999999992
+        },
+        {
+          "sample": 7,
+          "operations": 50,
+          "elapsed_ms": 10.915166999999997,
+          "milliseconds_per_operation": 0.21830333999999993
+        }
+      ],
+      "evidence": {
+        "reports": 1981,
+        "barriers": 808
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "signal",
+      "profile": "structural",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 95.24983399999999,
+      "operations_per_second": 7349.094172699556,
+      "median_ms_per_operation": 0.13687583000000017,
+      "p95_ms_per_operation": 0.17323000000000008,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 17.323000000000008,
+          "milliseconds_per_operation": 0.17323000000000008
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 13.687583000000018,
+          "milliseconds_per_operation": 0.13687583000000017
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 14.301416999999987,
+          "milliseconds_per_operation": 0.14301416999999986
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 13.654291,
+          "milliseconds_per_operation": 0.13654291000000002
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 14.230041999999997,
+          "milliseconds_per_operation": 0.14230041999999998
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 11.456458999999995,
+          "milliseconds_per_operation": 0.11456458999999995
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 10.597041999999988,
+          "milliseconds_per_operation": 0.10597041999999987
+        }
+      ],
+      "evidence": {
+        "reports": 6597,
+        "barriers": 3666
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "signal",
+      "profile": "boundary",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 72.60566599999999,
+      "operations_per_second": 9641.120845857955,
+      "median_ms_per_operation": 0.10429458000000011,
+      "p95_ms_per_operation": 0.14030624999999985,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 14.030624999999986,
+          "milliseconds_per_operation": 0.14030624999999985
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 9.990375,
+          "milliseconds_per_operation": 0.09990375
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 10.517791999999986,
+          "milliseconds_per_operation": 0.10517791999999986
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 10.429458000000011,
+          "milliseconds_per_operation": 0.10429458000000011
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 10.732458000000008,
+          "milliseconds_per_operation": 0.10732458000000009
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 9.26245800000001,
+          "milliseconds_per_operation": 0.0926245800000001
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 7.642499999999984,
+          "milliseconds_per_operation": 0.07642499999999984
+        }
+      ],
+      "evidence": {
+        "reports": 3697,
+        "barriers": 1491
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "retry",
+      "profile": "structural",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 4177.480668000001,
+      "operations_per_second": 167.56510816724617,
+      "median_ms_per_operation": 5.936656250000006,
+      "p95_ms_per_operation": 6.36470583,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 584.013459,
+          "milliseconds_per_operation": 5.84013459
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 636.470583,
+          "milliseconds_per_operation": 6.36470583
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 575.704583,
+          "milliseconds_per_operation": 5.757045829999999
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 614.6972920000003,
+          "milliseconds_per_operation": 6.146972920000003
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 603.484876,
+          "milliseconds_per_operation": 6.03484876
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 569.44425,
+          "milliseconds_per_operation": 5.6944425
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 593.6656250000005,
+          "milliseconds_per_operation": 5.936656250000006
+        }
+      ],
+      "evidence": {
+        "reports": 5870,
+        "barriers": 2940
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "timing",
+      "scenario": "retry",
+      "profile": "boundary",
+      "warmup_operations": 25,
+      "sample_count": 7,
+      "completed_operations": 700,
+      "elapsed_ms": 4313.346667999998,
+      "operations_per_second": 162.28697896999182,
+      "median_ms_per_operation": 6.243809580000001,
+      "p95_ms_per_operation": 6.350151249999999,
+      "samples": [
+        {
+          "sample": 1,
+          "operations": 100,
+          "elapsed_ms": 607.1670839999999,
+          "milliseconds_per_operation": 6.0716708399999995
+        },
+        {
+          "sample": 2,
+          "operations": 100,
+          "elapsed_ms": 624.3809580000001,
+          "milliseconds_per_operation": 6.243809580000001
+        },
+        {
+          "sample": 3,
+          "operations": 100,
+          "elapsed_ms": 633.9881669999997,
+          "milliseconds_per_operation": 6.339881669999998
+        },
+        {
+          "sample": 4,
+          "operations": 100,
+          "elapsed_ms": 610.7257089999998,
+          "milliseconds_per_operation": 6.107257089999998
+        },
+        {
+          "sample": 5,
+          "operations": 100,
+          "elapsed_ms": 628.7427079999998,
+          "milliseconds_per_operation": 6.287427079999998
+        },
+        {
+          "sample": 6,
+          "operations": 100,
+          "elapsed_ms": 635.0151249999999,
+          "milliseconds_per_operation": 6.350151249999999
+        },
+        {
+          "sample": 7,
+          "operations": 100,
+          "elapsed_ms": 573.3269169999999,
+          "milliseconds_per_operation": 5.733269169999999
+        }
+      ],
+      "evidence": {
+        "reports": 3695,
+        "barriers": 1490
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    }
+  ]
+}

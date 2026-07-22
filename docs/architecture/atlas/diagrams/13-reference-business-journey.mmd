@@ -1,0 +1,49 @@
+sequenceDiagram
+  autonumber
+  box rgb(255,228,220) Authored order system
+    participant Caller
+    participant Graph as Order workflow
+    participant OrderActor as Order actor
+    participant Audit as Detached audit task
+  end
+  box rgb(240,242,244) Explicit providers
+    participant Providers as Payment, inventory, risk and shipping
+  end
+  box rgb(238,229,247) Contained runtime
+    participant Chamber
+  end
+  box rgb(220,236,255) Trusted distributed substrate
+    participant Cell
+  end
+  box rgb(255,242,204) Durable authority and state
+    participant Authority
+  end
+  box rgb(223,245,242) Interpretation
+    participant Evidence
+  end
+
+  Caller->>Graph: inquire submit-order
+  Graph->>Graph: validate, price and compose parallel decisions
+  Graph->>Providers: explicit payment, inventory and risk boundaries
+  Providers-->>Graph: deterministic success or domain failure
+  alt Business decisions succeed
+    Graph->>OrderActor: strict write-through order mutation
+    OrderActor->>Chamber: execute actor task under assignment epoch
+    Chamber->>Cell: mediated actor persistence capability
+    Cell->>Authority: commit exact version and assignment epoch
+    Authority-->>Cell: durable receipt
+    Cell-->>Chamber: committed outcome
+    Chamber-->>OrderActor: new state
+    Graph-->>Caller: composed order result
+    Graph-->>Audit: detached signal, same overarching trace
+  else Provider decline or stock conflict
+    Graph-->>Caller: explicit domain failure and no false committed order
+  end
+  Chamber->>Evidence: bounded execution and context commitments
+  Cell->>Evidence: distribution, custody and recovery evidence
+  opt Actor owner is lost later
+    Authority->>Cell: assignment epoch N+1
+    Cell->>Chamber: successor residency and hydration
+    Chamber->>Authority: continue from committed state
+    Evidence-->>Caller: failure and recovery remain traceable
+  end

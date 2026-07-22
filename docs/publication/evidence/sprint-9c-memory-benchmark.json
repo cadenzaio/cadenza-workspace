@@ -1,0 +1,272 @@
+{
+  "contract": "cadenza.core-benchmark-report",
+  "version": "0",
+  "suite": "memory",
+  "generated_at": "2026-07-22T01:58:16.678Z",
+  "results": [
+    {
+      "kind": "memory",
+      "scenario": "memory-graph",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 12093904,
+      "final_heap_used_bytes": 12218168,
+      "retained_delta_bytes": 124264,
+      "peak_heap_used_bytes": 19873248,
+      "later_batch_slope_bytes_per_operation": 22.772,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 12110368,
+          "rss_bytes": 90906624,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 12114024,
+          "rss_bytes": 91152384,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 12195752,
+          "rss_bytes": 91156480,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 12194600,
+          "rss_bytes": 91467776,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 12206720,
+          "rss_bytes": 91729920,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 12208984,
+          "rss_bytes": 92090368,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 12220184,
+          "rss_bytes": 91770880,
+          "external_bytes": 3612109
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 12218168,
+          "rss_bytes": 91770880,
+          "external_bytes": 3612109
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 72706,
+        "barriers": 36358
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "memory",
+      "scenario": "memory-signal",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 12035880,
+      "final_heap_used_bytes": 12205768,
+      "retained_delta_bytes": 169888,
+      "peak_heap_used_bytes": 16266168,
+      "later_batch_slope_bytes_per_operation": -9.54,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 12089784,
+          "rss_bytes": 91856896,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 12153248,
+          "rss_bytes": 91877376,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 12218112,
+          "rss_bytes": 95748096,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 12207592,
+          "rss_bytes": 92385280,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 12210880,
+          "rss_bytes": 92356608,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 12217064,
+          "rss_bytes": 92315648,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 12213320,
+          "rss_bytes": 92323840,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 12205768,
+          "rss_bytes": 92323840,
+          "external_bytes": 3743197
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 14922,
+        "barriers": 8291
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    },
+    {
+      "kind": "memory",
+      "scenario": "memory-retry",
+      "profile": "structural",
+      "warmup_operations": 50,
+      "batch_count": 8,
+      "operations_per_batch": 200,
+      "completed_operations": 1600,
+      "baseline_heap_used_bytes": 12061152,
+      "final_heap_used_bytes": 12206296,
+      "retained_delta_bytes": 145144,
+      "peak_heap_used_bytes": 18473872,
+      "later_batch_slope_bytes_per_operation": -17.72,
+      "samples": [
+        {
+          "batch": 1,
+          "operations": 200,
+          "heap_used_bytes": 12072984,
+          "rss_bytes": 89800704,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 2,
+          "operations": 400,
+          "heap_used_bytes": 12122400,
+          "rss_bytes": 89800704,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 3,
+          "operations": 600,
+          "heap_used_bytes": 12228872,
+          "rss_bytes": 89776128,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 4,
+          "operations": 800,
+          "heap_used_bytes": 12217712,
+          "rss_bytes": 89776128,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 5,
+          "operations": 1000,
+          "heap_used_bytes": 12220728,
+          "rss_bytes": 89776128,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 6,
+          "operations": 1200,
+          "heap_used_bytes": 12206128,
+          "rss_bytes": 92827648,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 7,
+          "operations": 1400,
+          "heap_used_bytes": 12213984,
+          "rss_bytes": 90075136,
+          "external_bytes": 3743197
+        },
+        {
+          "batch": 8,
+          "operations": 1600,
+          "heap_used_bytes": 12206296,
+          "rss_bytes": 90075136,
+          "external_bytes": 3743197
+        }
+      ],
+      "snapshots": [],
+      "evidence": {
+        "reports": 13270,
+        "barriers": 6640
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "v8": "13.6.233.17-node.50",
+        "platform": "linux",
+        "os_release": "6.12.76-linuxkit",
+        "architecture": "arm64",
+        "cpu_model": "unknown",
+        "cpu_count": 10,
+        "core_revision": null,
+        "core_worktree_state": "unavailable"
+      }
+    }
+  ]
+}
