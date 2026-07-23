@@ -9,11 +9,12 @@ Status: amended release-candidate input
 machine-readable branch-protection input. GitHub settings are an external
 enforcement projection and must match it after repository bootstrap.
 
-Every repository requires its declared `CI / ...` check and the GitHub DCO
-check. The Python matrix requires both supported interpreter jobs. `main`
-requires pull requests, dismissal of stale review state, resolved
-conversations, and linear history. Force pushes, branch deletion, and
-administrator bypass are prohibited.
+Every repository requires its declared GitHub check-run API context and the
+GitHub DCO check. GitHub may present an Actions job as `CI / core` in the UI,
+but branch protection uses the API context `core`. The Python matrix requires
+both `core (3.13.14)` and `core (3.14.6)`. `main` requires pull requests,
+dismissal of stale review state, resolved conversations, and linear history.
+Force pushes, branch deletion, and administrator bypass are prohibited.
 
 The single-maintainer RC1 requires zero mandatory approving reviews. Before a
 second identity receives write authority or the project claims

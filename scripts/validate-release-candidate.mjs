@@ -247,20 +247,22 @@ function validateRequiredChecks() {
       fail(`${repository.name}: missing required-check projection`);
       continue;
     }
-    if (!checks.includes("DCO")) {
-      fail(`${repository.name}: DCO is not a required projected check`);
-    }
-    for (const job of repository.required_jobs) {
-      if (
-        !checks.some(
-          (check) =>
-            check === `CI / ${job}` || check.startsWith(`CI / ${job} (`),
-        )
-      ) {
-        fail(
-          `${repository.name}: required job ${job} has no projected GitHub check`,
-        );
-      }
+    const expectedChecks = [
+      ...repository.required_jobs.flatMap((job) =>
+        repository.name === "cadenza-python" && job === "core"
+          ? candidate.toolchains.python.map((version) => `core (${version})`)
+          : [job],
+      ),
+      "DCO",
+    ].sort();
+    const projectedChecks = [...checks].sort();
+    if (
+      expectedChecks.length !== projectedChecks.length ||
+      expectedChecks.some((check, index) => check !== projectedChecks[index])
+    ) {
+      fail(
+        `${repository.name}: required-check contexts differ from exact GitHub job and DCO contexts`,
+      );
     }
   }
   for (const name of declared.keys()) {

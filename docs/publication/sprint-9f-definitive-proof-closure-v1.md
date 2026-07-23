@@ -151,7 +151,7 @@ failure in one run.
 
 ## Findings And Repairs
 
-Sprint 9F's strict freeze policy produced eight material repairs:
+Sprint 9F's strict freeze policy produced nine material repairs:
 
 1. invalid public-index links were removed from the curated export;
 2. Chamber artifact replacement is now classified by digest before protocol
@@ -168,6 +168,8 @@ Sprint 9F's strict freeze policy produced eight material repairs:
 8. current public documentation and GitHub governance now describe the actual
    official repositories, personal owner, private-history boundary,
    single-maintainer review posture, DCO, and signed-release custody.
+9. live branch protection now uses GitHub check-run API contexts rather than
+   composite workflow and job labels shown only in the UI.
 
 Each source or authority defect invalidated only its affected frozen scope,
 returned through design approval where required, and received a new exact

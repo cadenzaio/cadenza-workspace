@@ -3,21 +3,21 @@
   "repositories": [
     {
       "name": "cadenza-workspace",
-      "checks": ["CI / governance", "CI / release-metadata", "DCO"]
+      "checks": ["governance", "release-metadata", "DCO"]
     },
-    { "name": "cadenza", "checks": ["CI / core", "DCO"] },
+    { "name": "cadenza", "checks": ["core", "DCO"] },
     {
       "name": "cadenza-python",
-      "checks": ["CI / core (3.13.14)", "CI / core (3.14.6)", "DCO"]
+      "checks": ["core (3.13.14)", "core (3.14.6)", "DCO"]
     },
-    { "name": "cadenza-elixir", "checks": ["CI / core", "DCO"] },
-    { "name": "cadenza-csharp", "checks": ["CI / core", "DCO"] },
-    { "name": "cadenza-environment", "checks": ["CI / environment", "DCO"] },
-    { "name": "cadenza-chamber", "checks": ["CI / chamber", "DCO"] },
-    { "name": "cadenza-cell", "checks": ["CI / cell", "DCO"] },
+    { "name": "cadenza-elixir", "checks": ["core", "DCO"] },
+    { "name": "cadenza-csharp", "checks": ["core", "DCO"] },
+    { "name": "cadenza-environment", "checks": ["environment", "DCO"] },
+    { "name": "cadenza-chamber", "checks": ["chamber", "DCO"] },
+    { "name": "cadenza-cell", "checks": ["cell", "DCO"] },
     {
       "name": "cadenza-reference-system",
-      "checks": ["CI / reference-system", "DCO"]
+      "checks": ["reference-system", "DCO"]
     }
   ],
   "protected_branch": {
