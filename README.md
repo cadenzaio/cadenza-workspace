@@ -13,7 +13,8 @@ Start here when working from the workspace root:
 - Cadenza learning path: [docs/cadenza-learning-path.md](./docs/cadenza-learning-path.md)
 - Long-term direction: [docs/vision.md](./docs/vision.md)
 - Current implementation design: [Sprint 9 distributed foundation stabilization and publication](./docs/agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
-- Release sync workflow: [docs/release-sync.md](./docs/release-sync.md)
+- Release operations:
+  [docs/publication/sprint-9e-release-operations-v1.md](./docs/publication/sprint-9e-release-operations-v1.md)
 - Agent harness: [docs/agent-harness/README.md](./docs/agent-harness/README.md)
 - Repo routing cards: [docs/agent-harness/repo-cards/README.md](./docs/agent-harness/repo-cards/README.md)
 - Snapshot command: `./scripts/workspace-snapshot.sh`

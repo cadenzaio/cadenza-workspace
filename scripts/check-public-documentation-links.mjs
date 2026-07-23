@@ -3,27 +3,30 @@ import path from "node:path";
 import process from "node:process";
 
 const root = path.resolve(import.meta.dirname, "..");
-const roots = [
-  "docs/architecture.md",
-  "docs/index.md",
-  "docs/architecture/atlas/README.md",
-  "docs/architecture/atlas/catalog.md",
-  "docs/architecture/atlas/visual-grammar.md",
-  "docs/guides",
-  "cadenza/README.md",
-  "cadenza-python/README.md",
-  "cadenza-elixir/README.md",
-  "cadenza-csharp/README.md",
-  "cadenza-environment/README.md",
-  "cadenza-chamber/README.md",
-  "cadenza-cell/README.md",
-  "cadenza-reference-system/README.md",
-  "cadenza-reference-system/docs",
-];
+const authority = JSON.parse(
+  fs.readFileSync(
+    path.join(root, "release/public-documentation-authority.json"),
+    "utf8",
+  ),
+);
 const files = [];
+const failures = [];
+
+if (
+  authority.schema_version !== 1 ||
+  !Array.isArray(authority.current_roots) ||
+  !Array.isArray(authority.current_direction_checks)
+) {
+  throw new Error("unsupported public documentation authority configuration");
+}
 
 function collect(relativePath) {
-  const absolutePath = path.join(root, relativePath);
+  const absolutePath = resolveInsideRoot(relativePath);
+  if (!absolutePath) return;
+  if (!fs.existsSync(absolutePath)) {
+    failures.push(`missing current documentation root: ${relativePath}`);
+    return;
+  }
   const stat = fs.statSync(absolutePath);
   if (stat.isDirectory()) {
     for (const entry of fs.readdirSync(absolutePath).sort()) {
@@ -34,9 +37,8 @@ function collect(relativePath) {
   }
 }
 
-for (const entry of roots) collect(entry);
+for (const entry of authority.current_roots) collect(entry);
 
-const failures = [];
 for (const file of files) {
   const source = fs.readFileSync(file, "utf8");
   for (const match of source.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
@@ -58,11 +60,37 @@ for (const file of files) {
   }
 }
 
+for (const check of authority.current_direction_checks) {
+  const file = resolveInsideRoot(check.path);
+  if (!file) continue;
+  if (!fs.existsSync(file)) {
+    failures.push(`missing current-direction document: ${check.path}`);
+    continue;
+  }
+  const source = fs.readFileSync(file, "utf8");
+  for (const fragment of check.forbidden_fragments) {
+    if (source.includes(fragment)) {
+      failures.push(
+        `${check.path}: forbidden legacy-authority fragment ${JSON.stringify(fragment)}`,
+      );
+    }
+  }
+}
+
 if (failures.length > 0) {
   console.error(failures.join("\n"));
   process.exit(1);
 }
 
 console.log(
-  `Public documentation links validated across ${files.length} files.`,
+  `Public documentation authority validated across ${files.length} files and ${authority.current_direction_checks.length} current-direction checks.`,
 );
+
+function resolveInsideRoot(relativePath) {
+  const absolutePath = path.resolve(root, relativePath);
+  if (absolutePath !== root && !absolutePath.startsWith(root + path.sep)) {
+    failures.push(`documentation authority path escapes root: ${relativePath}`);
+    return null;
+  }
+  return absolutePath;
+}

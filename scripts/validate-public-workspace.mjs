@@ -7,7 +7,10 @@ import { fileURLToPath } from "node:url";
 const sourceRoot = fileURLToPath(new URL("..", import.meta.url));
 const exportRoot = resolve(process.argv[2] ?? sourceRoot);
 const allowlist = JSON.parse(
-  readFileSync(resolve(sourceRoot, "release/public-workspace-allowlist.json"), "utf8"),
+  readFileSync(
+    resolve(sourceRoot, "release/public-workspace-allowlist.json"),
+    "utf8",
+  ),
 );
 const matchers = allowlist.include.map(globMatcher);
 const failures = [];
@@ -19,7 +22,8 @@ for (const file of files) {
     failures.push(`path is outside the public allowlist: ${path}`);
   }
   for (const fragment of allowlist.forbidden_path_fragments) {
-    if (path.includes(fragment)) failures.push(`forbidden path fragment ${fragment}: ${path}`);
+    if (path.includes(fragment))
+      failures.push(`forbidden path fragment ${fragment}: ${path}`);
   }
   if (isText(file) && path !== "release/public-workspace-allowlist.json") {
     const content = readFileSync(file, "utf8");
@@ -37,6 +41,7 @@ for (const required of [
   "LICENSE",
   "contracts.config.json",
   "release/candidate.json",
+  "release/public-documentation-authority.json",
   "docs/architecture.md",
   "docs/architecture/atlas/README.md",
   "docs/security/cadenza-security-model-v1.md",
@@ -52,7 +57,9 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-process.stdout.write(`Public workspace validated: ${files.length} allowlisted files.\n`);
+process.stdout.write(
+  `Public workspace validated: ${files.length} allowlisted files.\n`,
+);
 
 function collectFiles(directory) {
   return readdirSync(directory, { withFileTypes: true })
@@ -63,7 +70,11 @@ function collectFiles(directory) {
         failures.push(`symbolic links are not permitted: ${toRelative(path)}`);
         return [];
       }
-      return entry.isDirectory() ? collectFiles(path) : entry.isFile() ? [path] : [];
+      return entry.isDirectory()
+        ? collectFiles(path)
+        : entry.isFile()
+          ? [path]
+          : [];
     });
 }
 

@@ -10,6 +10,8 @@ distributed-foundation release candidate.
   one-time bootstrap assumptions.
 - `public-workspace-allowlist.json` declares the only workspace paths eligible
   for the curated public export.
+- `public-documentation-authority.json` declares current public documentation
+  roots and bounded legacy-authority regression checks.
 - `manifest.schema.json` defines the frozen release-manifest shape.
 - generated candidate manifests and package outputs are build artifacts and are
   not authoritative until bound to approved source commits.

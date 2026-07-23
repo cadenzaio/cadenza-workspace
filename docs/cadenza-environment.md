@@ -1,8 +1,18 @@
 # Cadenza Environment Definition
 
-This document defines the first-generation Cadenza environment model discussed in [CAD-22](https://linear.app/cadenzaai/issue/CAD-22/design-simulator-backed-live-graph-authoring-with-fact-primitives-and) and follow-on architecture work in April 2026.
+Date: 2026-07-23
+Status: implemented foundation with explicitly prospective extensions
 
-It describes the next environment boundary Cadenza is moving toward. It does not claim that the current file-repo workspace already operates this way.
+This document began as the first-generation Environment proposal discussed in
+[CAD-22](https://linear.app/cadenzaai/issue/CAD-22/design-simulator-backed-live-graph-authoring-with-fact-primitives-and)
+and follow-on architecture work. Its foundation is now implemented across
+`cadenza-environment`, `cadenza-chamber`, and `cadenza-cell`.
+
+Current behavior is governed by the contracts, repository READMEs, security
+posture, and compatibility manifest linked from
+[architecture.md](./architecture.md). Sections using future-oriented language
+describe prospective tags, plugins, Facts, UI, Memory, agents, or
+database-native authoring and do not expand the current release contract.
 
 ## Purpose
 
@@ -28,7 +38,7 @@ For the current iteration, a Cadenza environment is:
 
 Later, nested environments may consume some of those bootstrap and materialization responsibilities from a higher layer. That is explicitly out of scope for this first definition.
 
-## Cells Versus Runtime Engine
+## Cells And Chambers
 
 ### Runtime Host Boundary
 
@@ -38,9 +48,13 @@ The old `engine` name is retired for the environment architecture:
 - a `chamber` is the isolated Cadenza runtime that materializes and executes one governed runtime image.
 - a `cell` is the trusted host that manages chambers and mediates their capabilities.
 
-The future chamber runtime will live in its own official repository after environment bootstrap defines the activation handoff. Legacy `cadenza-engine` code is reference-only.
+The Chamber runtime lives in the official `cadenza-chamber` repository and
+consumes the activation handoff defined by Environment authority. Legacy
+`cadenza-engine` code is reference-only.
 
-The cell should also own the secure execution environment for source-bearing runtime behavior. That secure VM and its capability mediation belong to the future cell repo, not to `cadenza` core.
+The official `cadenza-cell` repository owns the trusted host boundary,
+containment plan, and capability mediation for source-bearing runtime behavior.
+These responsibilities do not belong to `cadenza` core.
 
 Cells should advertise a small governed capability set so placement, materialization, and security review can reason about which executable slices are allowed to run there.
 
@@ -199,9 +213,9 @@ Actor state writes should be owned by the actor wrapper and persistence extensio
 
 - `ephemeral`: local chamber lifetime only; no durable commit
 - `write-through`: task success requires durable commit success
-Write-through is mandatory for distributed actors. A persisted actor with dirty
-uncommitted state must not be silently evicted; it must commit, transfer
-ownership explicitly, mark recovery required, or drain/fail safely.
+  Write-through is mandatory for distributed actors. A persisted actor with dirty
+  uncommitted state must not be silently evicted; it must commit, transfer
+  ownership explicitly, mark recovery required, or drain/fail safely.
 
 Authority actors should not be treated as physical singletons. Authority state remains one logical truth per authority domain, but authority actors may be replicated as cell-local runtime actors that serve read-heavy authority checks from signed or revisioned local projections and initiate privileged write-through commits. Replicated authority actors are valid only within freshness, policy, identity, epoch, and commit-path bounds.
 
@@ -263,7 +277,8 @@ Delegation across chambers should return source-facing outcomes that clearly sep
 
 ### `cadenza`
 
-`cadenza` is the official TypeScript platform repository with strict package boundaries.
+`cadenza` is the official TypeScript core repository with strict package
+boundaries.
 
 The root `@cadenza.io/core` package owns:
 
@@ -272,14 +287,25 @@ The root `@cadenza.io/core` package owns:
 - executable APIs and contracts for core-represented runtime objects.
 - materializable runtime representations such as tasks, intents, signals, actors, helpers, and globals.
 
-The `cadenza-environment/packages/environment-bootstrap/` package owns:
+Core remains persistence- and authority-agnostic. It does not import
+Environment bootstrap, PostgreSQL, Chamber, or Cell implementation.
 
-- neutral bootstrap contract implementation.
-- the first environment database schema and PostgreSQL adapter.
-- immutable seed packs and genesis orchestration.
-- trust-root public records, initial cell enrollment, bootstrap evidence, and chamber activation handoff.
+The Python, Elixir, and C# core repositories express the same portable
+primitive meaning through checked language-specific implementations. They are
+not Chamber adapters in the current release.
 
-The core package must not import bootstrap or persistence code. Repository co-location does not collapse these package boundaries.
+### `cadenza-environment`
+
+The official Environment authority repository owns:
+
+- neutral bootstrap contracts and genesis orchestration;
+- the PostgreSQL authority schema and purpose-separated authority operations;
+- desired state, placement, reconciliation, supply, and stem succession;
+- execution-evidence ledger processing and distributed actor authority;
+- trust-root public records, Cell enrollment, and Chamber activation handoff.
+
+It does not own primitive semantics, callable materialization, host
+containment, or peer transport.
 
 ### `cadenza-chamber`
 
@@ -293,9 +319,24 @@ The official chamber runtime repository owns:
 
 It does not own graph authority, environment schema, business logic authority, or meta-layer authority.
 
+### `cadenza-cell`
+
+The official trusted-host repository owns:
+
+- deterministic containment and launch policy;
+- Chamber process custody and bounded host capabilities;
+- local and authenticated peer routing;
+- durable local evidence custody;
+- runtime convergence, supply realization, and termination.
+
+It interprets current Environment authority but does not replace that durable
+authority.
+
 ### Legacy Repositories
 
-`cadenza-environment`, `cadenza-engine`, `cadenza-db`, and `cadenza-service` are not official implementation targets. They may be read as historical evidence but do not own current contracts.
+`cadenza-engine`, `cadenza-db`, `cadenza-service`, old UI experiments, and demo
+repositories are historical evidence only. They do not own current contracts
+or implementation direction.
 
 ### UI Console
 
@@ -310,7 +351,9 @@ It is part of the environment, but it is not part of the chamber substrate or co
 
 ## Core Representation And Materialization Boundary
 
-Cells only materialize what can be represented by the core and what is needed for execution on that cell.
+Chambers materialize only what can be represented by the selected core and what
+is needed for their assigned execution slice. Cells admit and host that work
+under current placement, artifact, containment, and capability authority.
 
 This is the practical materialization rule for the first generation:
 
@@ -330,7 +373,10 @@ Examples of database-native-only structure:
 
 - facts and other graph-native knowledge structures that do not have a core representation
 
-This avoids a false split between "executable materialization" and "context materialization." The real boundary is simpler: cells materialize the assigned slice plus required supporting context, as long as that structure is representable by the core.
+This avoids a false split between "executable materialization" and "context
+materialization." The real boundary is simpler: a Chamber adapter materializes
+the assigned slice plus required supporting context when that structure is
+representable by its core.
 
 ## Execution Model
 
@@ -376,9 +422,9 @@ Likely examples:
 - socket and REST actors
 - local registry actors
 - execution persistence paths
-- engine health monitoring paths
+- Cell and Chamber health evidence paths
 - baseline bootstrap participation logic
-- other distributed-runtime support moved forward from the current service package
+- other distributed-runtime support expressed through current contracts
 
 ### Singleton Environment Slices
 
@@ -390,7 +436,9 @@ Examples:
 - the singleton expansion-control slice for durable generated bundles
 - other environment-wide authority or coordination slices
 
-In a single-engine environment, singleton slices may live on the same engine as the ubiquitous meta slice and the business layer.
+In a single-Cell environment, singleton slices may be assigned to governed
+Chambers on that Cell beside ubiquitous meta and business slices, subject to
+lane and capability policy.
 
 ### Per-Agent Slices
 
@@ -406,7 +454,8 @@ An agent is modeled as an actor. Its standing instructions are represented as fa
 
 ### Business Slices
 
-These are the domain and product graph slices that cells materialize according to placement rules.
+These are the domain and product graph slices that Environment authority places
+on eligible Cells and their Chambers materialize according to runtime policy.
 
 ## Stem Cell
 
@@ -545,11 +594,14 @@ A production remediation task can be readable by platform actors for diagnosis, 
 
 That lets the system separate understanding from action.
 
-### Engine materialization boundaries
+### Cell placement and materialization boundaries
 
-Engines are policy subjects too.
+Cells and their governed runtime lanes are policy subjects too.
 
-An engine tagged `region-eu` and `gpu` can be allowed to `materialize` only the logical objects whose effective tags require EU placement and GPU capability. Another engine may still read metadata about those objects for routing or planning, while remaining unable to materialize them.
+A Cell tagged `region-eu` and `gpu` can be eligible to host Chambers that
+materialize only logical objects whose effective tags require EU placement and
+GPU capability. Another Cell may still receive bounded routing projections
+without becoming eligible to materialize those objects.
 
 That makes placement governable without turning it into a hardcoded deployment rule.
 
@@ -625,21 +677,23 @@ The following are intentionally not part of this first environment definition:
 
 ## Immediate Implications
 
-This environment model changes the next implementation work in a few concrete ways:
+This Environment model preserves a few concrete implementation rules:
 
 - the environment schema and bootstrap implementation belong in the official
   `cadenza-environment` repository; core repositories remain persistence- and
   environment-authority-agnostic.
-- `@cadenza.io/core` remains persistence-agnostic despite repository co-location.
-- the future chamber runtime should stay thin, containment-focused, and materialization-focused.
+- all core implementations remain persistence- and authority-agnostic.
+- the Chamber runtime stays narrow, containment-aware, and
+  materialization-focused.
 - task-only execution should be treated as a hard simplification, not a soft preference
 - routines should not return as executable structure through the back door
-- future work should preserve the distinction between graph authority and engine placement
+- future work should preserve the distinction between durable graph authority,
+  Cell placement, and Chamber execution
 - the policy layer should be treated as a first-class environment concern, not an afterthought bolted onto tags
 
 ## Related Documents
 
-- [vision.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/vision.md)
-- [architecture.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/architecture.md)
-- [index.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/index.md)
-- [cadenza-schema-proposal.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/cadenza-schema-proposal.md)
+- [vision.md](./vision.md)
+- [architecture.md](./architecture.md)
+- [index.md](./index.md)
+- [cadenza-schema-proposal.md](./cadenza-schema-proposal.md)

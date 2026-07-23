@@ -1,37 +1,31 @@
 # cadenza-integrations
 
-Role: host and agent-specific adapters on top of the official Cadenza runtime protocol.
+Status: deferred/private; not an official distributed-foundation repository
+
+Role: possible future home for host- or product-specific adapters that consume
+official Cadenza contracts without redefining them.
 
 Enter this repo when:
 
-- a task adds or updates a runtime client for `cadenza runtime stdio`
-- a task adds or updates a host-specific wrapper such as Codex
-- the change should consume the core runtime protocol without redefining it
+- an approved future design explicitly activates an integration surface
+- a host-specific adapter can remain a consumer of official public contracts
+- the work does not belong in core, Environment, Chamber, or Cell
 
 Read before editing:
 
 - `docs/cadenza-learning-path.md`
 - `docs/vision.md`
+- `docs/cadenza-language-runtime-contract.md`
 
-First files:
+Current boundary:
 
-- `cadenza-integrations/README.md`
-- `cadenza-integrations/AGENTS.md`
-- `cadenza-integrations/package.json`
-- `cadenza-integrations/packages/`
-
-Primary commands:
-
-- `cd cadenza-integrations && yarn install`
-- `cd cadenza-integrations && yarn build`
-- `cd cadenza-integrations && yarn typecheck`
-- `cd cadenza-integrations && yarn test`
-
-Contract role:
-
-- consumer of the `cadenza` runtime protocol
+- no integration or CLI surface is part of the current release candidate
+- this card grants no contract authority and defines no current commands
+- activation requires an approved design and a repo-local governance contract
 
 Routing note:
 
-- if the runtime protocol itself must change, update `cadenza` first
-- if transport/distribution service contracts must change, route to `cadenza-service`
+- primitive semantics route to `cadenza`
+- durable authority and policy route to `cadenza-environment`
+- language materialization and runtime lifecycle route to `cadenza-chamber`
+- containment, host capabilities, and peer transport route to `cadenza-cell`

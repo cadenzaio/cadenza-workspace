@@ -12,6 +12,21 @@ This is the shortest route through the workspace meta repo. Use it instead of sc
 6. Open the relevant repo card under [agent-harness/repo-cards/](./agent-harness/repo-cards/README.md) before entering a child repo.
 7. Run `./scripts/workspace-snapshot.sh` when the task could touch more than one repo.
 
+## Document Authority
+
+- Current guidance is declared in
+  [../release/public-documentation-authority.json](../release/public-documentation-authority.json)
+  and checked as one public navigation surface.
+- Contracts and repository READMEs own implemented behavior within their
+  domains.
+- [cadenza-environment.md](./cadenza-environment.md),
+  [cadenza-schema-proposal.md](./cadenza-schema-proposal.md), and
+  [vision.md](./vision.md) contain clearly labeled prospective direction; they
+  do not expand the current release contract.
+- Decisions, completed execution plans, publication gates, and legacy repo
+  cards preserve history. They do not override current contract or repository
+  authority.
+
 ## If The Task Is About
 
 - Shared contracts:

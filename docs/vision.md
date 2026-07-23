@@ -64,8 +64,10 @@ In the end state:
 - primitives are connected through typed edges and tags
 - development happens inside live simulator branches rather than dead text branches
 - promotion into larger environments is a graph-native merge/publish operation
-- environments become the main deployable unit: seeded database, engines, and optional UI console
-- execution engines stay thin and dumb, materializing the graph rather than owning platform semantics
+- environments become the main deployable unit: seeded authority, Cells,
+  Chambers, and an optional UI console
+- Chambers stay narrow and replaceable while Cells mediate trusted host
+  capabilities; neither layer owns business or platform meaning
 - agents and humans collaborate against the same live structure with scoped authority and observability
 
 That gives agents:
@@ -227,59 +229,78 @@ The same principle should apply to helpers and globals. Because they are shared 
 
 The meta-memory model extends this maintenance principle to agent development itself. Human and agent conversations should be captured as source events, distilled incrementally into candidate knowledge, and propagated through impact projections, capsules, and context packets. Scheduled maintenance remains a safety net; proactive impact detection is the default.
 
-## Engines And Deployment
+## Chambers, Cells, And Deployment
 
-The execution engines should become intentionally dumb sandboxes.
+Chambers are intentionally narrow contained runtimes.
 
 Their job is to:
 
 - receive graph-defined system structure from the database
 - parse and materialize primitives and support components
 - execute the resulting system safely
-- expose runtime observations back into the graph
+- produce normalized execution evidence
 
-Their job is not to own platform semantics, business logic, or the meta layer.
+Cells host and contain Chambers, mediate capabilities and transport, and
+preserve local custody. Neither Cells nor Chambers own platform semantics,
+business logic, or durable Environment authority.
 
 If designed correctly:
 
 - the meta layer also lives in the database-native graph
-- engines stay thin and replaceable
+- Chambers stay narrow and replaceable
+- Cells keep privileged host affect explicit and bounded
 - environments own schema, seeding, and bootstrap while core stays database-agnostic
-- deployment complexity falls because shipping a system becomes mostly about running a sandbox that materializes the authoritative graph
+- deployment complexity falls because shipping a system becomes mostly about
+  reconciling governed runtime images that materialize the authoritative graph
 - the distinction between code deployment and system evolution narrows substantially
 
 ## Environment Model
 
-The next deployable boundary is a Cadenza environment.
+The deployable boundary is a Cadenza environment.
 
 For the current iteration, an environment is:
 
 - a seeded database
-- one or more engines
+- one or more Cells hosting governed Chambers
 - an optional UI console
 - bootstrap and materialization rules owned by the environment layer
 
 Within that split:
 
 - `cadenza` remains the database-agnostic primitive and runtime core
-- the environment layer owns schema, seed data, and bootstrap
-- the engine layer bridges database graph slices into core materialization
+- `cadenza-environment` owns schema, seed data, durable authority, and
+  reconciliation
+- `cadenza-chamber` owns controlled callable and primitive materialization
+- `cadenza-cell` owns trusted hosting, containment, transport, and local custody
 
-Engines materialize only what the core can represent. That includes structures such as tasks, intents, signals, actors, helpers, and globals. Facts remain database-native unless and until the core gains a representation for them.
+Chambers materialize only what the selected core can represent. That includes
+structures such as tasks, intents, signals, actors, helpers, and globals. Facts
+remain prospective database-native structure unless and until the core gains a
+representation for them.
 
-This is one of the reasons the database-native direction matters so much. The more semantics move into the graph and out of bespoke engine code, the closer Cadenza gets to a publish model where the system is updated by promoting graph structure rather than rebuilding thick runtime hosts.
+This is one reason the database-native direction matters. The more semantics
+move into the graph and out of substrate code, the closer Cadenza gets to a
+publish model where the system evolves by promoting governed graph structure
+rather than rebuilding thick runtime hosts.
 
 ## Why The Current Repos Still Matter
 
-The current file-based repos are the bridge into that future.
+The official file-based repositories are the bridge into that future.
 
-- `cadenza/` sharpens the primitive model.
-- `cadenza-service/` proves distributed execution and metadata propagation.
-- `cadenza-db/` pushes the system toward persisted, queryable structure.
-- a future environment repo should own environment schema, seeded graph definitions, and bootstrap setup.
-- UI and demo repos expose how the system behaves in practice.
+- `cadenza/` owns TypeScript primitive meaning and local graph execution.
+- `cadenza-python/`, `cadenza-elixir/`, and `cadenza-csharp/` prove portable core
+  meaning in distinct languages.
+- `cadenza-environment/` owns durable authority, bootstrap, reconciliation,
+  evidence processing, and distributed actor authority.
+- `cadenza-chamber/` owns governed runtime activation and materialization.
+- `cadenza-cell/` owns trusted hosting, containment, distribution, and custody.
+- `cadenza-reference-system/` proves realistic public authoring without owning
+  framework contracts.
 
-The file repos are not the end state. They are the transition layer while the database-native system becomes capable enough to absorb more of the platform.
+Legacy service, database, engine, UI experiment, and demo repositories remain
+historical evidence only. The official file repositories are still a
+transition layer while the database-native system becomes capable enough to
+absorb more platform behavior.
 
 ## Practical Implications For Agents
 
@@ -309,7 +330,8 @@ When a change does the opposite, it needs stronger justification.
 - internalize Cadenza's own meta memory so docs, agent context, impact analysis, and executable grounding are derived from accepted knowledge and evidence
 - introduce helper/global support components that stay queryable, taggable, and connected without becoming first-class primitives
 - make system evolution, orchestration, testing, and rollback increasingly data-native
-- keep engines thin so they materialize graph-defined behavior instead of owning platform logic
+- keep Chamber and Cell substrate code narrow so it enables governed execution
+  instead of owning platform meaning
 - make retrieval progressively selective so agents and humans read only the fidelity they need
 - support live collaboration, monitoring, and development against the same running structure
 - enable one publish action to upgrade larger slices of the system safely

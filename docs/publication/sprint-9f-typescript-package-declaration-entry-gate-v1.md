@@ -1,7 +1,7 @@
 # Sprint 9F TypeScript Package Declaration Entry Gate V1
 
 Date: 2026-07-22
-Status: design amendment approved; repair in progress
+Status: affected-scope replacement freeze approved
 
 ## Context
 
@@ -211,3 +211,108 @@ replacement work. It does not authorize generated-output, runtime, API, or
 publication changes.
 
 The user approved this design amendment on 2026-07-22.
+
+## Repair Result
+
+Core now exposes format-aware declaration conditions while preserving the
+classic top-level type entry. The installed-package smoke verifies that every
+declared public entry exists and compiles real `Cadenza.defineIntent` calls
+through ESM `NodeNext`, CommonJS `NodeNext`, and classic resolution.
+
+The repair is committed in two DCO-signed commits:
+
+- `6e8df5ab6fd9de7158a811ac8bcd718f4e7387d4` aligns the top-level type entry
+  and adds installed-artifact validation;
+- `f936045b5710e40db272435b6cf68741803824e6` supersedes the interim
+  conditional entry with the approved format-aware map and strengthens the
+  compiler fixtures.
+
+Exact Node `24.18.0` validation passed:
+
+- complete formatting and semantic typecheck;
+- all 148 Core tests;
+- build and enhanced installed-package smoke;
+- production dependency audit with zero vulnerabilities;
+- byte comparison proving every generated runtime bundle, declaration, and
+  source map is identical to the prior freeze.
+
+A new autonomous authoring agent started from only the replacement tarball,
+public README, task brief, and ordinary installed consumer dependencies. In
+approximately ten minutes it produced the required `quote-order` intent,
+validation and integer-cent calculation graph, valid EUR 140.00 case, invalid
+order case, and report. Strict `NodeNext` typecheck, two runtime tests, and
+production build passed under exact Node `24.18.0` without path aliases,
+`Bundler` resolution, package-internal imports, or infrastructure leakage.
+
+The trial recorded two non-blocking API lessons: task callbacks narrow from the
+general business context at their boundary, and responder failures expose the
+bounded inquiry-level error instead of the internal validation message.
+
+Complete reference-system release validation then passed against the
+replacement package: all 9 tests, typecheck, build, and artifact regeneration.
+The generated reference artifact remains
+`sha256:9b9f1118e5313ac9867cec4bba9162296df5b2d2515ae6b1085dc9a51538b3a1`
+and remains bound to the byte-identical executable Core ESM module
+`sha256:ecdda04fc00ceb6aeb7c39ce58cce32277617422c526c27a29ae6e33ac05ae2a`.
+
+## Replacement Assembly
+
+Two complete assemblies and manifests from the same clean commits are
+byte-identical. The candidate metadata digest remains
+`sha256:fb000ad25a00edbb0c8e6ff8c9887a42e6865680a854896a6673c4f22fdb9b3a`,
+the manifest still contains 20 artifacts, and `registry_publication` remains
+false.
+
+Replacement repository identities are:
+
+- Core commit `f936045b5710e40db272435b6cf68741803824e6`, source tree
+  `sha256:e9cb3fd1f487b907fbce6cef30ddb606a4e8fb42beaaace6560f6580392d2c2c`;
+- curated workspace commit `529134c6b165048df80589c4d83ab92667a037f1`,
+  source tree
+  `sha256:672da1547e1c757305562771ed84be3895bb4ab06ff9a7114c09baed33e594f8`.
+
+Replacement artifact identities are:
+
+- Core npm package:
+  `sha256:77d124434af753cd6e7711608acd2e306d3044321bb9a8abfa57209d7eaad13d`;
+- Core source archive:
+  `sha256:a7cb6579619ac429d01afc1160dc9fd1aaa82061968b9647fbb7634ca1c051dd`;
+- curated workspace source archive:
+  `sha256:13d25d72011dab709c8ea32634e1f59005dcc3da31636e50ea568484caa14bf1`;
+- aggregate manifest:
+  `sha256:d87bdae6b189a83ead0cde7261e32949cc6d2fa439aa0f9707979965ea7aa954`.
+
+Pinned Syft `1.49.0` regeneration proved the Core SBOM remains byte-identical at
+`sha256:8f73418b8e4a51abb697f5a09315fa1d2bbeda730aa73fc3d14bc79891ca2fd5`.
+Every other SBOM is also unchanged. Independent manifest comparison proves
+that the two repository records and three artifacts above are the only changes
+from the approved Cell supply occupancy freeze.
+
+The final nine-archive clean room passed workspace governance, public export,
+release metadata, all six contract snapshot bundles, public documentation
+links, rendered architecture validation, and catalog validation. All nine
+extracted source trees match their manifest source-tree identities. The
+manifest passes its Draft 2020-12 schema, and all 20 artifact byte sizes and
+SHA-256 digests were independently verified.
+
+Retained replacement inputs:
+
+- manifest:
+  `/tmp/cadenza-distributed-foundation-rc1-types-entry-manifest-v1.json`;
+- artifacts: `/tmp/cadenza-release-artifacts-rc1-types-entry-v1`;
+- independently reproduced artifacts:
+  `/tmp/cadenza-release-artifacts-rc1-types-entry-repro-v1`;
+- autonomous authoring trial: `/tmp/cadenza-9f-agent-trial-v4`.
+
+## Affected-Scope Refreeze Gate
+
+Explicit approval replaces only the Core and curated-workspace repository
+identities and the three artifact identities listed above, together with the
+aggregate manifest. Every other repository record and 17 artifact records
+remain frozen at their previously approved identities. Approval reauthorizes
+Sprint 9F against the retained replacement inputs and does not authorize any
+external publication.
+
+The user approved this affected-scope replacement freeze on 2026-07-23. The
+replacement manifest and artifact paths above are now authoritative for the
+remaining Sprint 9F proof.
