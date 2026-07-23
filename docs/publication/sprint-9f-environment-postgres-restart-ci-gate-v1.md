@@ -103,3 +103,28 @@ After repair:
 The user approved the Environment PostgreSQL restart CI repair design on
 2026-07-23. Implementation may proceed. Any resulting affected-scope
 replacement freeze still requires explicit approval.
+
+## Implementation Evidence
+
+The DCO-signed replacement commit is
+`de8dd66ea8dd87613c15120b1d4ce5b4f38bbd47`.
+
+- Local validation passes type checking, all 112 tests, build, package smoke,
+  and audits.
+- Contained PostgreSQL 16/Linux validation passes the same complete sequence.
+- GitHub Actions run `30031174538` passes the exact replacement commit under
+  required API context `environment`.
+- The new regression runs two clusters on PostgreSQL port `5432` in separate
+  socket directories, restarts them concurrently, and reconnects through fresh
+  pools.
+- The authority-contracts, authority-gateway, and environment-bootstrap
+  package tarballs are byte-identical to the frozen artifacts.
+- The normalized Environment CycloneDX SBOM is byte-identical to the frozen
+  SBOM.
+- Production source, contracts, migrations, generated runtime artifacts, and
+  package declarations are unchanged.
+
+The replacement therefore affects only the Environment source identity and
+source archive plus the curated workspace identity, workspace archive, and
+aggregate manifest. Publication remains paused pending the exact
+Environment-and-workspace affected-scope replacement freeze.
