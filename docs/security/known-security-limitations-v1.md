@@ -1,10 +1,12 @@
 # Known Security Limitations V1
 
-Date: 2026-07-22
+Date: 2026-07-23
 
 1. **Release-candidate maturity.** The distributed foundation has no production
-   support SLA. Sprint 9C's fresh Linux and realistic reference-system proofs
-   passed, but exact clean-commit and public-clone release repetitions remain.
+   support SLA. Exact frozen clean-commit, archive-only, PostgreSQL, Linux,
+   gVisor, distributed, reference-system, package-consumer, regeneration, and
+   cleanup proofs passed. The unauthenticated remote-clone repetition can only
+   occur after separately approved GitHub publication.
 2. **Node VM is not a sandbox.** VM contexts narrow accidental access and nested
    code generation, but containment depends on the entire Chamber running in
    the measured Cell/gVisor profile.
@@ -42,3 +44,14 @@ Date: 2026-07-22
     reduce risk but cannot prove absence of every vulnerability or secret.
     Publication repeats automated and human review on exact candidate histories
     and artifacts.
+13. **Personal-owner and single-maintainer custody.** RC1 is published under
+    the personal `cadenzaio` GitHub owner with one maintainer. Organization
+    custody and independent review are not claimed. The branch rule must ratchet
+    to one independent approval before a second identity receives write
+    authority or the project claims multi-maintainer governance.
+14. **Release-signing custody is a publication preflight.** No RC1 tag,
+    manifest, or release asset may be published until a dedicated
+    passphrase-protected Ed25519 SSH signing identity is provisioned, registered
+    with GitHub, and kept outside source, artifacts, logs, and inherited runtime
+    configuration. Compromise or loss of that key requires withdrawal and
+    supersession; automated rotation is not yet provided.

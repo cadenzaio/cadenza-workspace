@@ -272,14 +272,26 @@ function validateRequiredChecks() {
   if (branch.name !== candidate.external_publication_controls.default_branch) {
     fail("required-check branch differs from candidate default branch");
   }
-  if (branch.pull_request_required !== true || branch.approving_reviews < 1) {
-    fail("protected main must require a reviewed pull request");
+  if (branch.pull_request_required !== true || branch.approving_reviews !== 0) {
+    fail(
+      "single-maintainer RC1 must require pull requests with zero approving reviews",
+    );
   }
   if (
     branch.force_push_allowed !== false ||
     branch.deletion_allowed !== false
   ) {
     fail("protected main must prohibit force push and deletion");
+  }
+  const ratchet = requiredChecks.governance_ratchet;
+  if (
+    ratchet?.trigger !==
+      "before_second_write_authority_or_multi_maintainer_claim" ||
+    ratchet.approving_reviews !== 1
+  ) {
+    fail(
+      "required checks must ratchet to one independent review before a second write authority or multi-maintainer claim",
+    );
   }
 }
 

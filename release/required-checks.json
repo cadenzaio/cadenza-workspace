@@ -6,7 +6,10 @@
       "checks": ["CI / governance", "CI / release-metadata", "DCO"]
     },
     { "name": "cadenza", "checks": ["CI / core", "DCO"] },
-    { "name": "cadenza-python", "checks": ["CI / core (3.13.14)", "CI / core (3.14.6)", "DCO"] },
+    {
+      "name": "cadenza-python",
+      "checks": ["CI / core (3.13.14)", "CI / core (3.14.6)", "DCO"]
+    },
     { "name": "cadenza-elixir", "checks": ["CI / core", "DCO"] },
     { "name": "cadenza-csharp", "checks": ["CI / core", "DCO"] },
     { "name": "cadenza-environment", "checks": ["CI / environment", "DCO"] },
@@ -20,12 +23,16 @@
   "protected_branch": {
     "name": "main",
     "pull_request_required": true,
-    "approving_reviews": 1,
+    "approving_reviews": 0,
     "dismiss_stale_reviews": true,
     "conversation_resolution_required": true,
     "linear_history_required": true,
     "force_push_allowed": false,
     "deletion_allowed": false,
     "administrator_bypass_allowed": false
+  },
+  "governance_ratchet": {
+    "trigger": "before_second_write_authority_or_multi_maintainer_claim",
+    "approving_reviews": 1
   }
 }

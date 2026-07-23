@@ -1,7 +1,7 @@
 # Sprint 9F Public Documentation Authority Coherence Gate V1
 
 Date: 2026-07-23
-Status: affected-scope replacement freeze required
+Status: affected-scope replacement freeze approved
 
 ## Context
 
@@ -194,3 +194,8 @@ The exact commit, tree, archive, and manifest digests are reported outside this
 source commit in the affected-scope freeze request to avoid a self-referential
 identity cycle. Two independent final assemblies must be byte-identical before
 that request is valid.
+
+The user approved the affected-scope replacement freeze on 2026-07-23. The
+approved exact identities are retained in the active Sprint 9F execution
+record. This approval resumes the final recursive review and does not authorize
+external publication.
