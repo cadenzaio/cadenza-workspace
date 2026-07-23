@@ -17,7 +17,7 @@ Memory, CLI, managed UI, or agent surfaces.
 
 ## Repository And Release Identities
 
-| Repository | GitHub ID | Signed tag object | Frozen commit | Current `main` | Release ID |
+| Repository | GitHub ID | Signed tag object | Frozen commit | Pre-evidence governance baseline | Release ID |
 | --- | ---: | --- | --- | --- | ---: |
 | `cadenza-workspace` | `1310097315` | `078f22270b5746eae23f0ad424fedcb130db41aa` | `60994b88fcd98d2db45f240b6bce8a12fe28d70e` | `61dcc16b59edd4fa17e8134f052f7f4ed44fcb68` | `358985696` |
 | `cadenza` | `1026746399` | `b9cfcca62b81dc06a1857391599608120a722bc1` | `f936045b5710e40db272435b6cf68741803824e6` | `d2696d05129ae70bbda9805669809af10a6a4ff4` | `358985594` |
@@ -29,9 +29,11 @@ Memory, CLI, managed UI, or agent surfaces.
 | `cadenza-cell` | `1310097214` | `ade713d39fda1cdbe537b2e3c83c2100e4adb5a6` | `a9b5e168f4c29e7579657c563242a15ca0ba473c` | same as frozen | `358985632` |
 | `cadenza-reference-system` | `1310097258` | `3027c2c4e5a50fe211833edc64c2c1235485ae86` | `fbefa9aaad5d3e4511e19a1c5f5e965c30bb9fc6` | same as frozen | `358985635` |
 
-Core and Workspace each contain one protected post-tag governance commit. The
-signed RC1 tags and aggregate manifest remain the immutable compatibility
-authority; neither tag nor any release asset moved.
+Core and Workspace each contain one protected post-tag governance commit before
+this evidence was appended. Publishing closure evidence necessarily advances
+Workspace `main`, so this table does not make a self-referential mutable-head
+claim. The signed RC1 tags and aggregate manifest remain the immutable
+compatibility authority; neither tag nor any release asset moved.
 
 ## Manifest And Signing
 
