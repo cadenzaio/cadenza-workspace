@@ -321,6 +321,16 @@
           "path": "contracts/fixtures/authority-gateway-v0.json"
         }
       ]
+    },
+    "local_orchestration_v0": {
+      "authority_repo": ".",
+      "authority_path": "docs/contracts/local-orchestration/fixtures/v0-local-orchestration.json",
+      "consumers": [
+        {
+          "repo": "cadenza-chamber",
+          "path": "contracts/fixtures/local-orchestration-v0.json"
+        }
+      ]
     }
   },
   "change_rules": {

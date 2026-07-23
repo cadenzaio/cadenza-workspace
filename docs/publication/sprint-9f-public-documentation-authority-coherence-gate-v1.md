@@ -76,7 +76,7 @@ architecture never existed.
   archive, and aggregate manifest.
 - Expected byte-identical scope: all eight implementation/reference
   repositories, all packages, all generated runtime artifacts, all seven
-  SBOMs, all six contract bundles, and all executable behavior.
+  SBOMs, all seven contract bundles, and all executable behavior.
 - Candidate metadata digest remains unchanged because repository membership,
   versions, protocols, registry posture, and toolchains do not change.
 
