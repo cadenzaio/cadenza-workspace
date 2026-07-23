@@ -1,7 +1,7 @@
 # Sprint 9F Chamber Standalone Contract Fixture Gate V1
 
 Date: 2026-07-23
-Status: implemented; affected-scope replacement freeze pending
+Status: affected-scope replacement freeze approved
 
 ## Context
 
@@ -107,5 +107,6 @@ After repair:
 ## Approval Required
 
 The user approved the Chamber standalone contract fixture repair design on
-2026-07-23. Implementation may proceed. Any resulting affected-scope
-replacement freeze still requires explicit approval.
+2026-07-23. The user approved the exact Chamber-and-workspace affected-scope
+replacement freeze on 2026-07-23, and publication resumed against those
+replacement identities.

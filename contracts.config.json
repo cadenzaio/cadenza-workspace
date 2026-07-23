@@ -329,6 +329,10 @@
         {
           "repo": "cadenza-chamber",
           "path": "contracts/fixtures/local-orchestration-v0.json"
+        },
+        {
+          "repo": "cadenza-cell",
+          "path": "contracts/fixtures/local-orchestration-v0.json"
         }
       ]
     }
