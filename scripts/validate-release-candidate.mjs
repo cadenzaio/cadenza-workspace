@@ -118,26 +118,32 @@ process.stdout.write(
 );
 
 function validateWorkflow(repository, workflow) {
+  validateWorkflowSecurity(repository, ".github/workflows/ci.yml", workflow);
+  for (const job of repository.required_jobs) {
+    if (!workflow.includes(`\n  ${job}:\n`)) {
+      fail(`${repository.name}: CI is missing required job ${job}`);
+    }
+  }
+}
+
+function validateWorkflowSecurity(repository, path, workflow) {
   if (!workflow.includes("permissions:\n  contents: read")) {
-    fail(`${repository.name}: CI must declare read-only contents permission`);
+    fail(
+      `${repository.name}: ${path} must declare read-only contents permission`,
+    );
   }
   if (workflow.includes("pull_request_target:")) {
-    fail(`${repository.name}: ordinary CI must not use pull_request_target`);
+    fail(`${repository.name}: ${path} must not use pull_request_target`);
   }
   if (/^\s+[a-z-]+:\s+write\s*$/mu.test(workflow)) {
-    fail(`${repository.name}: ordinary CI must not request write permission`);
+    fail(`${repository.name}: ${path} must not request write permission`);
   }
   for (const line of workflow.split("\n")) {
     const match = line.match(/\buses:\s*[^@\s]+@([^\s#]+)/u);
     if (match && !/^[a-f0-9]{40}$/u.test(match[1])) {
       fail(
-        `${repository.name}: GitHub Action is not pinned by full commit SHA: ${line.trim()}`,
+        `${repository.name}: ${path} action is not pinned by full commit SHA: ${line.trim()}`,
       );
-    }
-  }
-  for (const job of repository.required_jobs) {
-    if (!workflow.includes(`\n  ${job}:\n`)) {
-      fail(`${repository.name}: CI is missing required job ${job}`);
     }
   }
 }
@@ -227,8 +233,8 @@ function validateContractDocuments() {
 }
 
 function validateRequiredChecks() {
-  if (requiredChecks.schema_version !== 1) {
-    fail("required checks schema_version must be 1");
+  if (requiredChecks.schema_version !== 2) {
+    fail("required checks schema_version must be 2");
   }
   const declared = new Map(
     requiredChecks.repositories.map((repository) => [
@@ -241,6 +247,7 @@ function validateRequiredChecks() {
       "required checks must declare every candidate repository exactly once",
     );
   }
+  const additionalByRepository = validatePostTagGovernanceChecks();
   for (const repository of candidate.repositories) {
     const checks = declared.get(repository.name)?.checks;
     if (!Array.isArray(checks)) {
@@ -253,6 +260,7 @@ function validateRequiredChecks() {
           ? candidate.toolchains.python.map((version) => `core (${version})`)
           : [job],
       ),
+      ...(additionalByRepository.get(repository.name) ?? []),
       "DCO",
     ].sort();
     const projectedChecks = [...checks].sort();
@@ -261,7 +269,7 @@ function validateRequiredChecks() {
       expectedChecks.some((check, index) => check !== projectedChecks[index])
     ) {
       fail(
-        `${repository.name}: required-check contexts differ from exact GitHub job and DCO contexts`,
+        `${repository.name}: required-check contexts differ from exact release, post-tag governance, and DCO contexts`,
       );
     }
   }
@@ -295,6 +303,75 @@ function validateRequiredChecks() {
       "required checks must ratchet to one independent review before a second write authority or multi-maintainer claim",
     );
   }
+}
+
+function validatePostTagGovernanceChecks() {
+  const checks = requiredChecks.post_tag_governance_checks;
+  if (!Array.isArray(checks)) {
+    fail("required checks must declare post_tag_governance_checks");
+    return new Map();
+  }
+
+  const byRepository = new Map();
+  const identities = new Set();
+  for (const check of checks) {
+    const repository = candidate.repositories.find(
+      (candidateRepository) =>
+        candidateRepository.name === check.repository,
+    );
+    if (!repository) {
+      fail(
+        `post-tag governance check declares unknown repository: ${check.repository}`,
+      );
+      continue;
+    }
+    if (
+      typeof check.context !== "string" ||
+      check.context.length === 0 ||
+      check.context === "DCO"
+    ) {
+      fail(`${repository.name}: invalid post-tag governance check context`);
+      continue;
+    }
+    const identity = `${repository.name}:${check.context}`;
+    if (identities.has(identity)) {
+      fail(`${repository.name}: duplicate post-tag context ${check.context}`);
+      continue;
+    }
+    identities.add(identity);
+
+    if (
+      typeof check.workflow !== "string" ||
+      !check.workflow.startsWith(".github/workflows/")
+    ) {
+      fail(
+        `${repository.name}: post-tag context ${check.context} has invalid workflow authority`,
+      );
+      continue;
+    }
+    const workflow = readOptional(repository, check.workflow);
+    if (workflow) {
+      validateWorkflowSecurity(repository, check.workflow, workflow);
+      if (!workflow.includes(`\n  ${check.context}:\n`)) {
+        fail(
+          `${repository.name}: ${check.workflow} is missing post-tag job ${check.context}`,
+        );
+      }
+    }
+    if (
+      typeof check.decision !== "string" ||
+      !existsSync(resolve(root, check.decision))
+    ) {
+      fail(
+        `${repository.name}: post-tag context ${check.context} is missing decision evidence`,
+      );
+    }
+
+    const repositoryChecks = byRepository.get(repository.name) ?? [];
+    repositoryChecks.push(check.context);
+    byRepository.set(repository.name, repositoryChecks);
+  }
+  return byRepository;
 }
 
 function matchVersion(content, pattern) {
