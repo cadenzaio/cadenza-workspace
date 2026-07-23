@@ -1,7 +1,7 @@
 # Sprint 9F Core Commit-Lint Post-Tag Governance Repair V1
 
 Date: 2026-07-23
-Status: approved; implementation in progress
+Status: implemented
 
 ## Context
 
@@ -47,10 +47,21 @@ The user approved this design on 2026-07-23 with:
 - Required Core workflow run `30051064646`: passed context `core`.
 - Repaired commit-lint run `30051064637`: passed context `lint`.
 - DCO: passed.
-- Protected rebase merge commit:
+- Protected Core rebase merge commit:
   `d2696d05129ae70bbda9805669809af10a6a4ff4`.
-
-Workspace authority publication and final protection readback remain pending.
+- Workspace pull request:
+  `https://github.com/cadenzaio/cadenza-workspace/pull/2`.
+- Workspace workflow run `30051507697`: passed contexts `governance` and
+  `release-metadata`.
+- Workspace workflow run `30051507753`: passed context `agent-harness`.
+- Workspace `DCO`: passed.
+- Protected Workspace squash merge commit:
+  `61dcc16b59edd4fa17e8134f052f7f4ed44fcb68`.
+- Final Core protection readback requires `core` and `lint` from GitHub Actions
+  App ID `15368`, plus `DCO` from App ID `1861`.
+- Final all-repository readback confirms the exact machine projection,
+  administrator enforcement, linear history, resolved conversations, zero
+  approving reviews, and disabled force pushes and deletion.
 
 ## Consequences
 
