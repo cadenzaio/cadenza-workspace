@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza
-          ref: 4798fd1103e85618955eeda07017c4b051e30fd7
+          ref: a4384818a777d4ff85341bbe5d91d1c9c8c12ee3
           path: cadenza
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -51,17 +51,17 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-chamber
-          ref: 02fd231e9680ee50014e2919cd0863abe5ddff79
+          ref: c22d34ccb6a10f3fc1f89e416be8ee5e770089cd
           path: cadenza-chamber
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-cell
-          ref: bbbbf2bfe8b77ec924d1f4d133214e0411197797
+          ref: 29bcbefe0130a28155a7af21fc19d27ff8fb82a9
           path: cadenza-cell
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-reference-system
-          ref: 62fb08715fa4fa9908398cc42a7655ddb142c310
+          ref: 8426e2d9674298ccd54cafbb85204fbbb52ab851
           path: cadenza-reference-system
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
