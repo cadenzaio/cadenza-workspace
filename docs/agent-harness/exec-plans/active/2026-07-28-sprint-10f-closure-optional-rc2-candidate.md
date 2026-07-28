@@ -27,9 +27,10 @@ Date: 2026-07-28
   executable candidate identities.
 - Affected SBOMs and package artifacts reproduce, and the local candidate is
   ready for final manifest assembly and user judgment without remote mutation.
-- The external aggregate manifest is frozen at
-  `sha256:015e8ca720d7e2a8ea90d70233531644033a1f523c5653a29a4c83337c7af6e6`
-  and is documented in the
+- The approved publication CI repair supersedes the initial local aggregate
+  manifest. The final manifest is an external attestation generated after the
+  public candidate commit so the commit does not claim its own identity. It is
+  documented in the
   [RC2 publication decision package](../../../publication/sprint-10f-rc2-publication-decision-v1.md).
 
 ## Context
