@@ -40,4 +40,4 @@ cleanup lifecycle before Sprint 7 as a whole can close.
 
 - [Completed Sprint 7F plan](../agent-harness/exec-plans/completed/2026-07-19-stem-recovery-fencing-sprint-7f-design.md)
 - [Sprint 7F closure review](../contracts/distribution/sprint-7f-closure-review-v0.md)
-- [Sprint 7G design proposal](../agent-harness/exec-plans/active/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)
+- [Sprint 7G design proposal](../agent-harness/exec-plans/completed/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)

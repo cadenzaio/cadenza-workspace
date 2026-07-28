@@ -70,6 +70,6 @@ bootstrap/operator recovery concerns.
 
 ## Links
 
-- [Approved Sprint 7F design](../agent-harness/exec-plans/active/2026-07-19-stem-recovery-fencing-sprint-7f-design.md)
-- [Parent Sprint 7 design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Approved Sprint 7F design](../agent-harness/exec-plans/completed/2026-07-19-stem-recovery-fencing-sprint-7f-design.md)
+- [Parent Sprint 7 design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Sprint 7E closure](../contracts/distribution/sprint-7e-closure-review-v0.md)

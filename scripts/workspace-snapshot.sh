@@ -10,6 +10,7 @@ repos=(
   "cadenza-environment"
   "cadenza-chamber"
   "cadenza-cell"
+  "cadenza-reference-system"
 )
 
 echo "Workspace root: $workspace_root"

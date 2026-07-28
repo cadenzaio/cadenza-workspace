@@ -83,7 +83,7 @@ reintroduce obsolete assumptions and glue.
 
 ## Links
 
-- [Sprint 9 Design](../agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Sprint 9 Design](../agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)
 - [Cadenza Intended Whole](../cadenza-intended-whole.md)
 - [Distributed Foundation Publication And Product Boundary](./2026-07-20-distributed-foundation-publication-and-product-boundary.md)
 - Design approval: `Design approved. Proceed.` on 2026-07-21.

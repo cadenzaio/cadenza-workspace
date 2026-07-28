@@ -3,11 +3,16 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { loadReleaseCandidate } from "./release-candidate.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
-const candidateBytes = readFileSync(resolve(root, "release/candidate.json"));
-const candidate = JSON.parse(candidateBytes);
+const {
+  bytes: candidateBytes,
+  candidate,
+  path: candidatePath,
+} = loadReleaseCandidate(root);
 const requiredChecks = readJson("release/required-checks.json");
 const failures = [];
 const governanceFiles = [
@@ -79,6 +84,7 @@ for (const repository of candidate.repositories) {
   const workflow = readOptional(repository, ".github/workflows/ci.yml");
   if (workflow) validateWorkflow(repository, workflow);
   validateVersion(repository);
+  validateReleaseAction(repository);
 }
 
 for (const assertion of candidate.source_assertions) {
@@ -114,8 +120,26 @@ if (failures.length > 0) {
 
 const digest = createHash("sha256").update(candidateBytes).digest("hex");
 process.stdout.write(
-  `Release candidate metadata validated: ${candidate.repositories.length} repositories, sha256:${digest}.\n`,
+  `Release candidate metadata validated from ${candidatePath}: ${candidate.repositories.length} repositories, sha256:${digest}.\n`,
 );
+
+function validateReleaseAction(repository) {
+  const action = repository.release_action ?? "assemble";
+  if (!["assemble", "reuse"].includes(action)) {
+    fail(`${repository.name}: release_action must be assemble or reuse`);
+    return;
+  }
+  if (action !== "reuse") return;
+
+  const repositoryRoot = resolve(root, repository.path);
+  const head = git(repositoryRoot, ["rev-parse", "HEAD"]);
+  const tag = git(repositoryRoot, ["rev-list", "-n", "1", repository.tag]);
+  if (head && tag && head !== tag) {
+    fail(
+      `${repository.name}: reused release identity ${repository.tag} does not match current HEAD`,
+    );
+  }
+}
 
 function validateWorkflow(repository, workflow) {
   validateWorkflowSecurity(repository, ".github/workflows/ci.yml", workflow);
@@ -284,7 +308,7 @@ function validateRequiredChecks() {
   }
   if (branch.pull_request_required !== true || branch.approving_reviews !== 0) {
     fail(
-      "single-maintainer RC1 must require pull requests with zero approving reviews",
+      "single-maintainer candidate must require pull requests with zero approving reviews",
     );
   }
   if (
@@ -399,6 +423,15 @@ function read(path) {
 
 function readJson(path) {
   return JSON.parse(read(path));
+}
+
+function git(cwd, args) {
+  const result = spawnSync("git", args, { cwd, encoding: "utf8" });
+  if (result.status !== 0) {
+    fail(`git ${args.join(" ")} failed in ${cwd}: ${result.stderr.trim()}`);
+    return undefined;
+  }
+  return result.stdout.trim();
 }
 
 function fail(message) {

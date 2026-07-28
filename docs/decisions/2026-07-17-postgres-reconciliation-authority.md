@@ -78,4 +78,4 @@ time and time-relative projections.
 - [Sprint 7 parent decision](2026-07-17-scale-placement-reconciliation.md)
 - [Sprint 7A closure](../contracts/distribution/sprint-7a-closure-review-v0.md)
 - [Sprint 7B closure review](../contracts/distribution/sprint-7b-closure-review-v0.md)
-- [Neutral reconciliation contract](../../cadenza/contracts/reconciliation/v0/README.md)
+- [Neutral reconciliation contract](../../cadenza-environment/contracts/reconciliation/v0/README.md)

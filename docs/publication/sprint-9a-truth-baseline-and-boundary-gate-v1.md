@@ -407,7 +407,7 @@ Before the two amendments, the proposed Sprint 9B repair order was:
 
 ## Evidence
 
-- [Sprint 9 Design](../agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Sprint 9 Design](../agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)
 - [Sprint 9 Decision](../decisions/2026-07-21-distributed-foundation-stabilization-and-publication.md)
 - [Contract Authority Map](../../contracts.config.json)
 - [Workspace Architecture](../architecture.md)

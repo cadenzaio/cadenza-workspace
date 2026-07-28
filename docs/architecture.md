@@ -22,6 +22,7 @@ do not own current contracts and are not compatibility constraints.
   [reference walkthrough](../cadenza-reference-system/docs/walkthrough.md).
 - **Runtime or security contributor:** use the
   [contributor guide](./guides/contributor.md),
+  [operational interpretation guide](./guides/operational-interpretation.md),
   [runtime-operator guide](./guides/runtime-operator.md), and
   [security model](./security/cadenza-security-model-v1.md), then descend from
   the atlas into cited contracts and executable proofs.
@@ -180,5 +181,6 @@ increasingly database-native Cadenza:
 - [Cell peer transport](./contracts/cell-peer-transport/v0.md)
 - [Completed Sprint 7 design](./agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Completed Sprint 8 distributed actor design](./agent-harness/exec-plans/completed/2026-07-20-distributed-actor-lifecycle-sprint-8-design.md)
-- [Sprint 9 stabilization and publication design](./agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Completed Sprint 9 stabilization and publication design](./agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Sprint 10 consolidation and hardening design](./agent-harness/exec-plans/active/2026-07-25-distributed-foundation-consolidation-hardening-design.md)
 - [Distributed foundation publication and product boundary](./decisions/2026-07-20-distributed-foundation-publication-and-product-boundary.md)

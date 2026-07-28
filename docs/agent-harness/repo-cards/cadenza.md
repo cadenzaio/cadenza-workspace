@@ -24,9 +24,9 @@ First files:
 
 Primary commands:
 
-- `cd cadenza && npm test`
-- `cd cadenza && npm run build`
-- `cd cadenza && npm run docs`
+- `cd cadenza && yarn test`
+- `cd cadenza && yarn build`
+- `cd cadenza && yarn docs`
 
 Contract role:
 

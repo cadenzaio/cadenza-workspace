@@ -1,0 +1,397 @@
+{
+  "contract": "cadenza.proof-report",
+  "version": "1",
+  "tier": "complete",
+  "status": "passed",
+  "started_at": "2026-07-28T15:32:15.189Z",
+  "completed_at": "2026-07-28T15:37:11.701Z",
+  "duration_ms": 296512,
+  "manifest_digest": "sha256:e68ca9a3cba791e98ffdd3a006a8fb50529fe999e517bb1da0ffd268e0a3d721",
+  "source": [
+    {
+      "path": ".",
+      "commit": "a9185048e834775c144017f9cf5527b4c501f8d4",
+      "worktree": "dirty"
+    },
+    {
+      "path": "cadenza",
+      "commit": "4798fd1103e85618955eeda07017c4b051e30fd7",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-python",
+      "commit": "b15a306dbddf6168e0171f5fe5b468a050464375",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-elixir",
+      "commit": "d1dd15f1802d108023384cab39d234aaf259f114",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-csharp",
+      "commit": "d294e535aa0dfad91123c9d14ad6e3aa8c5b4cb2",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-environment",
+      "commit": "96054f583e41df9341a219955c7e1c19acb63c13",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-chamber",
+      "commit": "02fd231e9680ee50014e2919cd0863abe5ddff79",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-cell",
+      "commit": "bbbbf2bfe8b77ec924d1f4d133214e0411197797",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-reference-system",
+      "commit": "62fb08715fa4fa9908398cc42a7655ddb142c310",
+      "worktree": "clean"
+    }
+  ],
+  "results": [
+    {
+      "label": "workspace governance",
+      "cwd": ".",
+      "command": [
+        "./scripts/check-agent-harness.sh"
+      ],
+      "duration_ms": 108,
+      "status": 0
+    },
+    {
+      "label": "public documentation",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/check-public-documentation-links.mjs"
+      ],
+      "duration_ms": 70,
+      "status": 0
+    },
+    {
+      "label": "contract snapshots",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/check-contract-snapshots.mjs"
+      ],
+      "duration_ms": 76,
+      "status": 0
+    },
+    {
+      "label": "release metadata",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/validate-release-candidate.mjs",
+        "--candidate",
+        "release/candidates/distributed-foundation-rc2.json"
+      ],
+      "duration_ms": 181,
+      "status": 0
+    },
+    {
+      "label": "TypeScript frozen install",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts"
+      ],
+      "duration_ms": 299,
+      "status": 0
+    },
+    {
+      "label": "TypeScript format",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "prettier",
+        "--check",
+        "."
+      ],
+      "duration_ms": 1554,
+      "status": 0
+    },
+    {
+      "label": "TypeScript typecheck",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "tsc",
+        "--noEmit"
+      ],
+      "duration_ms": 1333,
+      "status": 0
+    },
+    {
+      "label": "TypeScript tests",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "test"
+      ],
+      "duration_ms": 6547,
+      "status": 0
+    },
+    {
+      "label": "TypeScript build",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "build"
+      ],
+      "duration_ms": 1991,
+      "status": 0
+    },
+    {
+      "label": "TypeScript docs",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "docs"
+      ],
+      "duration_ms": 2491,
+      "status": 0
+    },
+    {
+      "label": "TypeScript package smoke",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "package:smoke"
+      ],
+      "duration_ms": 5511,
+      "status": 0
+    },
+    {
+      "label": "TypeScript dependency audit",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "audit",
+        "--level",
+        "high"
+      ],
+      "duration_ms": 644,
+      "status": 0
+    },
+    {
+      "label": "Python 3.13 core",
+      "cwd": ".",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,src={workspace}/cadenza-python,dst=/source,readonly",
+        "python@sha256:6968f3db25671cbdd22d8053ffbe77fc9f0a51027bb04d17942262e709171dcb",
+        "sh",
+        "-lc",
+        "cp -a /source /work && cd /work && python -m compileall -q src tests && PYTHONPATH=src python -m unittest discover -s tests && python scripts/package_smoke.py"
+      ],
+      "duration_ms": 6945,
+      "status": 0
+    },
+    {
+      "label": "Python 3.14 core",
+      "cwd": ".",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,src={workspace}/cadenza-python,dst=/source,readonly",
+        "python@sha256:5f1cdbcab9a50594a79502dd73e885456d2a2fc31f1a1fa18484815b37ee9152",
+        "sh",
+        "-lc",
+        "cp -a /source /work && cd /work && python -m compileall -q src tests && PYTHONPATH=src python -m unittest discover -s tests && python scripts/package_smoke.py"
+      ],
+      "duration_ms": 6997,
+      "status": 0
+    },
+    {
+      "label": "Elixir dependencies",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "mix",
+        "deps.get",
+        "--check-locked"
+      ],
+      "duration_ms": 860,
+      "status": 0
+    },
+    {
+      "label": "Elixir dependency audit",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "mix",
+        "hex.audit"
+      ],
+      "duration_ms": 672,
+      "status": 0
+    },
+    {
+      "label": "Elixir compile",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "mix",
+        "compile",
+        "--warnings-as-errors"
+      ],
+      "duration_ms": 378,
+      "status": 0
+    },
+    {
+      "label": "Elixir format",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "mix",
+        "format",
+        "--check-formatted"
+      ],
+      "duration_ms": 343,
+      "status": 0
+    },
+    {
+      "label": "Elixir tests",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "mix",
+        "test"
+      ],
+      "duration_ms": 1591,
+      "status": 0
+    },
+    {
+      "label": "Elixir package smoke",
+      "cwd": "cadenza-elixir",
+      "command": [
+        "bash",
+        "scripts/package-smoke.sh"
+      ],
+      "duration_ms": 2241,
+      "status": 0
+    },
+    {
+      "label": "C# core",
+      "cwd": ".",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,src={workspace}/cadenza-csharp,dst=/source,readonly",
+        "mcr.microsoft.com/dotnet/sdk@sha256:ed034a8bf0b24ded0cbbac07e17825d8e9ebfe21e308191d0f7421eaf5ad4664",
+        "bash",
+        "-lc",
+        "cp -a /source /work && cd /work && dotnet restore --locked-mode && dotnet package list --vulnerable --include-transitive && dotnet package list --deprecated --include-transitive && dotnet format --verify-no-changes && dotnet build --configuration Release --no-restore -warnaserror && dotnet test --configuration Release --no-build && bash scripts/package-smoke.sh"
+      ],
+      "duration_ms": 25341,
+      "status": 0
+    },
+    {
+      "label": "Environment frozen install",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "install:all"
+      ],
+      "duration_ms": 4862,
+      "status": 0
+    },
+    {
+      "label": "Environment typecheck",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "duration_ms": 3580,
+      "status": 0
+    },
+    {
+      "label": "Environment tests",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "duration_ms": 12824,
+      "status": 0
+    },
+    {
+      "label": "Environment build",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "duration_ms": 3657,
+      "status": 0
+    },
+    {
+      "label": "Environment dependency audit",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "audit"
+      ],
+      "duration_ms": 2678,
+      "status": 0
+    },
+    {
+      "label": "Environment package smoke",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "package:smoke"
+      ],
+      "duration_ms": 1283,
+      "status": 0
+    },
+    {
+      "label": "Chamber validation",
+      "cwd": "cadenza-chamber",
+      "command": [
+        "./scripts/validate.sh"
+      ],
+      "duration_ms": 107630,
+      "status": 0
+    },
+    {
+      "label": "Cell validation",
+      "cwd": "cadenza-cell",
+      "command": [
+        "./scripts/validate.sh"
+      ],
+      "duration_ms": 80937,
+      "status": 0
+    },
+    {
+      "label": "Exact reference release",
+      "cwd": "cadenza-reference-system",
+      "command": [
+        "npm",
+        "run",
+        "validate:release",
+        "--",
+        "../cadenza"
+      ],
+      "duration_ms": 12505,
+      "status": 0
+    }
+  ]
+}

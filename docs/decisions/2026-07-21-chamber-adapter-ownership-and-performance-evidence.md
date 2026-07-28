@@ -54,4 +54,4 @@ regression budgets.
 
 - [Approved Amendment](../publication/sprint-9a-adapter-ownership-performance-harness-amendment-v1.md)
 - [Language Runtime Contract](../cadenza-language-runtime-contract.md)
-- [Sprint 9 Plan](../agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Sprint 9 Plan](../agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)

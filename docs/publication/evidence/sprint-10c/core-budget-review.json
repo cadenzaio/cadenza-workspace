@@ -1,0 +1,103 @@
+{
+  "contract": "cadenza.core-benchmark-budget-review",
+  "version": "1",
+  "posture": "advisory_non_correctness",
+  "status": "within_budget",
+  "generated_at": "2026-07-27T22:17:41.442Z",
+  "collection": {
+    "path": "../docs/publication/evidence/sprint-10c/core-collection.json",
+    "suite": "core",
+    "generated_at": "2026-07-27T22:07:22.842Z",
+    "run_count": 3,
+    "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93"
+  },
+  "budget": {
+    "path": "benchmarks/budgets/apple-m1-pro-node24-v1.json",
+    "budget_key": "budget.core.apple-m1-pro-node24.v1",
+    "digest": "sha256:cdd3408d74e1124842780665466af0f00f5e54e2d582586c880225cc45e6b912",
+    "reviewed_at": "2026-07-27"
+  },
+  "runtime_mismatches": [],
+  "assessments": [
+    {
+      "scenario": "one-task",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.13,
+      "observed": 0.08373457999999999,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.084 ms/op; the budget preserves more than 50 percent headroom."
+    },
+    {
+      "scenario": "one-task",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.12,
+      "observed": 0.07578625000000017,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.076 ms/op; the budget preserves more than 50 percent headroom."
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.6,
+      "observed": 0.3911000000000001,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.391 ms/op; the budget is rounded above 50 percent headroom."
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.4,
+      "observed": 0.2537791600000003,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.254 ms/op; the budget is rounded above 50 percent headroom."
+    },
+    {
+      "scenario": "signal",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.22,
+      "observed": 0.1411108299999998,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.141 ms/op; the budget is rounded above 50 percent headroom."
+    },
+    {
+      "scenario": "signal",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 0.2,
+      "observed": 0.12394915999999995,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 0.124 ms/op; the budget preserves more than 50 percent headroom."
+    },
+    {
+      "scenario": "retry",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 6,
+      "observed": 3.933918329999999,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 3.934 ms/op; the budget is rounded above 50 percent headroom."
+    },
+    {
+      "scenario": "retry",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "comparator": "maximum",
+      "limit": 6,
+      "observed": 3.9044258400000014,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 3.905 ms/op; the budget is rounded above 50 percent headroom."
+    }
+  ]
+}

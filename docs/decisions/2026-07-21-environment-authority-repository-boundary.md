@@ -55,4 +55,4 @@ contracts move to environment authority.
 
 - [Approved Design Amendment](../publication/sprint-9a-environment-authority-boundary-amendment-v1.md)
 - [Persistence-Agnostic Core](2026-07-11-persistence-agnostic-core.md)
-- [Sprint 9 Plan](../agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+- [Sprint 9 Plan](../agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)

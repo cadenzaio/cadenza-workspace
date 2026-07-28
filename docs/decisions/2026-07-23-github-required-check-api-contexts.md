@@ -50,4 +50,4 @@ not as branch-protection authority.
 ## Links
 
 - [Sprint 9F GitHub Required-Check Context Gate V1](../publication/sprint-9f-github-required-check-context-gate-v1.md)
-- [Sprint 9F Definitive Proof And Publication Review](../agent-harness/exec-plans/active/2026-07-22-sprint-9f-definitive-proof-publication-review.md)
+- [Sprint 9F Definitive Proof And Publication Review](../publication/sprint-9f-publication-evidence-v1.md)

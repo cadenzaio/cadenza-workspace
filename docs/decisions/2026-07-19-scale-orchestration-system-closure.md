@@ -50,6 +50,6 @@ separate design amendment.
 
 ## Links
 
-- [Approved Sprint 7G design](../agent-harness/exec-plans/active/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)
-- [Parent Sprint 7 design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Approved Sprint 7G design](../agent-harness/exec-plans/completed/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)
+- [Parent Sprint 7 design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Sprint 7F closure](../contracts/distribution/sprint-7f-closure-review-v0.md)

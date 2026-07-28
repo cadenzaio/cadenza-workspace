@@ -20,11 +20,13 @@
     orchestration, and Sprint 8 distributed actor lifecycle and persistence.
 - Current gate:
   - Sprint 8D and final Sprint 8 closure were approved on 2026-07-21.
-  - [Sprint 9 distributed foundation stabilization and GitHub publication](2026-07-21-distributed-foundation-stabilization-publication-design.md)
-    is approved and active.
-  - [Sprint 9A truth baseline and publication-boundary gate](../../../publication/sprint-9a-truth-baseline-and-boundary-gate-v1.md)
-    is in review. Sprint 9B repair remains frozen until its seven publication
-    decisions are approved or amended.
+  - [Sprint 9 distributed foundation stabilization and GitHub publication](../completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)
+    is complete; the signed `distributed-foundation-rc.1` boundary remains
+    immutable.
+  - [Sprint 10 distributed foundation consolidation and hardening](2026-07-25-distributed-foundation-consolidation-hardening-design.md)
+    is approved; public baseline, recursive review, and reproducible proof and
+    performance harness work are complete. Failure, custody, and security
+    hardening is the next design gate.
 - Current repo:
   - `cadenza-workspace`
 - Impacted repos:
@@ -33,8 +35,10 @@
   - `cadenza-python`
   - `cadenza-elixir`
   - `cadenza-csharp`
+  - `cadenza-environment`
   - `cadenza-chamber`
   - `cadenza-cell`
+  - `cadenza-reference-system`
 
 ## Scope
 
@@ -53,8 +57,12 @@
 ## Repository Boundary
 
 - Official forward repos:
-  - `cadenza`: TypeScript core, neutral semantic authority, authority/security contracts, and isolated environment bootstrap.
+  - `cadenza`: TypeScript core and working implementation authority for neutral
+    primitive and local execution semantics.
   - `cadenza-python`, `cadenza-elixir`, and `cadenza-csharp`: official language expressions of the neutral primitive contract.
+  - `cadenza-environment`: durable environment authority, including bootstrap,
+    authority/security operations, PostgreSQL persistence, reconciliation,
+    supply, evidence-ledger processing, and distributed actor authority.
   - `cadenza-chamber`: chamber activation, immutable runtime images, language-adapter hosting, primitive ingress, normalized outcomes, and chamber evidence.
   - `cadenza-cell`: trusted local host, containment, chamber process custody, capability brokering, local runtime authority, and cell lifecycle.
 - Legacy/reference-only repos:
@@ -67,7 +75,9 @@
   - any other repo whose architecture depends on the legacy service/DB/demo split
 - Planning rule:
   - Route each contract change to its authority repo before changing consumers.
-  - Keep primitive semantics and environment authority in `cadenza`, chamber execution semantics in `cadenza-chamber`, and trusted local host semantics in `cadenza-cell`.
+  - Keep primitive semantics in `cadenza`, durable environment authority in
+    `cadenza-environment`, chamber execution semantics in `cadenza-chamber`,
+    and trusted local host semantics in `cadenza-cell`.
   - Legacy repos may be read for behavioral evidence, migration lessons, and compatibility risks, but they should not receive new official feature implementation.
 
 ## Coherence Governance
@@ -307,12 +317,12 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
 
 11. Distributed foundation stabilization and GitHub publication
 
-- Status: `in_progress`; Sprint 9A inventory and baseline validation are
-  complete, and its publication-boundary decision gate is in review.
+- Status: `done`; Sprint 9F publication and the post-tag governance repair are
+  complete.
 - Design proposal:
-  [Sprint 9 stabilization and publication](2026-07-21-distributed-foundation-stabilization-publication-design.md).
-- Current gate:
-  [Sprint 9A truth baseline and publication boundary](../../../publication/sprint-9a-truth-baseline-and-boundary-gate-v1.md).
+  [Completed Sprint 9 stabilization and publication](../completed/2026-07-21-distributed-foundation-stabilization-publication-design.md).
+- Publication evidence:
+  [Sprint 9F Publication Evidence V1](../../../publication/sprint-9f-publication-evidence-v1.md).
 - Sprint 8 closure approval satisfied the prerequisite on 2026-07-21.
 - Freeze feature development while the complete distributed system is reviewed
   as one whole.
@@ -325,14 +335,24 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
 - Publish the approved official repositories to GitHub only after the release
   gate passes.
 
-12. Generated expansion bundles
+12. Distributed foundation consolidation and hardening
+
+- Status: `in_progress`; Sprint 10A is complete and Sprint 10B recursive
+  purpose and contract review is active.
+- Design proposal:
+  [Sprint 10 consolidation and hardening](2026-07-25-distributed-foundation-consolidation-hardening-design.md).
+- Consolidate the post-RC public lineage, recursively review purpose and
+  contracts, make privileged proof reproducible, harden failure and custody
+  boundaries, and improve operational interpretation without adding features.
+
+13. Generated expansion bundles
 
 - Singleton expansion-control flow.
 - Bundle, bundle member, and generated provenance authority.
 - First shipped planner/backing reconciler for `cadenza.actor.postgres.v1`.
 - Managed generated object ownership rules.
 
-13. Advanced security and extension track
+14. Advanced security and extension track
 
 - Split this area into multiple implementation sprints before work starts.
 - Trusted execution identity.
@@ -344,7 +364,7 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
 - Risk signals and containment flows.
 - Complete the requested mature-system security review.
 
-14. Read-only internal system observer
+15. Read-only internal system observer
 
 - Build a simple open-source UI whose only purpose is to visualize internal
   system state and evidence.
@@ -357,7 +377,7 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
 - Use this pass to prove that Cadenza remains interpretable upward before Memory
   and managed agent automation depend on it.
 
-15. Memory as the first official plugin
+16. Memory as the first official plugin
 
 - Memory begins only after the general plugin lifecycle and read-only observer
   exist.
@@ -367,7 +387,7 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
   projection, and later Fact integration belong to this plugin track.
 - Memory receives no privileged runtime or authority exception.
 
-16. Managed product UI, agents, cloud, and multi-environment operations
+17. Managed product UI, agents, cloud, and multi-environment operations
 
 - This is a separate managed-product track, not part of the open-source Cadenza
   repository roadmap.
@@ -392,17 +412,26 @@ Mandatory post-Sprint-6 gate before automated scale/orchestration:
 ## Questions Or Blockers
 
 - Current blocker:
-  - Sprint 8 actor distributed lifecycle and persistence requires a design
-    proposal and explicit approval before implementation.
+  - Sprint 10D is
+    [complete](../../../publication/sprint-10d-failure-custody-security-hardening-closure-v1.md).
+    Sprint 10E is
+    [complete](../../../publication/sprint-10e-operational-interpretation-stewardship-closure-v1.md).
+    The
+    [focused Sprint 10F closure and optional RC2 design](./2026-07-28-sprint-10f-closure-optional-rc2-candidate.md)
+    is awaiting approval.
 - Deferred judgment:
-  - Distributed actor residency, hydration, and persistence remain behind placement and multi-cell distribution.
+  - Sprint 10 excludes feature expansion, Memory, CLI, UI, and plugins while
+    the distributed foundation is consolidated and hardened.
 
 ## Assumptions
 
 - Assumption 1:
   - `cadenza-service`, `cadenza-db`, and demo repos are legacy from this point forward and should not receive new official implementation work.
 - Assumption 2:
-  - Primitive and environment authority remain in `cadenza`; chamber runtime authority remains in `cadenza-chamber`; trusted local host authority remains in `cadenza-cell`; legacy repos remain reference-only.
+  - Primitive authority remains in `cadenza`; durable environment authority
+    remains in `cadenza-environment`; chamber runtime authority remains in
+    `cadenza-chamber`; trusted local host authority remains in `cadenza-cell`;
+    legacy repos remain reference-only.
 - Assumption 3:
   - Single-cell multi-chamber semantics should be proven before multi-cell transport, placement, or scale multiplies lifecycle and routing failure modes.
 - Assumption 4:

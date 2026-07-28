@@ -35,4 +35,7 @@ Contract role:
 
 Routing note:
 
-- Pass 1 is boring core parity. Do not import BEAM supervision strategy, process-backed architecture, macro DSL, legacy service, DB, CLI, demo, memory, chamber, cells, distribution, persistence, actor sessions, or orchestration concepts into the public contract unless a later approved design expands the Elixir scope.
+- Do not import BEAM supervision strategy, process-backed architecture, macro
+  DSL, legacy service, DB, CLI, demo, memory, chamber, cells, distribution,
+  persistence, actor sessions, or orchestration concepts into the public
+  contract unless a later approved design expands the Elixir scope.

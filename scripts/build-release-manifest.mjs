@@ -11,10 +11,10 @@ import {
 import { relative, resolve, sep } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { loadReleaseCandidate } from "./release-candidate.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
-const candidateBytes = readFileSync(resolve(root, "release/candidate.json"));
-const candidate = JSON.parse(candidateBytes);
+const { bytes: candidateBytes, candidate } = loadReleaseCandidate(root);
 const outputPath = argument("--output");
 const artifactArgument = argument("--artifacts");
 const workspaceRepositoryArgument = argument("--workspace-repo");

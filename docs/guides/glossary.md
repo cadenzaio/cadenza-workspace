@@ -17,17 +17,29 @@
   evidence record until a valid successor acknowledges it.
 - **Definition:** serialized primitive authority. Callable source is data until
   a controlled Chamber adapter materializes it.
+- **Desired state:** the declared outcome the Environment should converge. It
+  does not prove that the outcome is authorized, running, or observed.
 - **Environment:** the durable whole that owns identity, authority, policy,
   desired state, reconciliation, and distributed actor authority.
 - **Generation:** an ephemeral process incarnation distinct from stable
   enrollment or logical identity.
 - **Intent:** a unique lowercase kebab-case request-response identity.
 - **Meta slice:** Cadenza primitive behavior that extends Cadenza features.
+- **Observation:** a report by an identified observer under a generation,
+  validity, signature, or digest boundary. It reports state but does not create
+  authority.
 - **Primitive:** task, relationship, signal, intent, helper, global, or actor
   behavior under the shared core contract.
 - **Residency:** a current runtime instance of an assigned Chamber or actor owner.
+- **Running:** process, residency, materialized primitive, or in-flight
+  operation held by a runtime owner. It does not imply readiness or current
+  authority.
+- **Safe next action:** the action permitted by current authority and known
+  affect state, including the option to retain uncertainty and wait.
 - **Signal:** a unique lowercase dot-separated detached coordination identity.
 - **Stem:** the singleton contained reconciliation meta slice, fenced by lease
   owner and epoch.
+- **Superseded:** no longer current because a newer revision, generation,
+  epoch, lease, route, grant, assignment, or other authority boundary exists.
 - **Trace:** the overarching execution identity spanning graph runs, detached
   signals, inquiries, distribution, and transport attempts.

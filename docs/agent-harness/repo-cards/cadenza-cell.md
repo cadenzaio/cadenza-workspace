@@ -19,7 +19,7 @@ Read before editing:
 - `docs/cadenza-language-runtime-contract.md`
 - `docs/decisions/2026-07-13-trusted-cell-first-activation.md`
 - `docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md`
-- `docs/agent-harness/exec-plans/active/2026-07-14-multi-cell-static-placement-design.md`
+- `docs/agent-harness/exec-plans/completed/2026-07-14-multi-cell-static-placement-design.md`
 - `docs/contracts/cell-peer-transport/v0.md`
 - `cadenza-cell/AGENTS.md`
 
@@ -39,12 +39,16 @@ Primary commands:
 Contract role:
 
 - authority for `cell_runtime_contracts` in `contracts.config.json`.
-- consumer of chamber contracts from `cadenza-chamber` and authority/bootstrap contracts from `cadenza`.
+- consumer of chamber contracts from `cadenza-chamber` and
+  authority/bootstrap contracts from `cadenza-environment`.
 
 Routing notes:
 
 - update `cadenza-chamber` first when the chamber host protocol or containment attestation meaning changes.
-- update `cadenza` first when authority, bootstrap, gateway, or PostgreSQL contract meaning changes.
-- durable placement meaning remains in `cadenza`; this repo consumes exact route projections and owns local/remote enforcement and peer transport.
-- do not add scheduling, actor residency, scaling, plugins, secrets, UI, CLI, agents, or memory during Sprint 6.
+- update `cadenza-environment` first when authority, bootstrap, gateway, or
+  PostgreSQL contract meaning changes.
+- durable placement meaning remains in `cadenza-environment`; this repo consumes
+  exact route projections and owns local/remote enforcement and peer transport.
+- do not add scheduling, scaling, plugins, secrets, UI, CLI, agents, or memory
+  without an approved design that changes this repository boundary.
 - macOS tests do not prove privileged containment; Linux gVisor evidence is mandatory.

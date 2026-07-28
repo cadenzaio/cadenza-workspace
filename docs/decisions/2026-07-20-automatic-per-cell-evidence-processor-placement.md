@@ -34,7 +34,7 @@ existing reconciliation stem.
 
 The complete contract, migration, runtime, pressure, security, and proof scope
 is defined by the approved
-[Sprint 7G amendment](../agent-harness/exec-plans/active/2026-07-19-automatic-evidence-processor-placement-sprint-7g-amendment.md).
+[Sprint 7G amendment](../agent-harness/exec-plans/completed/2026-07-19-automatic-evidence-processor-placement-sprint-7g-amendment.md).
 
 ## Consequences
 
@@ -64,6 +64,6 @@ is defined by the approved
 
 ## Links
 
-- [Sprint 7G system closure](../agent-harness/exec-plans/active/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)
+- [Sprint 7G system closure](../agent-harness/exec-plans/completed/2026-07-19-scale-orchestration-system-closure-sprint-7g-design.md)
 - [Execution-evidence ledger processing design](../agent-harness/exec-plans/completed/2026-07-16-execution-evidence-ledger-processing-design.md)
-- [Parent Sprint 7 design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Parent Sprint 7 design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)

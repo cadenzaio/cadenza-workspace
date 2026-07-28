@@ -4,18 +4,16 @@ import {
   cpSync,
   existsSync,
   mkdirSync,
-  readFileSync,
   readdirSync,
   rmSync,
 } from "node:fs";
 import { basename, resolve, sep } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { loadReleaseCandidate } from "./release-candidate.mjs";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
-const candidate = JSON.parse(
-  readFileSync(resolve(root, "release/candidate.json"), "utf8"),
-);
+const { candidate } = loadReleaseCandidate(root);
 const outputArgument = argument("--output");
 const stagingArgument = argument("--staging");
 const workspaceArgument = argument("--workspace-repo");
@@ -51,7 +49,10 @@ for (const directory of ["source", "packages", "generated"]) {
   mkdirSync(resolve(outputRoot, directory), { recursive: true });
 }
 
-for (const repository of candidate.repositories) {
+const assembledRepositories = candidate.repositories.filter(
+  (repository) => (repository.release_action ?? "assemble") === "assemble",
+);
+for (const repository of assembledRepositories) {
   const repositoryRoot =
     repository.name === "cadenza-workspace"
       ? workspaceRoot
@@ -76,16 +77,7 @@ for (const repository of candidate.repositories) {
   );
 }
 
-const packages = [
-  "cadenza.io-core-4.0.0-rc.1.tgz",
-  "cadenza_python-0.1.0rc1-py3-none-any.whl",
-  "cadenza-0.1.0-rc.1.tar",
-  "Cadenza.Core.0.1.0-rc.1.nupkg",
-  "cadenza.io-environment-authority-contracts-0.1.0-rc.1.tgz",
-  "cadenza.io-authority-gateway-0.1.0-rc.1.tgz",
-  "cadenza.io-environment-bootstrap-0.1.0-rc.1.tgz",
-  "cadenza-chamber-0.1.0-rc.1.crate",
-];
+const packages = assembledRepositories.flatMap(packageArtifacts);
 for (const filename of packages) {
   copyRequired(
     resolve(stagingRoot, filename),
@@ -112,8 +104,38 @@ for (const [filename, path] of generated) {
 }
 
 process.stdout.write(
-  `Assembled ${candidate.repositories.length} source archives, ${packages.length} packages, and ${generated.length} generated artifacts.\n`,
+  `Assembled ${assembledRepositories.length} source archives, ${packages.length} packages, and ${generated.length} generated artifacts for ${candidate.release_key}.\n`,
 );
+
+function packageArtifacts(repository) {
+  const version = repository.display_version ?? repository.version;
+  switch (repository.package_role) {
+    case "public_npm_package":
+      return [`cadenza.io-core-${version}.tgz`];
+    case "public_python_package":
+      return [`cadenza_python-${repository.version}-py3-none-any.whl`];
+    case "public_hex_package":
+      return [`cadenza-${version}.tar`];
+    case "public_nuget_package":
+      return [`Cadenza.Core.${version}.nupkg`];
+    case "public_source_private_assembly_packages":
+      return [
+        `cadenza.io-environment-authority-contracts-${version}.tgz`,
+        `cadenza.io-authority-gateway-${version}.tgz`,
+        `cadenza.io-environment-bootstrap-${version}.tgz`,
+      ];
+    case "public_rust_source_and_chamber_adapter":
+      return [`cadenza-chamber-${version}.crate`];
+    case "architecture_and_release_manifest":
+    case "public_rust_source":
+    case "public_source_private_proof_package":
+      return [];
+    default:
+      throw new Error(
+        `${repository.name}: unknown package role ${repository.package_role}`,
+      );
+  }
+}
 
 function assertClean(name, repositoryRoot) {
   const commit = run("git", ["rev-parse", "HEAD"], repositoryRoot).trim();

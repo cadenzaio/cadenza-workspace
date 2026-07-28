@@ -52,4 +52,4 @@ fixtures that invoke a real public static API under ESM `NodeNext`, CommonJS
 ## Links
 
 - [Sprint 9F TypeScript Package Declaration Entry Gate](../publication/sprint-9f-typescript-package-declaration-entry-gate-v1.md)
-- [Sprint 9F Definitive Proof And Publication Review](../agent-harness/exec-plans/active/2026-07-22-sprint-9f-definitive-proof-publication-review.md)
+- [Sprint 9F Definitive Proof And Publication Review](../publication/sprint-9f-publication-evidence-v1.md)

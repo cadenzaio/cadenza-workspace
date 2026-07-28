@@ -1,0 +1,126 @@
+{
+  "contract": "cadenza.proof-report",
+  "version": "1",
+  "tier": "fast",
+  "status": "passed",
+  "started_at": "2026-07-28T15:37:38.684Z",
+  "completed_at": "2026-07-28T15:37:58.353Z",
+  "duration_ms": 19669,
+  "manifest_digest": "sha256:e68ca9a3cba791e98ffdd3a006a8fb50529fe999e517bb1da0ffd268e0a3d721",
+  "source": [
+    {
+      "path": ".",
+      "commit": "a9185048e834775c144017f9cf5527b4c501f8d4",
+      "worktree": "dirty"
+    },
+    {
+      "path": "cadenza",
+      "commit": "4798fd1103e85618955eeda07017c4b051e30fd7",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-environment",
+      "commit": "96054f583e41df9341a219955c7e1c19acb63c13",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-chamber",
+      "commit": "02fd231e9680ee50014e2919cd0863abe5ddff79",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-cell",
+      "commit": "bbbbf2bfe8b77ec924d1f4d133214e0411197797",
+      "worktree": "clean"
+    },
+    {
+      "path": "cadenza-reference-system",
+      "commit": "62fb08715fa4fa9908398cc42a7655ddb142c310",
+      "worktree": "clean"
+    }
+  ],
+  "results": [
+    {
+      "label": "workspace governance",
+      "cwd": ".",
+      "command": [
+        "./scripts/check-agent-harness.sh"
+      ],
+      "duration_ms": 97,
+      "status": 0
+    },
+    {
+      "label": "contract snapshots",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/check-contract-snapshots.mjs"
+      ],
+      "duration_ms": 72,
+      "status": 0
+    },
+    {
+      "label": "TypeScript core",
+      "cwd": "cadenza",
+      "command": [
+        "yarn",
+        "test"
+      ],
+      "duration_ms": 6720,
+      "status": 0
+    },
+    {
+      "label": "Environment contracts",
+      "cwd": "cadenza-environment",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "duration_ms": 2924,
+      "status": 0
+    },
+    {
+      "label": "Chamber protocol",
+      "cwd": "cadenza-chamber",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--test",
+        "cell_protocol"
+      ],
+      "duration_ms": 339,
+      "status": 0
+    },
+    {
+      "label": "Cell routing",
+      "cwd": "cadenza-cell",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--test",
+        "orchestrator",
+        "authority_refresh_groups_target_replicas_and_separates_signal_slices",
+        "--",
+        "--exact"
+      ],
+      "duration_ms": 373,
+      "status": 0
+    },
+    {
+      "label": "Exact reference business flows",
+      "cwd": "cadenza-reference-system",
+      "command": [
+        "npm",
+        "run",
+        "validate:release",
+        "--",
+        "../cadenza"
+      ],
+      "duration_ms": 8920,
+      "status": 0
+    }
+  ]
+}
