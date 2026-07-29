@@ -12,7 +12,7 @@ Start here when working from the workspace root:
 - Knowledge index: [docs/index.md](./docs/index.md)
 - Cadenza learning path: [docs/cadenza-learning-path.md](./docs/cadenza-learning-path.md)
 - Long-term direction: [docs/vision.md](./docs/vision.md)
-- Current implementation design: [Sprint 10 distributed foundation consolidation and hardening](./docs/agent-harness/exec-plans/active/2026-07-25-distributed-foundation-consolidation-hardening-design.md)
+- Latest completed foundation design: [Sprint 10 distributed foundation consolidation and hardening](./docs/agent-harness/exec-plans/completed/2026-07-25-distributed-foundation-consolidation-hardening-design.md)
 - Release operations:
   [docs/publication/sprint-9e-release-operations-v1.md](./docs/publication/sprint-9e-release-operations-v1.md)
 - Agent harness: [docs/agent-harness/README.md](./docs/agent-harness/README.md)

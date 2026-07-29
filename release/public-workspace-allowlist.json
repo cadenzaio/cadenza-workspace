@@ -71,6 +71,7 @@
     "docs/agent-harness/exec-plans/active/2026-07-25-distributed-foundation-consolidation-hardening-design.md",
     "docs/agent-harness/exec-plans/active/2026-07-27-sprint-10c-reproducible-proof-performance-harness.md",
     "docs/agent-harness/exec-plans/active/2026-07-28-sprint-10f-closure-optional-rc2-candidate.md",
+    "docs/agent-harness/exec-plans/active/2026-07-28-sprint-10f-rc2-publication.md",
     "docs/agent-harness/exec-plans/completed/2026-07-*.md"
   ],
   "forbidden_path_fragments": [

@@ -13,11 +13,12 @@ This directory holds versioned plans for improving the workspace harness itself.
 ## Current Active Plans
 
 - [2026-07-09-cadenza-official-roadmap.md](./active/2026-07-09-cadenza-official-roadmap.md)
-- [2026-07-25-distributed-foundation-consolidation-hardening-design.md](./active/2026-07-25-distributed-foundation-consolidation-hardening-design.md) (`in_progress`: Sprint 10F design gate)
-- [2026-07-28-sprint-10f-closure-optional-rc2-candidate.md](./active/2026-07-28-sprint-10f-closure-optional-rc2-candidate.md) (`review_needed`)
 
 ## Recently Completed Foundation Plans
 
+- [2026-07-28-sprint-10f-rc2-publication.md](./completed/2026-07-28-sprint-10f-rc2-publication.md) (`done`)
+- [2026-07-28-sprint-10f-closure-optional-rc2-candidate.md](./completed/2026-07-28-sprint-10f-closure-optional-rc2-candidate.md) (`done`)
+- [2026-07-25-distributed-foundation-consolidation-hardening-design.md](./completed/2026-07-25-distributed-foundation-consolidation-hardening-design.md) (`done`)
 - [2026-07-28-sprint-10e-operational-interpretation-stewardship.md](./completed/2026-07-28-sprint-10e-operational-interpretation-stewardship.md) (`done`)
 - [2026-07-28-sprint-10d-failure-custody-security-hardening.md](./completed/2026-07-28-sprint-10d-failure-custody-security-hardening.md) (`done`)
 - [2026-07-27-sprint-10c-reproducible-proof-performance-harness.md](./completed/2026-07-27-sprint-10c-reproducible-proof-performance-harness.md) (`done`)
