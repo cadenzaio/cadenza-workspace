@@ -182,5 +182,5 @@ increasingly database-native Cadenza:
 - [Completed Sprint 7 design](./agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Completed Sprint 8 distributed actor design](./agent-harness/exec-plans/completed/2026-07-20-distributed-actor-lifecycle-sprint-8-design.md)
 - [Completed Sprint 9 stabilization and publication design](./agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md)
-- [Sprint 10 consolidation and hardening design](./agent-harness/exec-plans/active/2026-07-25-distributed-foundation-consolidation-hardening-design.md)
+- [Completed Sprint 10 consolidation and hardening design](./agent-harness/exec-plans/completed/2026-07-25-distributed-foundation-consolidation-hardening-design.md)
 - [Distributed foundation publication and product boundary](./decisions/2026-07-20-distributed-foundation-publication-and-product-boundary.md)

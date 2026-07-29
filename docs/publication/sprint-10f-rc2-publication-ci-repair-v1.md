@@ -4,7 +4,7 @@ Date: 2026-07-28
 
 ## Status
 
-`replacement_freeze`
+`validated_replacement_freeze`
 
 The user approved the Sprint 10F RC2 publication CI repair and affected-scope
 replacement freeze on 2026-07-28.
@@ -60,6 +60,15 @@ governance, publishing tags early, or changing runtime behavior.
 The external aggregate manifest is assembled only after the final Workspace
 candidate commit. It owns the exact replacement identities, artifact
 checksums, and its own independently published digest.
+
+- final Workspace candidate:
+  `90df7af273b4415c76f3351ce43153659343e183`;
+- final aggregate manifest:
+  `sha256:cc1c41ce6944a4b84380f4222d3952c46889d9fc9dd7b0d7444e05b906127055`;
+- reproducibility: two complete 7-source, 6-package, 3-generated-artifact
+  assemblies are byte-identical;
+- schema: JSON Schema Draft 2020-12 validation passes;
+- registry publication: `false`.
 
 ## Unchanged Boundaries
 
