@@ -36,7 +36,7 @@ Environment Bootstrap V0 ends at `handoff_ready`, and the chamber foundation pro
 
 ## Links
 
-- Approved proposal: [docs/agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md)
+- Approved proposal: [docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md)
 - Chamber foundation: [docs/decisions/2026-07-12-chamber-runtime-foundation.md](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/decisions/2026-07-12-chamber-runtime-foundation.md)
 - gVisor security architecture: https://gvisor.dev/docs/architecture_guide/intro/
 - OCI Linux runtime configuration: https://specs.opencontainers.org/runtime-spec/config-linux/

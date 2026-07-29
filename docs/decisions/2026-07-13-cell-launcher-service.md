@@ -48,4 +48,4 @@ Approved by the user on 2026-07-13.
 
 - Parent decision: `docs/decisions/2026-07-13-trusted-cell-first-activation.md`
 - Linux evidence: `cadenza-cell/docs/linux-gvisor-evidence-2026-07-13.md`
-- Active plan: `docs/agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md`
+- Active plan: `docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md`

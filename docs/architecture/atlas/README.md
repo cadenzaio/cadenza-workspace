@@ -39,6 +39,11 @@ Operational detail continues through the [Cell lifecycle](./rendered/15-cell-lif
 [stem succession](./rendered/19-scale-change-stem-succession.svg), and
 [actor recovery](./rendered/20-actor-write-failure-recovery.svg).
 
+Use the
+[operational interpretation guide](../../guides/operational-interpretation.md)
+to compose these views without collapsing desired, authorized, running,
+observed, custody, and safe-next-action truth into one health value.
+
 Repository-local `docs/module-ownership.svg` views show stable package and
 module responsibilities for every official repository and the reference
 consumer.

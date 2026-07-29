@@ -9,11 +9,14 @@ This document maps repository topology and primary dependency flow in `cadenza-w
 - `cadenza/`
   - Core primitives and runtime execution semantics.
 - `cadenza-python/`
-  - Python translation of the official Cadenza core contract. `cadenza` remains the authority until Python reaches conformance parity.
+  - Python translation of the official Cadenza core contract.
 - `cadenza-elixir/`
-  - Elixir translation of the official Cadenza core contract. Pass 1 is boring core parity; BEAM-native enrichment comes later.
+  - Elixir translation of the official Cadenza core contract, including its
+    approved BEAM-native expression behind the shared primitive meaning.
 - `cadenza-csharp/`
-  - C# translation of the official Cadenza core contract. It starts with boring core parity before any C# runtime adapter, Roslyn materialization, or C#-natural meta-slice implementation.
+  - C# translation of the official Cadenza core contract. Runtime adapters,
+    Roslyn materialization, and meta-slice implementation remain separate
+    concerns.
 - `cadenza-environment/`
   - Durable environment authority. It owns bootstrap, authority/security operations, PostgreSQL adapters, reconciliation, supply, evidence-ledger processing, and distributed actor authority.
 - `cadenza-chamber/`
@@ -43,9 +46,8 @@ Primary contract dependency direction:
 Operational contract flow:
 
 - Core primitives are authored in `cadenza`.
-- Python translations of core primitives are implemented in `cadenza-python` after the TypeScript contract is stable.
-- Elixir translations of core primitives are implemented in `cadenza-elixir` after the post-Python readiness gate.
-- C# translations of core primitives are implemented in `cadenza-csharp` after the meta-slice language fit review justified C# as an official core language.
+- Python, Elixir, and C# implement the neutral primitive meaning through
+  repository-local language expression and checked conformance snapshots.
 - Chamber runtime contracts are authored in `cadenza-chamber`.
 - Trusted local cell and containment-plan contracts are authored in `cadenza-cell`.
 - Legacy service and database contracts do not govern new implementation.

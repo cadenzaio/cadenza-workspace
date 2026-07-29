@@ -1,0 +1,83 @@
+{
+  "contract": "cadenza.core-benchmark-budget-review",
+  "version": "1",
+  "posture": "advisory_non_correctness",
+  "status": "within_budget",
+  "generated_at": "2026-07-27T22:17:41.891Z",
+  "collection": {
+    "path": "../docs/publication/evidence/sprint-10c/memory-collection.json",
+    "suite": "memory",
+    "generated_at": "2026-07-27T22:07:52.604Z",
+    "run_count": 3,
+    "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93"
+  },
+  "budget": {
+    "path": "benchmarks/budgets/apple-m1-pro-node24-v1.json",
+    "budget_key": "budget.core.apple-m1-pro-node24.v1",
+    "digest": "sha256:cdd3408d74e1124842780665466af0f00f5e54e2d582586c880225cc45e6b912",
+    "reviewed_at": "2026-07-27"
+  },
+  "runtime_mismatches": [],
+  "assessments": [
+    {
+      "scenario": "memory-graph",
+      "profile": "structural",
+      "metric": "retained_delta_bytes",
+      "comparator": "maximum",
+      "limit": 262144,
+      "observed": 123856,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 123856 bytes; 256 KiB is a diagnostic retained-heap envelope."
+    },
+    {
+      "scenario": "memory-signal",
+      "profile": "structural",
+      "metric": "retained_delta_bytes",
+      "comparator": "maximum",
+      "limit": 524288,
+      "observed": 223440,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 223440 bytes; 512 KiB accommodates observed garbage-collection variance."
+    },
+    {
+      "scenario": "memory-retry",
+      "profile": "structural",
+      "metric": "retained_delta_bytes",
+      "comparator": "maximum",
+      "limit": 262144,
+      "observed": 145312,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 145312 bytes; 256 KiB is a diagnostic retained-heap envelope."
+    },
+    {
+      "scenario": "memory-graph",
+      "profile": "structural",
+      "metric": "later_batch_slope_bytes_per_operation",
+      "comparator": "maximum",
+      "limit": 64,
+      "observed": 21.312,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 21.312 B/op; 64 B/op requests review before the bounded trend becomes dominant."
+    },
+    {
+      "scenario": "memory-signal",
+      "profile": "structural",
+      "metric": "later_batch_slope_bytes_per_operation",
+      "comparator": "maximum",
+      "limit": 64,
+      "observed": 22.56,
+      "status": "within_budget",
+      "rationale": "Three-run maximum was 22.56 B/op; 64 B/op requests review before the bounded trend becomes dominant."
+    },
+    {
+      "scenario": "memory-retry",
+      "profile": "structural",
+      "metric": "later_batch_slope_bytes_per_operation",
+      "comparator": "maximum",
+      "limit": 64,
+      "observed": -13.768,
+      "status": "within_budget",
+      "rationale": "All three observed slopes were negative; 64 B/op allows ordinary variance while detecting directional change."
+    }
+  ]
+}

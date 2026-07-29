@@ -26,12 +26,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza
-          ref: v4.0.0-rc.1
+          ref: a4384818a777d4ff85341bbe5d91d1c9c8c12ee3
           path: cadenza
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-python
-          ref: v0.1.0-rc.1
+          ref: b15a306dbddf6168e0171f5fe5b468a050464375
           path: cadenza-python
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -46,27 +46,27 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-environment
-          ref: v0.1.0-rc.1
+          ref: 96054f583e41df9341a219955c7e1c19acb63c13
           path: cadenza-environment
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-chamber
-          ref: v0.1.0-rc.1
+          ref: c22d34ccb6a10f3fc1f89e416be8ee5e770089cd
           path: cadenza-chamber
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-cell
-          ref: v0.1.0-rc.1
+          ref: 29bcbefe0130a28155a7af21fc19d27ff8fb82a9
           path: cadenza-cell
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: cadenzaio/cadenza-reference-system
-          ref: v0.1.0-rc.1
+          ref: 8426e2d9674298ccd54cafbb85204fbbb52ab851
           path: cadenza-reference-system
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24.18.0
-      - run: node scripts/validate-release-candidate.mjs
+      - run: node scripts/validate-release-candidate.mjs --candidate release/candidates/distributed-foundation-rc2.json
       - run: node scripts/check-contract-snapshots.mjs
       - run: node scripts/check-public-documentation-links.mjs
       - run: node scripts/validate-architecture-atlas.mjs --require-rendered

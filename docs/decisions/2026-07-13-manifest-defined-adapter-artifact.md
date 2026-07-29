@@ -43,4 +43,4 @@ The dependency lock and immutable rootfs remain separate measured inputs.
 
 - [Chamber Contract](../../cadenza-chamber/contracts/v0.md)
 - [Linux gVisor Evidence](../../cadenza-cell/docs/linux-gvisor-evidence-2026-07-13.md)
-- [Trusted Cell And First Activation Plan](../agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md)
+- [Trusted Cell And First Activation Plan](../agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md)

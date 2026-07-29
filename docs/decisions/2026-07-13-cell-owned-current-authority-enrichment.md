@@ -48,4 +48,4 @@ It is never treated as the current revision after authority advances.
 ## Links
 
 - [Runtime Authority Gateway V0](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/contracts/authority-security/runtime-gateway-v0.md)
-- [Trusted Cell And First Activation](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md)
+- [Trusted Cell And First Activation](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md)

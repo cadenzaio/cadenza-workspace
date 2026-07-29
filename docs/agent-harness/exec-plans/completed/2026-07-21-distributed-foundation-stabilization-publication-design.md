@@ -4,8 +4,8 @@ Date: 2026-07-21
 
 ## Current Status
 
-- State: `in_progress`; Sprint 9A is closed and Sprint 9B recursive review is
-  active.
+- State: `done`; Sprint 9F publication and the post-tag governance repair are
+  complete.
 - Complexity gate: required. This is a whole-system, multi-repository,
   security-sensitive release and public publication milestone.
 - Prerequisite: Sprint 8D and final Sprint 8 closure are approved.
@@ -18,7 +18,7 @@ Date: 2026-07-21
 - Publication itself requires a later, separate explicit approval after the
   release-candidate review.
 - Parent roadmap:
-  [Cadenza Official Implementation Roadmap](2026-07-09-cadenza-official-roadmap.md).
+  [Cadenza Official Implementation Roadmap](../active/2026-07-09-cadenza-official-roadmap.md).
 - Governing decision:
   [Distributed Foundation Publication And Product Boundary](../../../decisions/2026-07-20-distributed-foundation-publication-and-product-boundary.md).
 - Sprint decision:
@@ -658,8 +658,19 @@ Sprint 9 is complete only when:
       on 2026-07-22.
       Review requested in
       [Sprint 9E Release Candidate Closure V1](../../../publication/sprint-9e-release-candidate-closure-v1.md).
-- [ ] Execute Sprint 9F, present the final review, and request explicit
-      publication approval.
+- [x] Execute Sprint 9F, present the final review, receive explicit publication
+      approval, publish the signed RC1 repository set, and close the post-tag
+      governance repair.
+
+## Closure
+
+- Final publication was approved and completed on 2026-07-23.
+- The immutable public release is
+  [`distributed-foundation-rc.1`](https://github.com/cadenzaio/cadenza-workspace/releases/tag/distributed-foundation-rc.1).
+- The definitive public record is
+  [Sprint 9F Publication Evidence V1](../../../publication/sprint-9f-publication-evidence-v1.md).
+- Later sender-side replica routing and supply-restart lifecycle repairs are
+  post-RC work and do not alter the signed RC1 boundary.
 
 ## Evidence
 

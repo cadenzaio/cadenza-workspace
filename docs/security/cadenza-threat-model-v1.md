@@ -1,6 +1,7 @@
 # Cadenza Distributed Foundation Threat Model V1
 
 Date: 2026-07-22
+Last reviewed: 2026-07-28
 
 ## Status And Scope
 
@@ -115,6 +116,9 @@ or open an authority connection.
 The unprivileged Cell and root-owned launcher communicate over a Unix socket.
 The launcher verifies kernel-reported peer UID/GID
 (`cadenza-cell/src/launcher_service.rs:823`) and accepts a closed signed request.
+Received descriptors enter `OwnedFd` custody before packet parsing, so truncated,
+noncanonical, or contract-invalid packets close every transferred descriptor
+before the session is rejected.
 It launches a previously validated invocation with only the protocol and
 custody descriptors inherited by the child
 (`cadenza-cell/src/launcher_service.rs:216`).
@@ -171,21 +175,46 @@ callable source, stack, endpoints, and credentials are forbidden evidence.
 | TM-03 | Callable source differs from approved definition                                               | Source digest, source-slice digest, image digest, artifact identity, version and policy authority                                                            | Approved malicious code remains malicious inside its sandbox                     |
 | TM-04 | Callable escapes the JavaScript VM                                                             | VM context narrowing is defense in depth only; gVisor, no network, read-only rootfs, no capabilities, descriptor-only protocol                               | gVisor/host-kernel vulnerabilities and hardware side channels remain             |
 | TM-05 | Adapter, Node, core, lock, Chamber, `runsc`, or rootfs is replaced                             | Content digests, manifest closure, symlink and undeclared-file rejection, signed containment measurement                                                     | Build/signing key compromise remains                                             |
-| TM-06 | Unauthorized local process asks the launcher to run code                                       | Root-owned socket, `SO_PEERCRED` UID/GID check, signed nonce-bound request                                                                                   | Compromise of the authorized Cell OS account remains                             |
+| TM-06 | Unauthorized or malformed local launcher request creates privileged affect or retained custody | Root-owned socket, `SO_PEERCRED` UID/GID check, signed nonce-bound request, receive-time descriptor adoption, disconnect cleanup                              | Compromise of the authorized Cell OS account remains                             |
 | TM-07 | Authorized request injects a command, mount, environment variable, path, or network mode       | Closed request schema, fixed `runsc` path/flags, measured OCI profile, content-addressed rootfs                                                              | A defect in launcher validation could widen the profile                          |
 | TM-08 | Chamber obtains host or database credentials                                                   | Fixed descriptor custody in Cell, no credential-bearing Chamber messages, no ambient environment, source-isolated profile                                    | Business data deliberately passed in context is visible to that callable         |
 | TM-09 | Narrow database role escalates through direct tables, broad grants, or `search_path` poisoning | NOLOGIN/NOINHERIT roles, revoke-first posture, execute-only functions, `pg_catalog` search path, hostile role tests                                          | Migration requires an exclusive trusted administrative session                   |
 | TM-10 | Remote peer impersonates an enrolled Cell                                                      | TLS 1.3 mTLS, pinned certificate roots, SPKI digest, current enrollment, signed envelope                                                                     | Active peer private-key compromise remains until authority revocation propagates |
 | TM-11 | Old peer request is replayed or arrives after authority changes                                | Nonces, attempt identity, expiry, session phase, generation, route epoch, projection revision, current-authority reread                                      | Clock integrity is an operator/host assumption                                   |
-| TM-12 | Stale route, placement, residency, or actor assignment causes wrong affect                     | Generation and epoch fencing, route/residency grants, owner resolution, successor-first replacement                                                          | Temporary unavailability is preferred to ambiguous affect                        |
+| TM-12 | Stale route, placement, residency, or actor assignment causes wrong affect                     | Generation and epoch fencing, bounded sender selection state, exact selected-member validation without substitution, route/residency grants, owner resolution, successor-first replacement | Temporary unavailability is preferred to ambiguous affect                        |
 | TM-13 | Runtime forges evidence or exports sensitive context                                           | Chamber-owned validation/capture, forbidden-field rules, commitment-only evidence, Cell custody                                                              | Commitments prove equality/integrity, not semantic truth of hidden business data |
 | TM-14 | Evidence is replayed, reordered, deleted too early, or fills storage                           | Per-source and custody chains, synchronized append, equal-replay receipts, historical lookup, acknowledgement checkpoints, terminal reserve, bounded journal | Prolonged ledger outage can stop new normal work by design                       |
 | TM-15 | Workload exhausts CPU, memory, processes, frames, stderr, queues, or time                      | Signed cgroup limits, pids/memory/CPU limits, frame and stderr maxima, deadlines, cancellation, bounded journals and snapshots                               | Aggregate host admission control is still an operator responsibility             |
-| TM-16 | Multiple stems or supply controllers create conflicting infrastructure effects                 | Leases, fencing epochs, serialized action authority, idempotent outcomes, current-revision checks                                                            | Database loss or incorrect external provider implementation can halt recovery    |
+| TM-16 | Multiple stems or supply controllers create conflicting infrastructure effects                 | Leases, fencing epochs, serialized action authority, idempotent outcomes, provider-generation fencing, exact retained directive custody, current-revision checks | Database loss or incorrect external provider implementation can halt recovery    |
 | TM-17 | Two Cells mutate one actor or an uncertain commit is repeated                                  | Assignment epochs, residency authority, per-key lanes, version-fenced idempotent commit, outcome resolution                                                  | Deliberate fail-closed pauses can increase latency during partitions             |
-| TM-18 | Dependency or CI action changes without review                                                 | Lockfiles, frozen/locked installs, vulnerability audit, SBOMs, full-SHA GitHub Actions                                                                       | Registry or compiler compromise is not eliminated by locks alone                 |
-| TM-19 | Secret or private material is published                                                        | Current-tree and history scanning, descriptor custody, evidence disclosure rules, publication gate                                                           | Automated detectors have false negatives and require human review                |
+| TM-18 | Dependency, CI action, or privileged proof input changes without review                         | Lockfiles, frozen/locked installs, vulnerability audit, SBOMs, full-SHA GitHub Actions, clean Git archives, manifest-bound proof profiles                     | Registry or compiler compromise is not eliminated by locks alone                 |
+| TM-19 | Secret or private material is published                                                        | Current-tree and history scanning, descriptor custody, evidence disclosure rules, generated fixture files outside source inputs, normalized proof reports, publication gate | Automated detectors have false negatives and require human review                |
 | TM-20 | An unsupported deployment is presented as secure                                               | Explicit deployment assumptions, measured Linux proof, known limitations, no stable/SLA claim                                                                | Operators can still bypass documented requirements                               |
+
+## Sprint 10D Delta
+
+The 2026-07-28 hardening review changed the threat judgment in five bounded
+areas:
+
+1. Sender-side replica selection is Chamber-owned, bounded per route group, and
+   reset by route epoch. Cell validates the exact selected member and fails
+   stale selection instead of substituting another healthy member.
+2. Supply restart keeps directive and process custody generation-scoped.
+   Provider restart advances provider and Cell generation rather than adopting
+   an unproved predecessor process.
+3. Malformed launcher packets now transfer received descriptors into automatic
+   closure custody before any fallible JSON, canonicalization, truncation, or
+   command validation.
+4. Privileged proof distinguishes the ordinary two-scenario profile from the
+   declared three-scenario hardening profile. Both profiles are manifest-bound
+   and accept only clean Git archives.
+5. Core actor construction no longer exposes internal implementation classes as
+   public construction authority. This narrows API authority but does not move
+   actor placement or persistence into Core.
+
+No supported trust boundary widened. The accepted host-root, database
+superuser, active-key, local-database-transport, aggregate-admission, and
+detector-completeness limits remain unchanged.
 
 ## Fail-Closed Consequences
 

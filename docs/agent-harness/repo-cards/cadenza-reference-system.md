@@ -16,7 +16,7 @@ Read before editing:
 
 - `docs/cadenza-intended-whole.md`
 - `docs/cadenza-flow-design.md`
-- `docs/agent-harness/exec-plans/active/2026-07-21-distributed-foundation-stabilization-publication-design.md`
+- `docs/agent-harness/exec-plans/completed/2026-07-21-distributed-foundation-stabilization-publication-design.md`
 - `cadenza-reference-system/AGENTS.md`
 - `cadenza-reference-system/docs/feature-purpose-matrix.md`
 
@@ -27,11 +27,9 @@ First files:
 - `cadenza-reference-system/tests/`
 - `cadenza-reference-system/docs/truth-matrix.md`
 
-Primary commands after installing an exact packed core release candidate:
+Primary command for an exact packed core release candidate:
 
-- `cd cadenza-reference-system && npm run typecheck`
-- `cd cadenza-reference-system && npm test`
-- `cd cadenza-reference-system && npm run build`
+- `cd cadenza-reference-system && npm run validate:release -- ../cadenza`
 
 Contract role:
 

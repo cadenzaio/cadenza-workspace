@@ -1,0 +1,2135 @@
+{
+  "contract": "cadenza.core-benchmark-collection",
+  "version": "1",
+  "suite": "core",
+  "generated_at": "2026-07-27T22:07:22.842Z",
+  "run_count": 3,
+  "runtime": {
+    "node": "v24.18.0",
+    "v8": "13.6.233.17-node.50",
+    "platform": "darwin",
+    "os_release": "25.5.0",
+    "architecture": "arm64",
+    "cpu_model": "Apple M1 Pro",
+    "cpu_count": 10,
+    "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+    "core_worktree_state": "clean"
+  },
+  "workload_overrides": {},
+  "distributions": [
+    {
+      "scenario": "one-task",
+      "profile": "boundary",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        19865.270894894973,
+        20327.908917958182,
+        19068.158177999343
+      ],
+      "minimum": 19068.158177999343,
+      "median": 19865.270894894973,
+      "p95": 20327.908917958182,
+      "maximum": 20327.908917958182
+    },
+    {
+      "scenario": "one-task",
+      "profile": "boundary",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.0455654100000001,
+        0.04589082999999988,
+        0.05148540999999995
+      ],
+      "minimum": 0.0455654100000001,
+      "median": 0.04589082999999988,
+      "p95": 0.05148540999999995,
+      "maximum": 0.05148540999999995
+    },
+    {
+      "scenario": "one-task",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.07578625000000017,
+        0.07036749999999983,
+        0.07512541999999996
+      ],
+      "minimum": 0.07036749999999983,
+      "median": 0.07512541999999996,
+      "p95": 0.07578625000000017,
+      "maximum": 0.07578625000000017
+    },
+    {
+      "scenario": "one-task",
+      "profile": "structural",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        15611.148590257515,
+        15345.885741725398,
+        16015.100317787641
+      ],
+      "minimum": 15345.885741725398,
+      "median": 15611.148590257515,
+      "p95": 16015.100317787641,
+      "maximum": 16015.100317787641
+    },
+    {
+      "scenario": "one-task",
+      "profile": "structural",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.06423458000000011,
+        0.06376000000000005,
+        0.06086500000000001
+      ],
+      "minimum": 0.06086500000000001,
+      "median": 0.06376000000000005,
+      "p95": 0.06423458000000011,
+      "maximum": 0.06423458000000011
+    },
+    {
+      "scenario": "one-task",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.07825666999999982,
+        0.08373457999999999,
+        0.0808895799999999
+      ],
+      "minimum": 0.07825666999999982,
+      "median": 0.0808895799999999,
+      "p95": 0.08373457999999999,
+      "maximum": 0.08373457999999999
+    },
+    {
+      "scenario": "retry",
+      "profile": "boundary",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        291.86033825545,
+        285.9374434328935,
+        308.419233659812
+      ],
+      "minimum": 285.9374434328935,
+      "median": 291.86033825545,
+      "p95": 308.419233659812,
+      "maximum": 308.419233659812
+    },
+    {
+      "scenario": "retry",
+      "profile": "boundary",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        3.470196249999999,
+        3.6502954199999977,
+        3.300191250000003
+      ],
+      "minimum": 3.300191250000003,
+      "median": 3.470196249999999,
+      "p95": 3.6502954199999977,
+      "maximum": 3.6502954199999977
+    },
+    {
+      "scenario": "retry",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        3.8713704099999995,
+        3.8049458300000016,
+        3.9044258400000014
+      ],
+      "minimum": 3.8049458300000016,
+      "median": 3.8713704099999995,
+      "p95": 3.9044258400000014,
+      "maximum": 3.9044258400000014
+    },
+    {
+      "scenario": "retry",
+      "profile": "structural",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        296.9489294593817,
+        314.57349334619784,
+        294.3333626199234
+      ],
+      "minimum": 294.3333626199234,
+      "median": 296.9489294593817,
+      "p95": 314.57349334619784,
+      "maximum": 314.57349334619784
+    },
+    {
+      "scenario": "retry",
+      "profile": "structural",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        3.5800745800000002,
+        3.4785429199999998,
+        3.5702258399999995
+      ],
+      "minimum": 3.4785429199999998,
+      "median": 3.5702258399999995,
+      "p95": 3.5800745800000002,
+      "maximum": 3.5800745800000002
+    },
+    {
+      "scenario": "retry",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        3.933918329999999,
+        3.66476667,
+        3.8897004200000005
+      ],
+      "minimum": 3.66476667,
+      "median": 3.8897004200000005,
+      "p95": 3.933918329999999,
+      "maximum": 3.933918329999999
+    },
+    {
+      "scenario": "signal",
+      "profile": "boundary",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        10641.101107091052,
+        10706.801878278955,
+        10344.776473838403
+      ],
+      "minimum": 10344.776473838403,
+      "median": 10641.101107091052,
+      "p95": 10706.801878278955,
+      "maximum": 10706.801878278955
+    },
+    {
+      "scenario": "signal",
+      "profile": "boundary",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.09457790999999986,
+        0.08659667000000013,
+        0.1000633400000001
+      ],
+      "minimum": 0.08659667000000013,
+      "median": 0.09457790999999986,
+      "p95": 0.1000633400000001,
+      "maximum": 0.1000633400000001
+    },
+    {
+      "scenario": "signal",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.1155904099999998,
+        0.12394915999999995,
+        0.11974250000000013
+      ],
+      "minimum": 0.1155904099999998,
+      "median": 0.11974250000000013,
+      "p95": 0.12394915999999995,
+      "maximum": 0.12394915999999995
+    },
+    {
+      "scenario": "signal",
+      "profile": "structural",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        9122.725127939058,
+        8731.590968471397,
+        9031.947248989512
+      ],
+      "minimum": 8731.590968471397,
+      "median": 9031.947248989512,
+      "p95": 9122.725127939058,
+      "maximum": 9122.725127939058
+    },
+    {
+      "scenario": "signal",
+      "profile": "structural",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.10543791999999996,
+        0.11007417000000004,
+        0.10525874999999985
+      ],
+      "minimum": 0.10525874999999985,
+      "median": 0.10543791999999996,
+      "p95": 0.11007417000000004,
+      "maximum": 0.11007417000000004
+    },
+    {
+      "scenario": "signal",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.13241332999999997,
+        0.14054624999999987,
+        0.1411108299999998
+      ],
+      "minimum": 0.13241332999999997,
+      "median": 0.14054624999999987,
+      "p95": 0.1411108299999998,
+      "maximum": 0.1411108299999998
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "boundary",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        6517.963974281979,
+        6085.765828424871,
+        6469.620271368405
+      ],
+      "minimum": 6085.765828424871,
+      "median": 6469.620271368405,
+      "p95": 6517.963974281979,
+      "maximum": 6517.963974281979
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "boundary",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.14484334000000046,
+        0.15228834000000005,
+        0.14927584000000024
+      ],
+      "minimum": 0.14484334000000046,
+      "median": 0.14927584000000024,
+      "p95": 0.15228834000000005,
+      "maximum": 0.15228834000000005
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "boundary",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.2205058399999996,
+        0.2537791600000003,
+        0.2181650000000002
+      ],
+      "minimum": 0.2181650000000002,
+      "median": 0.2205058399999996,
+      "p95": 0.2537791600000003,
+      "maximum": 0.2537791600000003
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "structural",
+      "metric": "operations_per_second",
+      "unit": "operations_per_second",
+      "preferred_direction": "higher",
+      "values": [
+        2940.2684465091666,
+        2991.7630096985417,
+        2980.027388154572
+      ],
+      "minimum": 2940.2684465091666,
+      "median": 2980.027388154572,
+      "p95": 2991.7630096985417,
+      "maximum": 2991.7630096985417
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "structural",
+      "metric": "median_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.32808583999999996,
+        0.3251741800000002,
+        0.32465333999999985
+      ],
+      "minimum": 0.32465333999999985,
+      "median": 0.3251741800000002,
+      "p95": 0.32808583999999996,
+      "maximum": 0.32808583999999996
+    },
+    {
+      "scenario": "ten-task",
+      "profile": "structural",
+      "metric": "p95_ms_per_operation",
+      "unit": "milliseconds_per_operation",
+      "preferred_direction": "lower",
+      "values": [
+        0.3804916800000001,
+        0.3911000000000001,
+        0.3818275
+      ],
+      "minimum": 0.3804916800000001,
+      "median": 0.3818275,
+      "p95": 0.3911000000000001,
+      "maximum": 0.3911000000000001
+    }
+  ],
+  "runs": [
+    {
+      "contract": "cadenza.core-benchmark-report",
+      "version": "0",
+      "suite": "core",
+      "generated_at": "2026-07-27T22:07:06.063Z",
+      "results": [
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 44.83975000000004,
+          "operations_per_second": 15611.148590257515,
+          "median_ms_per_operation": 0.06423458000000011,
+          "p95_ms_per_operation": 0.07825666999999982,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 7.8256669999999815,
+              "milliseconds_per_operation": 0.07825666999999982
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 6.689125000000018,
+              "milliseconds_per_operation": 0.06689125000000018
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 6.0690420000000245,
+              "milliseconds_per_operation": 0.060690420000000245
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 6.821332999999981,
+              "milliseconds_per_operation": 0.06821332999999981
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 6.423458000000011,
+              "milliseconds_per_operation": 0.06423458000000011
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 5.660042000000004,
+              "milliseconds_per_operation": 0.05660042000000004
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 5.351083000000017,
+              "milliseconds_per_operation": 0.05351083000000017
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 35.237375000000014,
+          "operations_per_second": 19865.270894894973,
+          "median_ms_per_operation": 0.0455654100000001,
+          "p95_ms_per_operation": 0.07578625000000017,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 7.578625000000017,
+              "milliseconds_per_operation": 0.07578625000000017
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 5.853582999999986,
+              "milliseconds_per_operation": 0.058535829999999865
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 4.55654100000001,
+              "milliseconds_per_operation": 0.0455654100000001
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 4.49795899999998,
+              "milliseconds_per_operation": 0.044979589999999806
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 4.786875000000009,
+              "milliseconds_per_operation": 0.04786875000000009
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 4.212291999999991,
+              "milliseconds_per_operation": 0.04212291999999991
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 3.7515000000000214,
+              "milliseconds_per_operation": 0.037515000000000215
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 119.03674999999998,
+          "operations_per_second": 2940.2684465091666,
+          "median_ms_per_operation": 0.32808583999999996,
+          "p95_ms_per_operation": 0.3804916800000001,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 19.024584000000004,
+              "milliseconds_per_operation": 0.3804916800000001
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 16.236249999999984,
+              "milliseconds_per_operation": 0.3247249999999997
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 17.304625000000016,
+              "milliseconds_per_operation": 0.3460925000000003
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 16.404291999999998,
+              "milliseconds_per_operation": 0.32808583999999996
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 18.626000000000005,
+              "milliseconds_per_operation": 0.3725200000000001
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 16.317707999999982,
+              "milliseconds_per_operation": 0.3263541599999996
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 15.123290999999995,
+              "milliseconds_per_operation": 0.3024658199999999
+            }
+          ],
+          "evidence": {
+            "reports": 16606,
+            "barriers": 8308
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 53.697749999999985,
+          "operations_per_second": 6517.963974281979,
+          "median_ms_per_operation": 0.14484334000000046,
+          "p95_ms_per_operation": 0.2205058399999996,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 11.025291999999979,
+              "milliseconds_per_operation": 0.2205058399999996
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 7.747375000000005,
+              "milliseconds_per_operation": 0.1549475000000001
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 7.754458,
+              "milliseconds_per_operation": 0.15508916
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 6.913749999999993,
+              "milliseconds_per_operation": 0.13827499999999987
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 6.976249999999993,
+              "milliseconds_per_operation": 0.13952499999999987
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 7.242167000000023,
+              "milliseconds_per_operation": 0.14484334000000046
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 6.038457999999991,
+              "milliseconds_per_operation": 0.12076915999999983
+            }
+          ],
+          "evidence": {
+            "reports": 1981,
+            "barriers": 808
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 76.73145799999995,
+          "operations_per_second": 9122.725127939058,
+          "median_ms_per_operation": 0.10543791999999996,
+          "p95_ms_per_operation": 0.13241332999999997,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 13.241332999999997,
+              "milliseconds_per_operation": 0.13241332999999997
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.543791999999996,
+              "milliseconds_per_operation": 0.10543791999999996
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 9.979749999999996,
+              "milliseconds_per_operation": 0.09979749999999996
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 11.082459,
+              "milliseconds_per_operation": 0.11082459
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 12.559874999999977,
+              "milliseconds_per_operation": 0.12559874999999976
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 10.075957999999986,
+              "milliseconds_per_operation": 0.10075957999999986
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 9.248290999999995,
+              "milliseconds_per_operation": 0.09248290999999995
+            }
+          ],
+          "evidence": {
+            "reports": 6597,
+            "barriers": 3666
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 65.78266599999992,
+          "operations_per_second": 10641.101107091052,
+          "median_ms_per_operation": 0.09457790999999986,
+          "p95_ms_per_operation": 0.1155904099999998,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 11.55904099999998,
+              "milliseconds_per_operation": 0.1155904099999998
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.18141700000001,
+              "milliseconds_per_operation": 0.1018141700000001
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 9.457790999999986,
+              "milliseconds_per_operation": 0.09457790999999986
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 8.610750000000024,
+              "milliseconds_per_operation": 0.08610750000000024
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 10.196916999999985,
+              "milliseconds_per_operation": 0.10196916999999985
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 7.4395829999999705,
+              "milliseconds_per_operation": 0.0743958299999997
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 8.337166999999965,
+              "milliseconds_per_operation": 0.08337166999999965
+            }
+          ],
+          "evidence": {
+            "reports": 3697,
+            "barriers": 1491
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2357.3077070000004,
+          "operations_per_second": 296.9489294593817,
+          "median_ms_per_operation": 3.5800745800000002,
+          "p95_ms_per_operation": 3.933918329999999,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 257.792459,
+              "milliseconds_per_operation": 2.5779245900000003
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 358.00745800000004,
+              "milliseconds_per_operation": 3.5800745800000002
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 287.6506659999999,
+              "milliseconds_per_operation": 2.8765066599999987
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 393.3918329999999,
+              "milliseconds_per_operation": 3.933918329999999
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 386.4195420000001,
+              "milliseconds_per_operation": 3.864195420000001
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 366.3335830000003,
+              "milliseconds_per_operation": 3.663335830000003
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 307.7121659999998,
+              "milliseconds_per_operation": 3.0771216599999978
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2398.4074169999994,
+          "operations_per_second": 291.86033825545,
+          "median_ms_per_operation": 3.470196249999999,
+          "p95_ms_per_operation": 3.8713704099999995,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 259.89383399999997,
+              "milliseconds_per_operation": 2.5989383399999997
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 335.726708,
+              "milliseconds_per_operation": 3.3572670799999997
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 387.13704099999995,
+              "milliseconds_per_operation": 3.8713704099999995
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 337.52591699999994,
+              "milliseconds_per_operation": 3.375259169999999
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 365.98350000000005,
+              "milliseconds_per_operation": 3.6598350000000006
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 365.12079199999994,
+              "milliseconds_per_operation": 3.651207919999999
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 347.0196249999999,
+              "milliseconds_per_operation": 3.470196249999999
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cadenza.core-benchmark-report",
+      "version": "0",
+      "suite": "core",
+      "generated_at": "2026-07-27T22:07:14.447Z",
+      "results": [
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 45.614832000000035,
+          "operations_per_second": 15345.885741725398,
+          "median_ms_per_operation": 0.06376000000000005,
+          "p95_ms_per_operation": 0.08373457999999999,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 8.373458,
+              "milliseconds_per_operation": 0.08373457999999999
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 6.376000000000005,
+              "milliseconds_per_operation": 0.06376000000000005
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 7.057415999999989,
+              "milliseconds_per_operation": 0.07057415999999989
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 5.9313330000000235,
+              "milliseconds_per_operation": 0.05931333000000023
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 6.605125000000015,
+              "milliseconds_per_operation": 0.06605125000000016
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 5.745875000000012,
+              "milliseconds_per_operation": 0.05745875000000012
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 5.525624999999991,
+              "milliseconds_per_operation": 0.05525624999999991
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 34.435416000000004,
+          "operations_per_second": 20327.908917958182,
+          "median_ms_per_operation": 0.04589082999999988,
+          "p95_ms_per_operation": 0.07036749999999983,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 7.036749999999984,
+              "milliseconds_per_operation": 0.07036749999999983
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 5.25870900000001,
+              "milliseconds_per_operation": 0.0525870900000001
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 4.51291599999999,
+              "milliseconds_per_operation": 0.0451291599999999
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 4.457125000000019,
+              "milliseconds_per_operation": 0.044571250000000194
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 5.137750000000011,
+              "milliseconds_per_operation": 0.05137750000000011
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 4.589082999999988,
+              "milliseconds_per_operation": 0.04589082999999988
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 3.4430830000000014,
+              "milliseconds_per_operation": 0.034430830000000016
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 116.98787600000006,
+          "operations_per_second": 2991.7630096985417,
+          "median_ms_per_operation": 0.3251741800000002,
+          "p95_ms_per_operation": 0.3911000000000001,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 19.555000000000007,
+              "milliseconds_per_operation": 0.3911000000000001
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 16.25870900000001,
+              "milliseconds_per_operation": 0.3251741800000002
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 16.44870800000001,
+              "milliseconds_per_operation": 0.32897416000000024
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 15.674417000000005,
+              "milliseconds_per_operation": 0.3134883400000001
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 18.095792000000017,
+              "milliseconds_per_operation": 0.3619158400000003
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 15.488624999999985,
+              "milliseconds_per_operation": 0.3097724999999997
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 15.466625000000022,
+              "milliseconds_per_operation": 0.30933250000000045
+            }
+          ],
+          "evidence": {
+            "reports": 16606,
+            "barriers": 8308
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 57.51125000000002,
+          "operations_per_second": 6085.765828424871,
+          "median_ms_per_operation": 0.15228834000000005,
+          "p95_ms_per_operation": 0.2537791600000003,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 12.688958000000014,
+              "milliseconds_per_operation": 0.2537791600000003
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 8.506625000000014,
+              "milliseconds_per_operation": 0.17013250000000027
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 7.396583000000021,
+              "milliseconds_per_operation": 0.1479316600000004
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 8.29529199999999,
+              "milliseconds_per_operation": 0.16590583999999978
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 6.8107499999999845,
+              "milliseconds_per_operation": 0.1362149999999997
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 7.614417000000003,
+              "milliseconds_per_operation": 0.15228834000000005
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 6.198624999999993,
+              "milliseconds_per_operation": 0.12397249999999986
+            }
+          ],
+          "evidence": {
+            "reports": 1981,
+            "barriers": 808
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 80.168666,
+          "operations_per_second": 8731.590968471397,
+          "median_ms_per_operation": 0.11007417000000004,
+          "p95_ms_per_operation": 0.14054624999999987,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 14.054624999999987,
+              "milliseconds_per_operation": 0.14054624999999987
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.192125000000004,
+              "milliseconds_per_operation": 0.10192125000000005
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 11.007417000000004,
+              "milliseconds_per_operation": 0.11007417000000004
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 12.090874999999983,
+              "milliseconds_per_operation": 0.12090874999999983
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 11.684791999999987,
+              "milliseconds_per_operation": 0.11684791999999987
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 10.37579100000002,
+              "milliseconds_per_operation": 0.1037579100000002
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 10.763041000000015,
+              "milliseconds_per_operation": 0.10763041000000015
+            }
+          ],
+          "evidence": {
+            "reports": 6597,
+            "barriers": 3666
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 65.37900000000002,
+          "operations_per_second": 10706.801878278955,
+          "median_ms_per_operation": 0.08659667000000013,
+          "p95_ms_per_operation": 0.12394915999999995,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 12.394915999999995,
+              "milliseconds_per_operation": 0.12394915999999995
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.759417000000013,
+              "milliseconds_per_operation": 0.10759417000000013
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 8.659667000000013,
+              "milliseconds_per_operation": 0.08659667000000013
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 7.737249999999989,
+              "milliseconds_per_operation": 0.07737249999999989
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 10.919250000000005,
+              "milliseconds_per_operation": 0.10919250000000005
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 7.868625000000009,
+              "milliseconds_per_operation": 0.07868625000000008
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 7.039874999999995,
+              "milliseconds_per_operation": 0.07039874999999995
+            }
+          ],
+          "evidence": {
+            "reports": 3697,
+            "barriers": 1491
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2225.2351670000003,
+          "operations_per_second": 314.57349334619784,
+          "median_ms_per_operation": 3.4785429199999998,
+          "p95_ms_per_operation": 3.66476667,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 258.87675,
+              "milliseconds_per_operation": 2.5887675000000003
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 366.476667,
+              "milliseconds_per_operation": 3.66476667
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 360.07608300000004,
+              "milliseconds_per_operation": 3.6007608300000005
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 347.854292,
+              "milliseconds_per_operation": 3.4785429199999998
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 349.557542,
+              "milliseconds_per_operation": 3.49557542
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 294.75237500000003,
+              "milliseconds_per_operation": 2.94752375
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 247.64145800000006,
+              "milliseconds_per_operation": 2.4764145800000006
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2448.087916,
+          "operations_per_second": 285.9374434328935,
+          "median_ms_per_operation": 3.6502954199999977,
+          "p95_ms_per_operation": 3.8049458300000016,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 259.359292,
+              "milliseconds_per_operation": 2.59359292
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 354.495916,
+              "milliseconds_per_operation": 3.5449591600000003
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 376.811458,
+              "milliseconds_per_operation": 3.76811458
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 380.49458300000015,
+              "milliseconds_per_operation": 3.8049458300000016
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 344.30783399999996,
+              "milliseconds_per_operation": 3.4430783399999996
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 367.589291,
+              "milliseconds_per_operation": 3.67589291
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 365.02954199999976,
+              "milliseconds_per_operation": 3.6502954199999977
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        }
+      ]
+    },
+    {
+      "contract": "cadenza.core-benchmark-report",
+      "version": "0",
+      "suite": "core",
+      "generated_at": "2026-07-27T22:07:22.835Z",
+      "results": [
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 43.70874899999998,
+          "operations_per_second": 16015.100317787641,
+          "median_ms_per_operation": 0.06086500000000001,
+          "p95_ms_per_operation": 0.0808895799999999,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 8.088957999999991,
+              "milliseconds_per_operation": 0.0808895799999999
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 6.086500000000001,
+              "milliseconds_per_operation": 0.06086500000000001
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 5.9417080000000055,
+              "milliseconds_per_operation": 0.05941708000000005
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 6.358374999999995,
+              "milliseconds_per_operation": 0.06358374999999995
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 6.314540999999991,
+              "milliseconds_per_operation": 0.06314540999999992
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 6.0121249999999975,
+              "milliseconds_per_operation": 0.06012124999999997
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 4.906542000000002,
+              "milliseconds_per_operation": 0.04906542000000002
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "one-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 36.71041500000001,
+          "operations_per_second": 19068.158177999343,
+          "median_ms_per_operation": 0.05148540999999995,
+          "p95_ms_per_operation": 0.07512541999999996,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 7.512541999999996,
+              "milliseconds_per_operation": 0.07512541999999996
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 5.1485409999999945,
+              "milliseconds_per_operation": 0.05148540999999995
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 4.639250000000004,
+              "milliseconds_per_operation": 0.04639250000000004
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 4.968916000000007,
+              "milliseconds_per_operation": 0.04968916000000007
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 5.368916000000013,
+              "milliseconds_per_operation": 0.05368916000000013
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 5.277457999999996,
+              "milliseconds_per_operation": 0.05277457999999996
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 3.794792000000001,
+              "milliseconds_per_operation": 0.03794792000000001
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 117.44858499999992,
+          "operations_per_second": 2980.027388154572,
+          "median_ms_per_operation": 0.32465333999999985,
+          "p95_ms_per_operation": 0.3818275,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 18.88749999999999,
+              "milliseconds_per_operation": 0.37774999999999975
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 16.44941700000001,
+              "milliseconds_per_operation": 0.3289883400000002
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 16.232666999999992,
+              "milliseconds_per_operation": 0.32465333999999985
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 15.530249999999995,
+              "milliseconds_per_operation": 0.3106049999999999
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 19.091375,
+              "milliseconds_per_operation": 0.3818275
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 15.907166999999987,
+              "milliseconds_per_operation": 0.3181433399999997
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 15.35020899999995,
+              "milliseconds_per_operation": 0.307004179999999
+            }
+          ],
+          "evidence": {
+            "reports": 16606,
+            "barriers": 8308
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "ten-task",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 350,
+          "elapsed_ms": 54.09900200000001,
+          "operations_per_second": 6469.620271368405,
+          "median_ms_per_operation": 0.14927584000000024,
+          "p95_ms_per_operation": 0.2181650000000002,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 50,
+              "elapsed_ms": 10.90825000000001,
+              "milliseconds_per_operation": 0.2181650000000002
+            },
+            {
+              "sample": 2,
+              "operations": 50,
+              "elapsed_ms": 7.851584000000003,
+              "milliseconds_per_operation": 0.15703168000000006
+            },
+            {
+              "sample": 3,
+              "operations": 50,
+              "elapsed_ms": 7.463792000000012,
+              "milliseconds_per_operation": 0.14927584000000024
+            },
+            {
+              "sample": 4,
+              "operations": 50,
+              "elapsed_ms": 6.656833999999975,
+              "milliseconds_per_operation": 0.1331366799999995
+            },
+            {
+              "sample": 5,
+              "operations": 50,
+              "elapsed_ms": 7.826125000000019,
+              "milliseconds_per_operation": 0.15652250000000037
+            },
+            {
+              "sample": 6,
+              "operations": 50,
+              "elapsed_ms": 7.234916999999996,
+              "milliseconds_per_operation": 0.14469833999999993
+            },
+            {
+              "sample": 7,
+              "operations": 50,
+              "elapsed_ms": 6.157499999999999,
+              "milliseconds_per_operation": 0.12314999999999998
+            }
+          ],
+          "evidence": {
+            "reports": 1981,
+            "barriers": 808
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 77.50266699999997,
+          "operations_per_second": 9031.947248989512,
+          "median_ms_per_operation": 0.10525874999999985,
+          "p95_ms_per_operation": 0.1411108299999998,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 14.11108299999998,
+              "milliseconds_per_operation": 0.1411108299999998
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.915875,
+              "milliseconds_per_operation": 0.10915875
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 10.388292000000007,
+              "milliseconds_per_operation": 0.10388292000000007
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 10.525874999999985,
+              "milliseconds_per_operation": 0.10525874999999985
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 12.266874999999999,
+              "milliseconds_per_operation": 0.12266875
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 10.00633400000001,
+              "milliseconds_per_operation": 0.1000633400000001
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 9.288332999999994,
+              "milliseconds_per_operation": 0.09288332999999994
+            }
+          ],
+          "evidence": {
+            "reports": 6597,
+            "barriers": 3666
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "signal",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 67.66700100000003,
+          "operations_per_second": 10344.776473838403,
+          "median_ms_per_operation": 0.1000633400000001,
+          "p95_ms_per_operation": 0.11974250000000013,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 11.974250000000012,
+              "milliseconds_per_operation": 0.11974250000000013
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 10.00633400000001,
+              "milliseconds_per_operation": 0.1000633400000001
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 10.346249999999998,
+              "milliseconds_per_operation": 0.10346249999999997
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 10.263333000000017,
+              "milliseconds_per_operation": 0.10263333000000018
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 9.336542000000009,
+              "milliseconds_per_operation": 0.09336542000000009
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 8.164249999999981,
+              "milliseconds_per_operation": 0.08164249999999981
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 7.576042000000001,
+              "milliseconds_per_operation": 0.07576042000000001
+            }
+          ],
+          "evidence": {
+            "reports": 3697,
+            "barriers": 1491
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "structural",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2378.2557090000005,
+          "operations_per_second": 294.3333626199234,
+          "median_ms_per_operation": 3.5702258399999995,
+          "p95_ms_per_operation": 3.8897004200000005,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 260.16225000000003,
+              "milliseconds_per_operation": 2.6016225000000004
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 388.97004200000003,
+              "milliseconds_per_operation": 3.8897004200000005
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 357.02258399999994,
+              "milliseconds_per_operation": 3.5702258399999995
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 368.2335830000002,
+              "milliseconds_per_operation": 3.6823358300000018
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 338.6325840000002,
+              "milliseconds_per_operation": 3.386325840000002
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 362.7339159999999,
+              "milliseconds_per_operation": 3.627339159999999
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 302.50075000000015,
+              "milliseconds_per_operation": 3.0250075000000014
+            }
+          ],
+          "evidence": {
+            "reports": 5870,
+            "barriers": 2940
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        },
+        {
+          "kind": "timing",
+          "scenario": "retry",
+          "profile": "boundary",
+          "warmup_operations": 25,
+          "sample_count": 7,
+          "completed_operations": 700,
+          "elapsed_ms": 2269.6379590000006,
+          "operations_per_second": 308.419233659812,
+          "median_ms_per_operation": 3.300191250000003,
+          "p95_ms_per_operation": 3.9044258400000014,
+          "samples": [
+            {
+              "sample": 1,
+              "operations": 100,
+              "elapsed_ms": 255.556917,
+              "milliseconds_per_operation": 2.55556917
+            },
+            {
+              "sample": 2,
+              "operations": 100,
+              "elapsed_ms": 309.523875,
+              "milliseconds_per_operation": 3.0952387499999996
+            },
+            {
+              "sample": 3,
+              "operations": 100,
+              "elapsed_ms": 365.90824999999995,
+              "milliseconds_per_operation": 3.6590824999999993
+            },
+            {
+              "sample": 4,
+              "operations": 100,
+              "elapsed_ms": 390.4425840000001,
+              "milliseconds_per_operation": 3.9044258400000014
+            },
+            {
+              "sample": 5,
+              "operations": 100,
+              "elapsed_ms": 358.4725000000001,
+              "milliseconds_per_operation": 3.5847250000000006
+            },
+            {
+              "sample": 6,
+              "operations": 100,
+              "elapsed_ms": 330.01912500000026,
+              "milliseconds_per_operation": 3.300191250000003
+            },
+            {
+              "sample": 7,
+              "operations": 100,
+              "elapsed_ms": 259.714708,
+              "milliseconds_per_operation": 2.5971470799999996
+            }
+          ],
+          "evidence": {
+            "reports": 3695,
+            "barriers": 1490
+          },
+          "runtime": {
+            "node": "v24.18.0",
+            "v8": "13.6.233.17-node.50",
+            "platform": "darwin",
+            "os_release": "25.5.0",
+            "architecture": "arm64",
+            "cpu_model": "Apple M1 Pro",
+            "cpu_count": 10,
+            "core_revision": "5cb3104e70fd4daa494c06d5c9d4a6621fb68b93",
+            "core_worktree_state": "clean"
+          }
+        }
+      ]
+    }
+  ]
+}

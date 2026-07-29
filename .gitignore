@@ -16,6 +16,8 @@
 !automation.config.json
 !release/
 !release/**
+!proof/
+!proof/**
 
 # Track meta-repo docs/scripts
 !docs/

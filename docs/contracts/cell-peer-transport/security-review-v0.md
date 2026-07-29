@@ -146,6 +146,6 @@ None of these risks contradicts the approved Sprint 6B scope.
 - [Cell peer transport contract](v0.md)
 - [Cell peer transport conformance](conformance-v0.md)
 - [Neutral transport fixture](fixtures/v0-peer-transport.json)
-- [Approved Sprint 6 design](../../agent-harness/exec-plans/active/2026-07-14-multi-cell-static-placement-design.md)
+- [Approved Sprint 6 design](../../agent-harness/exec-plans/completed/2026-07-14-multi-cell-static-placement-design.md)
 - [Multi-cell foundation decision](../../decisions/2026-07-14-multi-cell-static-placement-foundation.md)
 - [Intended whole](../../cadenza-intended-whole.md)

@@ -1,0 +1,324 @@
+{
+  "contract": "cadenza.proof-harness-manifest",
+  "version": "1",
+  "tiers": {
+    "fast": {
+      "purpose": "Detect contract, core-behavior, routing, and reference-flow regressions without privileged infrastructure.",
+      "source_repositories": [
+        ".",
+        "cadenza",
+        "cadenza-environment",
+        "cadenza-chamber",
+        "cadenza-cell",
+        "cadenza-reference-system"
+      ],
+      "commands": [
+        {
+          "label": "workspace governance",
+          "cwd": ".",
+          "command": "./scripts/check-agent-harness.sh",
+          "args": []
+        },
+        {
+          "label": "contract snapshots",
+          "cwd": ".",
+          "command": "node",
+          "args": ["scripts/check-contract-snapshots.mjs"]
+        },
+        {
+          "label": "TypeScript core",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["test"]
+        },
+        {
+          "label": "Environment contracts",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "typecheck"]
+        },
+        {
+          "label": "Chamber protocol",
+          "cwd": "cadenza-chamber",
+          "command": "cargo",
+          "args": ["test", "--locked", "--test", "cell_protocol"]
+        },
+        {
+          "label": "Cell routing",
+          "cwd": "cadenza-cell",
+          "command": "cargo",
+          "args": [
+            "test",
+            "--locked",
+            "--test",
+            "orchestrator",
+            "authority_refresh_groups_target_replicas_and_separates_signal_slices",
+            "--",
+            "--exact"
+          ]
+        },
+        {
+          "label": "Exact reference business flows",
+          "cwd": "cadenza-reference-system",
+          "command": "npm",
+          "args": ["run", "validate:release", "--", "../cadenza"]
+        }
+      ]
+    },
+    "complete": {
+      "purpose": "Run every repository-owned non-privileged release validation from the declared workspace.",
+      "source_repositories": [
+        ".",
+        "cadenza",
+        "cadenza-python",
+        "cadenza-elixir",
+        "cadenza-csharp",
+        "cadenza-environment",
+        "cadenza-chamber",
+        "cadenza-cell",
+        "cadenza-reference-system"
+      ],
+      "commands": [
+        {
+          "label": "workspace governance",
+          "cwd": ".",
+          "command": "./scripts/check-agent-harness.sh",
+          "args": []
+        },
+        {
+          "label": "public documentation",
+          "cwd": ".",
+          "command": "node",
+          "args": ["scripts/check-public-documentation-links.mjs"]
+        },
+        {
+          "label": "contract snapshots",
+          "cwd": ".",
+          "command": "node",
+          "args": ["scripts/check-contract-snapshots.mjs"]
+        },
+        {
+          "label": "release metadata",
+          "cwd": ".",
+          "command": "node",
+          "args": [
+            "scripts/validate-release-candidate.mjs",
+            "--candidate",
+            "release/candidates/distributed-foundation-rc2.json"
+          ]
+        },
+        {
+          "label": "TypeScript frozen install",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["install", "--frozen-lockfile", "--ignore-scripts"]
+        },
+        {
+          "label": "TypeScript format",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["prettier", "--check", "."]
+        },
+        {
+          "label": "TypeScript typecheck",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["tsc", "--noEmit"]
+        },
+        {
+          "label": "TypeScript tests",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["test"]
+        },
+        {
+          "label": "TypeScript build",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["build"]
+        },
+        {
+          "label": "TypeScript docs",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["docs"]
+        },
+        {
+          "label": "TypeScript package smoke",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["package:smoke"]
+        },
+        {
+          "label": "TypeScript dependency audit",
+          "cwd": "cadenza",
+          "command": "yarn",
+          "args": ["audit", "--level", "high"]
+        },
+        {
+          "label": "Python 3.13 core",
+          "cwd": ".",
+          "command": "docker",
+          "args": [
+            "run",
+            "--rm",
+            "--mount",
+            "type=bind,src={workspace}/cadenza-python,dst=/source,readonly",
+            "python@sha256:6968f3db25671cbdd22d8053ffbe77fc9f0a51027bb04d17942262e709171dcb",
+            "sh",
+            "-lc",
+            "cp -a /source /work && cd /work && python -m compileall -q src tests && PYTHONPATH=src python -m unittest discover -s tests && python scripts/package_smoke.py"
+          ]
+        },
+        {
+          "label": "Python 3.14 core",
+          "cwd": ".",
+          "command": "docker",
+          "args": [
+            "run",
+            "--rm",
+            "--mount",
+            "type=bind,src={workspace}/cadenza-python,dst=/source,readonly",
+            "python@sha256:5f1cdbcab9a50594a79502dd73e885456d2a2fc31f1a1fa18484815b37ee9152",
+            "sh",
+            "-lc",
+            "cp -a /source /work && cd /work && python -m compileall -q src tests && PYTHONPATH=src python -m unittest discover -s tests && python scripts/package_smoke.py"
+          ]
+        },
+        {
+          "label": "Elixir dependencies",
+          "cwd": "cadenza-elixir",
+          "command": "mix",
+          "args": ["deps.get", "--check-locked"]
+        },
+        {
+          "label": "Elixir dependency audit",
+          "cwd": "cadenza-elixir",
+          "command": "mix",
+          "args": ["hex.audit"]
+        },
+        {
+          "label": "Elixir compile",
+          "cwd": "cadenza-elixir",
+          "command": "mix",
+          "args": ["compile", "--warnings-as-errors"]
+        },
+        {
+          "label": "Elixir format",
+          "cwd": "cadenza-elixir",
+          "command": "mix",
+          "args": ["format", "--check-formatted"]
+        },
+        {
+          "label": "Elixir tests",
+          "cwd": "cadenza-elixir",
+          "command": "mix",
+          "args": ["test"]
+        },
+        {
+          "label": "Elixir package smoke",
+          "cwd": "cadenza-elixir",
+          "command": "bash",
+          "args": ["scripts/package-smoke.sh"]
+        },
+        {
+          "label": "C# core",
+          "cwd": ".",
+          "command": "docker",
+          "args": [
+            "run",
+            "--rm",
+            "--mount",
+            "type=bind,src={workspace}/cadenza-csharp,dst=/source,readonly",
+            "mcr.microsoft.com/dotnet/sdk@sha256:ed034a8bf0b24ded0cbbac07e17825d8e9ebfe21e308191d0f7421eaf5ad4664",
+            "bash",
+            "-lc",
+            "cp -a /source /work && cd /work && dotnet restore --locked-mode && dotnet package list --vulnerable --include-transitive && dotnet package list --deprecated --include-transitive && dotnet format --verify-no-changes && dotnet build --configuration Release --no-restore -warnaserror && dotnet test --configuration Release --no-build && bash scripts/package-smoke.sh"
+          ]
+        },
+        {
+          "label": "Environment frozen install",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "install:all"]
+        },
+        {
+          "label": "Environment typecheck",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "typecheck"]
+        },
+        {
+          "label": "Environment tests",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["test"]
+        },
+        {
+          "label": "Environment build",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "build"]
+        },
+        {
+          "label": "Environment dependency audit",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "audit"]
+        },
+        {
+          "label": "Environment package smoke",
+          "cwd": "cadenza-environment",
+          "command": "npm",
+          "args": ["run", "package:smoke"]
+        },
+        {
+          "label": "Chamber validation",
+          "cwd": "cadenza-chamber",
+          "command": "./scripts/validate.sh",
+          "args": []
+        },
+        {
+          "label": "Cell validation",
+          "cwd": "cadenza-cell",
+          "command": "./scripts/validate.sh",
+          "args": []
+        },
+        {
+          "label": "Exact reference release",
+          "cwd": "cadenza-reference-system",
+          "command": "npm",
+          "args": ["run", "validate:release", "--", "../cadenza"]
+        }
+      ]
+    },
+    "privileged": {
+      "purpose": "Rebuild and prove distributed execution plus replica/provider restart from fresh authority under Linux and gVisor.",
+      "transport": "lima",
+      "source_repositories": [
+        ".",
+        "cadenza",
+        "cadenza-environment",
+        "cadenza-chamber",
+        "cadenza-cell",
+        "cadenza-reference-system"
+      ],
+      "scenarios": [
+        "two_real_cells_converge_database_authority_without_lifecycle_commands",
+        "desired_replica_state_supplies_and_releases_pre_enrolled_cells"
+      ],
+      "hardening_scenarios": [
+        "scale_orchestration_survives_stem_loss_and_resupplies_fresh_capacity"
+      ],
+      "convergence_timeout_seconds": 600,
+      "scenario_unit_timeout_seconds": 900,
+      "expected": {
+        "architecture": "aarch64",
+        "node": "v24.18.0",
+        "rust": "1.97.0",
+        "postgresql": "16.14",
+        "runsc_digest": "sha256:71bd169bebaa7110188ba8fdb3cbd9e763127a3905bca9f675d2ee795e96bfbb"
+      }
+    }
+  }
+}

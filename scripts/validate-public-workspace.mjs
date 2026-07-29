@@ -41,10 +41,12 @@ for (const required of [
   "LICENSE",
   "contracts.config.json",
   "release/candidate.json",
+  "release/candidates/distributed-foundation-rc2.json",
   "release/public-documentation-authority.json",
   "docs/architecture.md",
   "docs/architecture/atlas/README.md",
   "docs/security/cadenza-security-model-v1.md",
+  "scripts/release-candidate.mjs",
   "scripts/validate-release-candidate.mjs",
 ]) {
   if (!files.some((file) => toRelative(file) === required)) {

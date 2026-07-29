@@ -82,7 +82,7 @@ routine runtime affect too close to semantic root authority.
 ## Links
 
 - [Approved Sprint 7C design](../agent-harness/exec-plans/completed/2026-07-17-autonomous-cell-runtime-convergence-sprint-7c-design.md)
-- [Sprint 7 parent design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Sprint 7 parent design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Sprint 7 parent decision](2026-07-17-scale-placement-reconciliation.md)
 - [Sprint 7B PostgreSQL authority decision](2026-07-17-postgres-reconciliation-authority.md)
 - [Sprint 7B closure review](../contracts/distribution/sprint-7b-closure-review-v0.md)

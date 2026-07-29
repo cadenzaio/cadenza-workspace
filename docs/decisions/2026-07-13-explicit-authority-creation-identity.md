@@ -54,4 +54,4 @@ unverified digest.
 
 - [Authority Security Contract V0](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/contracts/authority-security/v0.md)
 - [Canonical Authority Flows V0](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/contracts/authority-security/canonical-flows-v0.md)
-- [Trusted Cell And First Activation Design](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md)
+- [Trusted Cell And First Activation Design](https://github.com/cadenzaio/cadenza-workspace/blob/main/docs/agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md)

@@ -44,4 +44,4 @@ records.
 ## Links
 
 - [Runtime Gateway Contract](../contracts/authority-security/runtime-gateway-v0.md)
-- [Trusted Cell And First Activation Plan](../agent-harness/exec-plans/active/2026-07-13-trusted-cell-first-activation-design.md)
+- [Trusted Cell And First Activation Plan](../agent-harness/exec-plans/completed/2026-07-13-trusted-cell-first-activation-design.md)

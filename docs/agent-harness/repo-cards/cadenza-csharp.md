@@ -10,7 +10,7 @@ Enter this repo when:
 
 Read before editing:
 
-- `docs/agent-harness/exec-plans/active/2026-07-12-csharp-core-design-proposal.md`
+- `docs/agent-harness/exec-plans/completed/2026-07-12-csharp-core-design-proposal.md`
 - `docs/cadenza-meta-slice-language-fit-review.md`
 - `docs/cadenza-language-runtime-contract.md`
 - `docs/cadenza-intended-whole.md`
@@ -27,8 +27,8 @@ First files:
 Primary commands:
 
 - `cd cadenza-csharp && dotnet format --verify-no-changes`
-- `cd cadenza-csharp && dotnet build`
-- `cd cadenza-csharp && dotnet test`
+- `cd cadenza-csharp && dotnet build --configuration Release`
+- `cd cadenza-csharp && dotnet test --configuration Release --no-build`
 
 Contract role:
 

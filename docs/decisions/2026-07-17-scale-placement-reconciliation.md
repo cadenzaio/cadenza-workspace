@@ -57,6 +57,6 @@ architecture and concentrate excessive authority.
 
 ## Links
 
-- [Approved Sprint 7 design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Approved Sprint 7 design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Cadenza Official Roadmap](../agent-harness/exec-plans/active/2026-07-09-cadenza-official-roadmap.md)
 - [Multi-Cell Distribution Contract V0](../contracts/distribution/v0.md)

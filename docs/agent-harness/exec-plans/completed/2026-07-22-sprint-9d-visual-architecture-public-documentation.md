@@ -7,7 +7,7 @@ Date: 2026-07-22
 - State: `done`.
 - Closure approved by the user on 2026-07-22.
 - Parent design:
-  [Sprint 9 Distributed Foundation Stabilization And Publication](../active/2026-07-21-distributed-foundation-stabilization-publication-design.md).
+  [Sprint 9 Distributed Foundation Stabilization And Publication](./2026-07-21-distributed-foundation-stabilization-publication-design.md).
 - Entry gate:
   [Sprint 9C Security, Reproducibility, And System Proof Closure V1](../../../publication/sprint-9c-closure-review-v1.md).
 - Active WIP: one cross-repository documentation and visual-validation stream.

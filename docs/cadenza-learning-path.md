@@ -53,6 +53,7 @@ Before changing behavior or contracts, an agent should be able to explain:
    - [contracts/execution-evidence/v0.md](./contracts/execution-evidence/v0.md)
 6. Realistic outside-in use:
    - [../cadenza-reference-system/README.md](../cadenza-reference-system/README.md)
+   - [guides/operational-interpretation.md](./guides/operational-interpretation.md)
    - [guides/runtime-operator.md](./guides/runtime-operator.md)
    - [guides/evidence-interpretation.md](./guides/evidence-interpretation.md)
 7. Language portability:

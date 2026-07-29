@@ -64,6 +64,6 @@ also create false success.
 
 ## Links
 
-- [Approved Sprint 6 design](../agent-harness/exec-plans/active/2026-07-14-multi-cell-static-placement-design.md)
+- [Approved Sprint 6 design](../agent-harness/exec-plans/completed/2026-07-14-multi-cell-static-placement-design.md)
 - [Sprint 5 closure](../contracts/local-orchestration/closure-review-v0.md)
 - User approval on 2026-07-14.

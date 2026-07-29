@@ -399,7 +399,7 @@ Impacted repos: `cadenza`, `cadenza-cell`, `cadenza-workspace`.
 Gate: authority and schema coherence/security review before network transport.
 
 Sprint 6A implementation and validation are complete. The gate review is
-recorded in [Distribution V0 closure review](../../contracts/distribution/closure-review-v0.md).
+recorded in [Distribution V0 closure review](../../../contracts/distribution/closure-review-v0.md).
 The Sprint 6A review was accepted and Sprint 6B is complete.
 
 ### Sprint 6B: Cell Process And Authenticated Transport

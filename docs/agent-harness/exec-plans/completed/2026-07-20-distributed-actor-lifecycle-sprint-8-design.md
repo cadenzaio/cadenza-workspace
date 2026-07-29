@@ -705,5 +705,5 @@ Sprint 8 is complete only when:
 - [Sprint 8D Scenario Matrix](../../../contracts/actor-distribution/sprint-8d-scenario-matrix-v1.md)
 - [Sprint 8D Operational Complexity Inventory](../../../contracts/actor-distribution/sprint-8d-operational-complexity-v1.md)
 - [Sprint 8D Closure Review](../../../contracts/actor-distribution/sprint-8d-closure-review-v1.md)
-- [Actor Model Frontier](../completed/2026-04-23-actor-model-frontier.md),
-  retained as non-authoritative historical evidence.
+- `Actor Model Frontier`, retained outside the public lineage as
+  non-authoritative historical planning evidence.

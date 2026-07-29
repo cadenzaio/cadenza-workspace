@@ -63,5 +63,5 @@ readiness must therefore remain distinct identities and evidence.
 
 - [Approved Sprint 7E design](../agent-harness/exec-plans/completed/2026-07-19-pre-enrolled-cell-supply-sprint-7e-design.md)
 - [Enrollment-scoped peer transport identity](2026-07-19-enrollment-scoped-peer-transport-identity.md)
-- [Sprint 7 parent design](../agent-harness/exec-plans/active/2026-07-17-scale-placement-reconciliation-design.md)
+- [Sprint 7 parent design](../agent-harness/exec-plans/completed/2026-07-17-scale-placement-reconciliation-design.md)
 - [Sprint 7D closure](../contracts/distribution/sprint-7d-closure-review-v0.md)

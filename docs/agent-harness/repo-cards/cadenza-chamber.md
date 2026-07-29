@@ -35,13 +35,15 @@ Primary commands:
 Contract role:
 
 - Authority for `chamber_runtime_contracts` in `contracts.config.json`.
-- Consumer of `environment_bootstrap_contracts` and `core_runtime_primitives` from `cadenza`.
+- Consumer of `environment_bootstrap_contracts` from `cadenza-environment`.
+- Consumer of `core_runtime_primitives` from `cadenza`.
 - Owner of the TypeScript reference adapter, which consumes but does not define
   TypeScript primitive semantics.
 
 Routing notes:
 
-- Change `cadenza` first when bootstrap or primitive meaning changes.
+- Change `cadenza-environment` first when bootstrap meaning changes.
+- Change `cadenza` first when primitive meaning changes.
 - Preserve adapter-to-core dependency direction; no core imports Chamber
   adapter behavior.
 - Do not add cell placement, distributed routing, credential custody, or environment authority here.
